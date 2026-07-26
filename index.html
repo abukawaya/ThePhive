@@ -2503,48 +2503,6 @@
             }
         }
 
-        @media (min-width: 1400px) {
-            .section-inner,
-            .footer-inner {
-                max-width: 1500px;
-            }
-
-            .footer-top {
-                gap: 36px;
-            }
-
-            .footer-nav {
-                gap: 44px;
-            }
-
-            .footer-logos {
-                gap: 24px;
-            }
-
-            .ai-tools-grid {
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (min-width: 1600px) {
-            .section-inner,
-            .footer-inner {
-                max-width: 1600px;
-            }
-
-            .ai-tools-grid {
-                max-width: 1200px;
-            }
-        }
-
-        @media (min-width: 1920px) {
-            .section-inner,
-            .footer-inner {
-                max-width: 1700px;
-            }
-        }
-
         /* ==========================================================================
            GENIUS EXPANSION & REDESIGN STYLES
            ========================================================================== */
@@ -4230,6 +4188,18 @@
             }
         }
 
+        @media (max-width: 640px) {
+            .ai-format-select {
+                width: 100%;
+            }
+
+            .ai-tool-form>div[style*="flex-wrap:wrap"],
+            .ai-tool-form>div[style*="flex-wrap: wrap"] {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
         .spinning svg,
         svg.spinning {
             animation: spin 0.8s linear infinite;
@@ -5229,7 +5199,7 @@
                             <input type="text" id="aiExplainerInput" class="ai-tool-input"
                                 placeholder="Enter a public health term, concept, or abbreviation… e.g. 'DALY', 'herd immunity threshold', 'NMR'"
                                 maxlength="300" autocomplete="off">
-                            <div style="display:flex; gap:10px; align-items:center;">
+                            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                                 <button type="submit" class="btn btn-primary" id="aiExplainerSubmit"
                                     style="background: linear-gradient(135deg, #3e7c5a, #2e6048);">
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
@@ -5323,7 +5293,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <span class="brand-mark brand-mark--footer">
-                        <img src="main_logo_icon.png" alt="" width="44" height="44">
+                        <img src="main_logo.png" alt="" width="44" height="44">
                     </span>
                     <span class="brand-word brand-word--footer">The <em>PHive</em></span>
                     <p class="footer-tagline">Connecting Public Health.</p>
@@ -5350,7 +5320,7 @@
                 <div class="footer-orgs">
                     <p class="footer-nav-head">Affiliated with</p>
                     <div class="footer-logos">
-                        <img src="scoph-logo.png" alt="SCOPH — Standing Committee on Public Health"
+                        <img src="NUSMSA.png" alt="SCOPH — Standing Committee on Public Health"
                             class="footer-logo footer-logo--scoph">
                     </div>
                 </div>
