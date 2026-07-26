@@ -1450,7 +1450,7 @@
 
         .opp-matcher-input {
             flex: 1;
-            min-width: 220px;
+            min-width: min(220px, 100%);
             font: inherit;
             font-size: 0.92rem;
             padding: 13px 16px;
@@ -1994,6 +1994,56 @@
 
             .footer-logos {
                 margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .honeycomb {
+                --hex-w: min(240px, 70vw);
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+                padding: 30px 0 50px;
+                justify-items: center;
+            }
+
+            .cell {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                margin-top: 0 !important;
+                width: 100%;
+                max-width: min(240px, 70vw);
+                aspect-ratio: 280 / 323;
+            }
+
+            .cell--news {
+                grid-row: 1;
+            }
+
+            .cell--research {
+                grid-row: 1;
+            }
+
+            .cell--articles {
+                grid-row: 2;
+            }
+
+            .cell--opportunities {
+                grid-row: 2;
+            }
+
+            .cell--center {
+                grid-column: 1 / -1;
+                grid-row: 3;
+                margin-top: 0 !important;
+                width: 100%;
+                max-width: calc(min(240px, 70vw) * 0.6);
+                aspect-ratio: 280 / 323;
+                justify-self: center;
+            }
+
+            .cell--about {
+                grid-row: 4;
+                justify-self: center;
             }
         }
 
@@ -4198,6 +4248,14 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .pulse-grid-v2 {
+                grid-template-columns: 1fr;
+            }
+
+            .cell-content {
+                padding: 0 20px;
+            }
         }
 
         .spinning svg,
@@ -4209,6 +4267,43 @@
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        img,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer-logo {
+            max-width: 100%;
+            height: auto;
+        }
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        span,
+        div,
+        a,
+        button,
+        input,
+        textarea,
+        select,
+        label {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .section-inner,
+        .footer-inner {
+            overflow-x: hidden;
         }
     </style>
 
