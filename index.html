@@ -2989,13 +2989,13 @@
             left: 0;
             bottom: calc(100% + 16px);
             width: min(390px, calc(100vw - 52px));
-            max-height: min(560px, 70vh);
+            max-height: min(580px, 72vh);
             display: flex;
             flex-direction: column;
-            background: #fff;
+            background: linear-gradient(160deg, #1a1507 0%, #0d0b04 100%);
             border-radius: 22px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(27, 26, 23, 0.08);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(217, 96, 31, 0.18);
+            border: 1px solid rgba(217, 96, 31, 0.2);
             overflow: hidden;
             opacity: 0;
             visibility: hidden;
@@ -3015,9 +3015,10 @@
             align-items: flex-start;
             justify-content: space-between;
             gap: 12px;
-            padding: 20px 20px 14px;
-            background: linear-gradient(155deg, var(--comb-ink), #2A2722);
-            color: var(--comb-paper);
+            padding: 18px 20px 14px;
+            background: rgba(217, 96, 31, 0.08);
+            border-bottom: 1px solid rgba(217, 96, 31, 0.15);
+            color: rgba(251, 248, 243, 0.92);
             flex-shrink: 0;
         }
 
@@ -3067,19 +3068,19 @@
         .hive-ai-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 18px 20px;
+            padding: 16px 16px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             min-height: 120px;
         }
 
         .hive-ai-messages::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
 
         .hive-ai-messages::-webkit-scrollbar-thumb {
-            background: rgba(27, 26, 23, 0.15);
+            background: rgba(217, 96, 31, 0.3);
             border-radius: 10px;
         }
 
@@ -3090,11 +3091,12 @@
         }
 
         .hive-ai-msg p {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.55;
-            color: var(--comb-ink);
-            background: var(--comb-paper-dim);
-            padding: 11px 14px;
+            color: rgba(251, 248, 243, 0.88);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 13px;
             border-radius: 14px 14px 14px 4px;
             white-space: pre-wrap;
         }
@@ -3114,8 +3116,9 @@
         }
 
         .hive-ai-msg--user p {
-            background: var(--comb-ink);
-            color: var(--comb-paper);
+            background: linear-gradient(135deg, rgba(217, 96, 31, 0.35), rgba(180, 74, 18, 0.4));
+            border-color: rgba(217, 96, 31, 0.4);
+            color: rgba(251, 248, 243, 0.95);
             border-radius: 14px 14px 4px 14px;
         }
 
@@ -3130,8 +3133,8 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--comb-ink-soft);
-            opacity: 0.4;
+            background: rgba(217, 96, 31, 0.7);
+            opacity: 0.5;
             animation: typingBounce 1.2s ease-in-out infinite;
         }
 
@@ -3159,8 +3162,9 @@
         }
 
         .hive-ai-msg--error p {
-            background: #FBEAEA;
-            color: #8A3B3B;
+            background: rgba(220, 38, 38, 0.15);
+            border-color: rgba(220, 38, 38, 0.3);
+            color: #FCA5A5;
         }
 
         .hive-ai-form {
@@ -3214,6 +3218,78 @@
         .hive-ai-send:disabled {
             opacity: 0.5;
             pointer-events: none;
+        }
+
+        /* ---- Quick chips ---- */
+        .hive-ai-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 14px 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hive-ai-chip {
+            font-size: 0.73rem;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 100px;
+            border: 1px solid rgba(217, 96, 31, 0.25);
+            background: rgba(217, 96, 31, 0.08);
+            color: rgba(251, 248, 243, 0.7);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .hive-ai-chip:hover {
+            background: rgba(217, 96, 31, 0.2);
+            border-color: rgba(217, 96, 31, 0.5);
+            color: var(--hive-amber-2);
+            transform: translateY(-1px);
+        }
+
+        /* ---- Message body wrapper ---- */
+        .hive-ai-msg-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hive-ai-msg-body p {
+            margin: 0;
+        }
+
+        /* ---- Message slide-in animation ---- */
+        @keyframes hiveAiMsgIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ---- Dark panel input override ---- */
+        .hive-ai-panel .hive-ai-input {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.12);
+            color: rgba(251, 248, 243, 0.92);
+        }
+
+        .hive-ai-panel .hive-ai-input::placeholder {
+            color: rgba(251, 248, 243, 0.35);
+        }
+
+        .hive-ai-panel .hive-ai-input:focus {
+            border-color: rgba(217, 96, 31, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hive-ai-panel .hive-ai-form {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
         }
 
         @media (max-width: 560px) {
@@ -6757,9 +6833,13 @@
         <div class="hive-ai-panel" id="hiveAiPanel" role="dialog" aria-modal="false" aria-labelledby="hiveAiTitle"
             aria-hidden="true">
             <div class="hive-ai-head">
-                <div>
-                    <p class="hive-ai-eyebrow">SCOPH · Ask the Hive</p>
-                    <h3 id="hiveAiTitle">Public health, explained.</h3>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span
+                        style="width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 8px #25D366;display:inline-block;"></span>
+                    <div>
+                        <p class="hive-ai-eyebrow">SCOPH · The PHive Assistant</p>
+                        <h3 id="hiveAiTitle">Ask the Hive 🐝</h3>
+                    </div>
                 </div>
                 <button class="hive-ai-close" id="hiveAiClose" aria-label="Close Ask the Hive">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -6769,24 +6849,38 @@
                 </button>
             </div>
 
-            <p class="hive-ai-disclaimer">
-                For learning and general public-health context only — not diagnosis or personal
-                medical advice. For anything about your own health, please see a qualified clinician.
-            </p>
-
             <div class="hive-ai-messages" id="hiveAiMessages" aria-live="polite">
                 <div class="hive-ai-msg hive-ai-msg--bot">
                     <span class="hive-ai-msg-hex" aria-hidden="true"></span>
-                    <p>Hi! I'm an experimental assistant for The PHive, powered by Puter AI. Ask me to
-                        explain a public-health concept, a term from a research abstract, or where to start
-                        reading about a topic — I'll do my best to point you in the right direction.</p>
+                    <div class="hive-ai-msg-body">
+                        <p>Hi! I'm the <strong>PHive Assistant</strong> 🐝 — powered by Puter AI.<br>I can help you
+                            with:</p>
+                        <ul
+                            style="margin:8px 0 0 0; padding-left:16px; font-size:0.83rem; line-height:1.7; color:rgba(251,248,243,0.75);">
+                            <li>Explaining any section of the site &amp; navigating there automatically</li>
+                            <li>Answering public health questions</li>
+                            <li>Info about opportunities, research &amp; articles</li>
+                            <li>Anything about the PHive team or features</li>
+                        </ul>
+                        <p style="margin-top:8px; font-size:0.8rem; color:rgba(251,248,243,0.45);">Try: "Explain the AI
+                            Tools section" or "Who built this site?"</p>
+                    </div>
                 </div>
+            </div>
+
+            <div class="hive-ai-chips" id="hiveAiChips">
+                <button class="hive-ai-chip" data-q="What are the sections of this site?">🗺️ Site Sections</button>
+                <button class="hive-ai-chip" data-q="Explain the AI Tools section">🤖 AI Tools</button>
+                <button class="hive-ai-chip" data-q="What opportunities are available now?">🎯 Opportunities</button>
+                <button class="hive-ai-chip" data-q="Who built this website?">👨‍💻 The Team</button>
+                <button class="hive-ai-chip" data-q="Explain the News section">📰 News</button>
+                <button class="hive-ai-chip" data-q="What is SCOPH?">🏥 About SCOPH</button>
             </div>
 
             <form class="hive-ai-form" id="hiveAiForm">
                 <input type="text" id="hiveAiInput" class="hive-ai-input"
-                    placeholder="e.g. What does 'herd immunity threshold' mean?" autocomplete="off" maxlength="400"
-                    aria-label="Ask a public health question">
+                    placeholder="Ask me anything about the site or public health..." autocomplete="off" maxlength="500"
+                    aria-label="Ask the Hive">
                 <button type="submit" class="hive-ai-send" id="hiveAiSend" aria-label="Send question">
                     <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
                         <path d="M2 8.5h12M9 3.5l5 5-5 5" stroke="currentColor" stroke-width="1.9"
@@ -6794,6 +6888,9 @@
                     </svg>
                 </button>
             </form>
+            <p
+                style="font-size:0.68rem; color:rgba(251,248,243,0.25); text-align:center; padding: 0 16px 10px; margin:0;">
+                Powered by Puter AI &middot; For learning only &mdash; not medical advice</p>
         </div>
     </div>
 
@@ -8762,25 +8859,160 @@
                 var isOpen = false;
                 var isSending = false;
 
-                function buildSystemScope() {
+                /* ---- Section map for auto-navigation ---- */
+                /* Use specific multi-word or unambiguous keywords only */
+                var SECTION_MAP = [
+                    { id: 'hero', keywords: ['#hero', 'back to top', 'landing page', 'main page'] },
+                    { id: 'news', keywords: ['news section', 'health news', 'أخبار', 'الأخبار', 'sudan news', 'خبر', 'أخبار السودان', 'news'] },
+                    { id: 'research', keywords: ['research section', 'أبحاث', 'بحث', 'الأبحاث', 'دراسات', 'research papers', 'research'] },
+                    { id: 'articles', keywords: ['articles section', 'مقالات', 'مقال', 'الأوبئة', 'articles'] },
+                    { id: 'opportunities', keywords: ['opportunities', 'فرص', 'فرصة', 'الفرص', 'منح', 'exchange program', 'fellowship'] },
+                    { id: 'ai-tools', keywords: ['ai tools', 'ai tool', 'أدوات الذكاء', 'ذكاء اصطناعي', 'report generator', 'concept explainer', 'outbreak planner', 'abstract summarizer'] },
+                    { id: 'pulse', keywords: ['global health hub', 'pulse section', 'health statistics', 'إحصائيات الصحة'] },
+                    { id: 'explore', keywords: ['explore the hive', 'hex colony', 'honeycomb', 'استكشف الخلية', 'خلية النحل'] },
+                    { id: 'about', keywords: ['about section', 'about the phive', 'about scoph', 'عن الموقع', 'من نحن', 'about us'] },
+                ];
+
+                /* ---- Word-boundary aware keyword match ---- */
+                function matchesKeyword(text, kw) {
+                    /* for short single words, require word boundary; multi-word phrases: simple contains */
+                    if (kw.indexOf(' ') !== -1) return text.indexOf(kw) !== -1;
+                    var re = new RegExp('(?:^|[\\s,\.\"\'])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:[\\s,\.\"\']|$)', 'i');
+                    return re.test(text);
+                }
+
+                /* ---- Detect section from text (strict matching) ---- */
+                function detectSectionStrict(text) {
+                    var lower = ' ' + text.toLowerCase() + ' ';
+                    for (var i = 0; i < SECTION_MAP.length; i++) {
+                        var s = SECTION_MAP[i];
+                        for (var j = 0; j < s.keywords.length; j++) {
+                            if (matchesKeyword(lower, s.keywords[j])) return s.id;
+                        }
+                    }
+                    return null;
+                }
+
+                /* ---- Detect section from USER question only ---- */
+                function detectSectionFromQuestion(q) {
+                    return detectSectionStrict(q);
+                }
+
+                /* ---- Navigate to section with amber spotlight animation ---- */
+                function navigateToSection(sectionId) {
+                    var el = document.getElementById(sectionId);
+                    if (!el) return;
+
+                    closePanel();
+
+                    setTimeout(function () {
+                        var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+                        var top = el.getBoundingClientRect().top + window.scrollY - navH - 20;
+
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+
+                        /* amber spotlight pulse on the section */
+                        setTimeout(function () {
+                            var overlay = document.createElement('div');
+                            overlay.style.cssText = [
+                                'position:fixed', 'inset:0', 'z-index:9000', 'pointer-events:none',
+                                'background:radial-gradient(ellipse 60% 55% at 50% 40%, rgba(217,96,31,0.22) 0%, transparent 70%)',
+                                'opacity:0', 'transition:opacity 0.5s ease'
+                            ].join(';');
+                            document.body.appendChild(overlay);
+                            requestAnimationFrame(function () {
+                                overlay.style.opacity = '1';
+                                setTimeout(function () {
+                                    overlay.style.opacity = '0';
+                                    setTimeout(function () { overlay.remove(); }, 600);
+                                }, 900);
+                            });
+
+                            /* pulse ring on the target section */
+                            el.style.transition = 'box-shadow 0.4s ease';
+                            el.style.boxShadow = '0 0 0 3px rgba(217,96,31,0.5), 0 0 60px rgba(217,96,31,0.15)';
+                            setTimeout(function () {
+                                el.style.boxShadow = '';
+                                el.style.transition = '';
+                            }, 1400);
+                        }, 600);
+                    }, 320);
+                }
+
+                /* ---- Global Delegation for Nav Buttons ---- */
+                messagesEl.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.hive-nav-btn');
+                    if (btn && btn.dataset.section) {
+                        navigateToSection(btn.dataset.section);
+                    }
+                });
+
+                /* ---- Build rich system prompt ---- */
+                function buildSystemScope(question) {
                     var newsSudan = NEWS_SUDAN_ITEMS.map(function (n) { return '- ' + n.title; }).join('\n');
                     var newsWorld = NEWS_WORLD_ITEMS.map(function (n) { return '- ' + n.title; }).join('\n');
-                    var research = RESEARCH_ITEMS.map(function (n) { return '- ' + n.title; }).join('\n');
-                    var articles = ARTICLE_ITEMS.map(function (n) { return '- ' + n.title; }).join('\n');
-                    var opps = OPPORTUNITIES.map(function (o) { return '- ' + o.title + ' (' + o.status + ')'; }).join('\n');
+                    var research = RESEARCH_ITEMS.map(function (r) { return '- ' + r.title; }).join('\n');
+                    var articles = ARTICLE_ITEMS.map(function (a) { return '- ' + a.title; }).join('\n');
+                    var opps = OPPORTUNITIES.map(function (o) { return '- ' + o.title + ' [' + o.status + '] — ' + o.org; }).join('\n');
 
                     return (
-                        'You are "Ask the Hive", a public-health learning assistant embedded on The PHive, ' +
-                        'the digital knowledge hub of SCOPH (Standing Committee on Public Health) at ' +
-                        'MEDSIN-NUSMSA. Answer clearly and concisely for a medical student audience.\n\n' +
-                        'Site Context:\n\n' +
+                        'You are "Ask the Hive", the AI assistant embedded on The PHive website.\n' +
+                        'DEFAULT LANGUAGE: Always respond in English unless the user writes in Arabic — if they write in Arabic, respond fully in Arabic.\n\n' +
+
+                        '=== FULL SITE KNOWLEDGE ===\n' +
+                        'Site name: The PHive\n' +
+                        'Description: A digital public health platform for medical and health sciences students in Sudan and worldwide.\n' +
+                        'Organization: SCOPH (Standing Committee on Public Health) under MEDSIN-NUSMSA (Sudanese Medical Students Association).\n' +
+                        'Founder & idea owner: Tibyan Abd Al-Muttalib — a Sudanese medical student and SCOPH president.\n' +
+                        'Developer & programmer: Mohammed — built the entire website. Contact on WhatsApp: +201551357366\n\n' +
+
+                        '=== SITE SECTIONS ===\n' +
+                        '1. Hero [#hero]: The main landing page.\n' +
+                        '2. Health News [#news]: Latest public health news.\n' +
+                        '3. Research [#research]: Modern public health research papers.\n' +
+                        '4. Articles [#articles]: Educational articles.\n' +
+                        '5. Opportunities [#opportunities]: Training programs, grants, and international exchange opportunities.\n' +
+                        '6. AI Health Intelligence Tools [#ai-tools]: Four FREE AI-powered tools.\n' +
+                        '7. Global Health Hub [#pulse]: Live global health statistics.\n' +
+                        '8. Explore the Hive [#explore]: Interactive honeycomb navigation design.\n' +
+                        '9. About [#about]: About The PHive mission and team.\n\n' +
+
+                        '=== CURRENT CONTENT ===\n' +
                         'Sudan Health News:\n' + newsSudan + '\n\n' +
                         'World Health News:\n' + newsWorld + '\n\n' +
                         'Research:\n' + research + '\n\n' +
                         'Articles:\n' + articles + '\n\n' +
-                        'Public Health Opportunities:\n' + opps + '\n\n' +
-                        'Question: '
+                        'Available Opportunities:\n' + opps + '\n\n' +
+
+                        '=== REPLY RULES (CRITICAL) ===\n' +
+                        '- Keep replies concise: 120-200 words maximum.\n' +
+                        '- NEVER ask the user follow-up questions at the end of your reply.\n' +
+                        '- If asked about a section, explain it.\n' +
+                        'User question: ' + question
                     );
+                }
+
+                /* ---- Format bot reply as rich HTML ---- */
+                function formatBotReply(text) {
+                    var lines = text.split('\n');
+                    var html = '';
+                    lines.forEach(function (line) {
+                        var t = line.trim();
+                        if (!t) { html += '<div style="height:6px"></div>'; return; }
+                        if (/^(\d+[\.\-]|#{1,3}\s|[\u0660-\u0669]+\.)/.test(t) || t.endsWith(':')) {
+                            t = t.replace(/^#+\s*/, '');
+                            html += '<p style="font-weight:700; color:var(--hive-amber-2); margin:8px 0 2px; font-size:0.88rem;">' + escHtml(t) + '</p>';
+                        } else if (/^[\-\*\u2022]\s/.test(t)) {
+                            html += '<p style="margin:2px 0 2px 12px; font-size:0.84rem; color:rgba(251,248,243,0.82);">• ' + escHtml(t.slice(2)) + '</p>';
+                        } else {
+                            html += '<p style="margin:3px 0; font-size:0.84rem; line-height:1.6; color:rgba(251,248,243,0.8);">' + escHtml(t) + '</p>';
+                        }
+                    });
+                    return html;
+                }
+
+                function escHtml(s) {
+                    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                 }
 
                 function openPanel() {
@@ -8811,22 +9043,44 @@
                     }
                 });
 
+                /* ---- Quick chips ---- */
+                var chips = document.querySelectorAll('.hive-ai-chip');
+                chips.forEach(function (chip) {
+                    chip.addEventListener('click', function () {
+                        var q = chip.dataset.q || '';
+                        if (q && !isSending) {
+                            input.value = q;
+                            form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                        }
+                    });
+                });
+
                 function scrollToBottom() {
                     messagesEl.scrollTop = messagesEl.scrollHeight;
                 }
 
-                function addMessage(text, role) {
+                function addMessage(text, role, isHtml) {
                     var wrap = document.createElement('div');
                     wrap.className = 'hive-ai-msg hive-ai-msg--' + role;
+                    wrap.style.animation = 'hiveAiMsgIn 0.35s cubic-bezier(0.23,1,0.32,1) both';
+
                     if (role === 'bot' || role === 'error') {
                         var hex = document.createElement('span');
                         hex.className = 'hive-ai-msg-hex';
                         hex.setAttribute('aria-hidden', 'true');
                         wrap.appendChild(hex);
                     }
-                    var p = document.createElement('p');
-                    p.textContent = text;
-                    wrap.appendChild(p);
+
+                    var body = document.createElement('div');
+                    body.className = 'hive-ai-msg-body';
+                    if (isHtml) {
+                        body.innerHTML = text;
+                    } else {
+                        var p = document.createElement('p');
+                        p.textContent = text;
+                        body.appendChild(p);
+                    }
+                    wrap.appendChild(body);
                     messagesEl.appendChild(wrap);
                     scrollToBottom();
                     return wrap;
@@ -8851,15 +9105,36 @@
 
                 function askHive(question) {
                     var typingEl = addTypingIndicator();
+                    /* detect section from user question ONLY — never from AI reply */
+                    var navSection = detectSectionFromQuestion(question);
 
-                    askPuter(buildSystemScope() + question)
+                    askPuter(buildSystemScope(question))
                         .then(function (reply) {
                             typingEl.remove();
-                            addMessage(reply, 'bot');
+                            var richHtml = formatBotReply(reply);
+
+                            if (navSection) {
+                                var sectionNames = {
+                                    'hero': 'Home', 'news': 'Health News',
+                                    'research': 'Research', 'articles': 'Articles',
+                                    'opportunities': 'Opportunities', 'ai-tools': 'AI Tools',
+                                    'pulse': 'Global Health Hub', 'explore': 'Explore the Hive',
+                                    'about': 'About'
+                                };
+                                richHtml += '<button class="hive-nav-btn" data-section="' + navSection + '" style="' +
+                                    'margin-top:10px;display:inline-flex;align-items:center;gap:7px;' +
+                                    'padding:8px 16px;border-radius:100px;border:1px solid rgba(217,96,31,0.45);' +
+                                    'background:rgba(217,96,31,0.15);color:#F4793B;' +
+                                    'font-size:0.8rem;font-weight:700;cursor:pointer;' +
+                                    'transition:all 0.3s ease;">&#128640; Go to: ' +
+                                    (sectionNames[navSection] || navSection) + '</button>';
+                            }
+
+                            addMessage(richHtml, 'bot', true);
                         })
                         .catch(function (errMsg) {
                             typingEl.remove();
-                            addMessage(errMsg, 'error');
+                            addMessage('Sorry, an error occurred: ' + errMsg, 'error');
                         })
                         .finally(function () {
                             setSending(false);
