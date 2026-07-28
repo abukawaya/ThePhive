@@ -854,7 +854,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217,96,31,0.07) 0%, transparent 70%);
+            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217, 96, 31, 0.07) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -877,24 +877,73 @@
         }
 
         /* ---- Stagger delays ---- */
-        .cell[data-cell="0"] { animation-delay: 0.05s; }
-        .cell[data-cell="1"] { animation-delay: 0.15s; }
-        .cell[data-cell="2"] { animation-delay: 0.25s; }
-        .cell[data-cell="3"] { animation-delay: 0.35s; }
-        .cell[data-cell="4"] { animation-delay: 0.45s; }
+        .cell[data-cell="0"] {
+            animation-delay: 0.05s;
+        }
+
+        .cell[data-cell="1"] {
+            animation-delay: 0.15s;
+        }
+
+        .cell[data-cell="2"] {
+            animation-delay: 0.25s;
+        }
+
+        .cell[data-cell="3"] {
+            animation-delay: 0.35s;
+        }
+
+        .cell[data-cell="4"] {
+            animation-delay: 0.45s;
+        }
 
         /* ---- Grid positions ---- */
-        .cell--news      { grid-column: 1; grid-row: 1; }
-        .cell--research  { grid-column: 2; grid-row: 1; margin-top: calc(var(--hex-h) * 0.375); }
-        .cell--articles  { grid-column: 3; grid-row: 1; }
-        .cell--opportunities { grid-column: 1 / 2; grid-row: 2; margin-top: calc(var(--hex-h) * -0.375); }
-        .cell--center    { grid-column: 2; grid-row: 2; margin-top: calc(var(--hex-h) * 0.375); pointer-events: none; }
-        .cell--about     { grid-column: 3; grid-row: 2; margin-top: calc(var(--hex-h) * -0.375); }
+        .cell--news {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .cell--research {
+            grid-column: 2;
+            grid-row: 1;
+            margin-top: calc(var(--hex-h) * 0.375);
+        }
+
+        .cell--articles {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .cell--opportunities {
+            grid-column: 1 / 2;
+            grid-row: 2;
+            margin-top: calc(var(--hex-h) * -0.375);
+        }
+
+        .cell--center {
+            grid-column: 2;
+            grid-row: 2;
+            margin-top: calc(var(--hex-h) * 0.375);
+            pointer-events: none;
+        }
+
+        .cell--about {
+            grid-column: 3;
+            grid-row: 2;
+            margin-top: calc(var(--hex-h) * -0.375);
+        }
 
         /* ---- Rise animation ---- */
         @keyframes cellRise {
-            from { opacity: 0; transform: translateY(32px) scale(0.94); }
-            to   { opacity: 1; transform: translateY(0)   scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(32px) scale(0.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* ---- Hex background shape (glassmorphism dark) ---- */
@@ -902,7 +951,7 @@
             position: absolute;
             inset: 0;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: linear-gradient(155deg, rgba(30,26,18,0.85) 0%, rgba(20,17,10,0.92) 100%);
+            background: linear-gradient(155deg, rgba(30, 26, 18, 0.85) 0%, rgba(20, 17, 10, 0.92) 100%);
             border: none;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             backdrop-filter: blur(8px);
@@ -919,17 +968,45 @@
         }
 
         /* ---- Per-cell color personalities ---- */
-        .cell--news      .cell-hex-glow { background: linear-gradient(135deg, #D9601F, #FF8C42); }
-        .cell--research  .cell-hex-glow { background: linear-gradient(135deg, #2563EB, #06B6D4); }
-        .cell--articles  .cell-hex-glow { background: linear-gradient(135deg, #7C3AED, #A855F7); }
-        .cell--opportunities .cell-hex-glow { background: linear-gradient(135deg, #059669, #10B981); }
-        .cell--about     .cell-hex-glow { background: linear-gradient(135deg, #DC2626, #F97316); }
+        .cell--news .cell-hex-glow {
+            background: linear-gradient(135deg, #D9601F, #FF8C42);
+        }
 
-        .cell--news      .cell-hex { background: linear-gradient(155deg, rgba(40,22,8,0.95), rgba(25,13,4,0.98)); }
-        .cell--research  .cell-hex { background: linear-gradient(155deg, rgba(10,18,40,0.95), rgba(6,12,30,0.98)); }
-        .cell--articles  .cell-hex { background: linear-gradient(155deg, rgba(22,10,40,0.95), rgba(14,6,28,0.98)); }
-        .cell--opportunities .cell-hex { background: linear-gradient(155deg, rgba(4,24,16,0.95), rgba(2,15,10,0.98)); }
-        .cell--about     .cell-hex { background: linear-gradient(155deg, rgba(38,10,10,0.95), rgba(24,6,6,0.98)); }
+        .cell--research .cell-hex-glow {
+            background: linear-gradient(135deg, #2563EB, #06B6D4);
+        }
+
+        .cell--articles .cell-hex-glow {
+            background: linear-gradient(135deg, #7C3AED, #A855F7);
+        }
+
+        .cell--opportunities .cell-hex-glow {
+            background: linear-gradient(135deg, #059669, #10B981);
+        }
+
+        .cell--about .cell-hex-glow {
+            background: linear-gradient(135deg, #DC2626, #F97316);
+        }
+
+        .cell--news .cell-hex {
+            background: linear-gradient(155deg, rgba(40, 22, 8, 0.95), rgba(25, 13, 4, 0.98));
+        }
+
+        .cell--research .cell-hex {
+            background: linear-gradient(155deg, rgba(10, 18, 40, 0.95), rgba(6, 12, 30, 0.98));
+        }
+
+        .cell--articles .cell-hex {
+            background: linear-gradient(155deg, rgba(22, 10, 40, 0.95), rgba(14, 6, 28, 0.98));
+        }
+
+        .cell--opportunities .cell-hex {
+            background: linear-gradient(155deg, rgba(4, 24, 16, 0.95), rgba(2, 15, 10, 0.98));
+        }
+
+        .cell--about .cell-hex {
+            background: linear-gradient(155deg, rgba(38, 10, 10, 0.95), rgba(24, 6, 6, 0.98));
+        }
 
         /* ---- Inner shimmer line ---- */
         .cell-hex::after {
@@ -937,7 +1014,7 @@
             position: absolute;
             inset: 0;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, transparent 50%);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -964,19 +1041,43 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            color: rgba(251,248,243,0.85);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(251, 248, 243, 0.85);
             margin-bottom: 8px;
             transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 0 0 0 rgba(217,96,31,0);
+            box-shadow: 0 0 0 0 rgba(217, 96, 31, 0);
         }
 
-        .cell--news      .cell-icon { color: #FF8C42; border-color: rgba(217,96,31,0.3); background: rgba(217,96,31,0.12); }
-        .cell--research  .cell-icon { color: #60A5FA; border-color: rgba(37,99,235,0.3); background: rgba(37,99,235,0.12); }
-        .cell--articles  .cell-icon { color: #C084FC; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.12); }
-        .cell--opportunities .cell-icon { color: #34D399; border-color: rgba(5,150,105,0.3); background: rgba(5,150,105,0.12); }
-        .cell--about     .cell-icon { color: #FCA5A5; border-color: rgba(220,38,38,0.3); background: rgba(220,38,38,0.12); }
+        .cell--news .cell-icon {
+            color: #FF8C42;
+            border-color: rgba(217, 96, 31, 0.3);
+            background: rgba(217, 96, 31, 0.12);
+        }
+
+        .cell--research .cell-icon {
+            color: #60A5FA;
+            border-color: rgba(37, 99, 235, 0.3);
+            background: rgba(37, 99, 235, 0.12);
+        }
+
+        .cell--articles .cell-icon {
+            color: #C084FC;
+            border-color: rgba(124, 58, 237, 0.3);
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        .cell--opportunities .cell-icon {
+            color: #34D399;
+            border-color: rgba(5, 150, 105, 0.3);
+            background: rgba(5, 150, 105, 0.12);
+        }
+
+        .cell--about .cell-icon {
+            color: #FCA5A5;
+            border-color: rgba(220, 38, 38, 0.3);
+            background: rgba(220, 38, 38, 0.12);
+        }
 
         /* ---- Badge pill ---- */
         .cell-badge {
@@ -991,34 +1092,58 @@
             text-transform: uppercase;
             padding: 3px 10px;
             border-radius: 100px;
-            background: rgba(255,255,255,0.07);
-            color: rgba(251,248,243,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(251, 248, 243, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             white-space: nowrap;
             z-index: 4;
             pointer-events: none;
             transition: all 0.35s ease;
         }
 
-        .cell--news      .cell-badge { color: #FF8C42; background: rgba(217,96,31,0.15); border-color: rgba(217,96,31,0.3); }
-        .cell--research  .cell-badge { color: #60A5FA; background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
-        .cell--articles  .cell-badge { color: #C084FC; background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.3); }
-        .cell--opportunities .cell-badge { color: #34D399; background: rgba(5,150,105,0.15); border-color: rgba(5,150,105,0.3); }
-        .cell--about     .cell-badge { color: #FCA5A5; background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.3); }
+        .cell--news .cell-badge {
+            color: #FF8C42;
+            background: rgba(217, 96, 31, 0.15);
+            border-color: rgba(217, 96, 31, 0.3);
+        }
+
+        .cell--research .cell-badge {
+            color: #60A5FA;
+            background: rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .cell--articles .cell-badge {
+            color: #C084FC;
+            background: rgba(124, 58, 237, 0.15);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .cell--opportunities .cell-badge {
+            color: #34D399;
+            background: rgba(5, 150, 105, 0.15);
+            border-color: rgba(5, 150, 105, 0.3);
+        }
+
+        .cell--about .cell-badge {
+            color: #FCA5A5;
+            background: rgba(220, 38, 38, 0.15);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
 
         /* ---- Title & description ---- */
         .cell-title {
             font-family: var(--font-display);
             font-size: 1.22rem;
             font-weight: 700;
-            color: rgba(251,248,243,0.92);
+            color: rgba(251, 248, 243, 0.92);
             letter-spacing: -0.01em;
             transition: color 0.35s ease;
         }
 
         .cell-desc {
             font-size: 0.84rem;
-            color: rgba(251,248,243,0.42);
+            color: rgba(251, 248, 243, 0.42);
             line-height: 1.45;
             transition: color 0.35s ease;
         }
@@ -1038,18 +1163,34 @@
         .cell:hover .cell-icon,
         .cell:focus-visible .cell-icon {
             transform: scale(1.15) translateY(-4px);
-            box-shadow: 0 8px 32px rgba(217,96,31,0.3);
+            box-shadow: 0 8px 32px rgba(217, 96, 31, 0.3);
         }
-        .cell--research:hover .cell-icon { box-shadow: 0 8px 32px rgba(37,99,235,0.35); }
-        .cell--articles:hover .cell-icon { box-shadow: 0 8px 32px rgba(124,58,237,0.35); }
-        .cell--opportunities:hover .cell-icon { box-shadow: 0 8px 32px rgba(5,150,105,0.35); }
-        .cell--about:hover .cell-icon { box-shadow: 0 8px 32px rgba(220,38,38,0.35); }
+
+        .cell--research:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.35);
+        }
+
+        .cell--articles:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.35);
+        }
+
+        .cell--opportunities:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(5, 150, 105, 0.35);
+        }
+
+        .cell--about:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(220, 38, 38, 0.35);
+        }
 
         .cell:hover .cell-title,
-        .cell:focus-visible .cell-title { color: #fff; }
+        .cell:focus-visible .cell-title {
+            color: #fff;
+        }
 
         .cell:hover .cell-desc,
-        .cell:focus-visible .cell-desc { color: rgba(255,255,255,0.72); }
+        .cell:focus-visible .cell-desc {
+            color: rgba(255, 255, 255, 0.72);
+        }
 
         .cell:hover .cell-badge,
         .cell:focus-visible .cell-badge {
@@ -1066,7 +1207,7 @@
         .cell-hex--center {
             background: linear-gradient(155deg, #1a1507, #0d0b04) !important;
             border: none;
-            box-shadow: 0 0 60px rgba(217,96,31,0.2), inset 0 0 40px rgba(217,96,31,0.05);
+            box-shadow: 0 0 60px rgba(217, 96, 31, 0.2), inset 0 0 40px rgba(217, 96, 31, 0.05);
         }
 
         .cell-center-icon {
@@ -2063,7 +2204,7 @@
             transform: translateX(-50%);
             width: 900px;
             height: 300px;
-            background: radial-gradient(ellipse at center bottom, rgba(217,96,31,0.08) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center bottom, rgba(217, 96, 31, 0.08) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -2088,7 +2229,7 @@
         /* ---- Top divider glow bar ---- */
         .footer-glow-bar {
             height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(217,96,31,0.5) 30%, rgba(244,125,59,0.8) 50%, rgba(217,96,31,0.5) 70%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(217, 96, 31, 0.5) 30%, rgba(244, 125, 59, 0.8) 50%, rgba(217, 96, 31, 0.5) 70%, transparent 100%);
             margin-bottom: 52px;
             position: relative;
         }
@@ -2101,7 +2242,7 @@
             transform: translateX(-50%);
             width: 200px;
             height: 6px;
-            background: radial-gradient(ellipse, rgba(244,125,59,0.6) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(244, 125, 59, 0.6) 0%, transparent 70%);
             filter: blur(4px);
         }
 
@@ -2155,28 +2296,60 @@
             gap: 7px;
             padding: 7px 14px;
             border-radius: 100px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.09);
-            color: rgba(251,248,243,0.65);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: rgba(251, 248, 243, 0.65);
             font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             white-space: nowrap;
         }
 
-        .footer-social-btn svg { flex-shrink: 0; }
+        .footer-social-btn svg {
+            flex-shrink: 0;
+        }
 
         .footer-social-btn:hover {
             transform: translateY(-3px);
             color: #fff;
         }
 
-        .footer-social-btn--ig:hover  { background: linear-gradient(135deg, rgba(225,48,108,0.25), rgba(253,121,36,0.25)); border-color: rgba(225,48,108,0.4); box-shadow: 0 6px 24px rgba(225,48,108,0.2); }
-        .footer-social-btn--fb:hover  { background: rgba(24,119,242,0.2); border-color: rgba(24,119,242,0.4); box-shadow: 0 6px 24px rgba(24,119,242,0.2); }
-        .footer-social-btn--li:hover  { background: rgba(10,102,194,0.2); border-color: rgba(10,102,194,0.4); box-shadow: 0 6px 24px rgba(10,102,194,0.2); }
-        .footer-social-btn--em:hover  { background: rgba(217,96,31,0.2); border-color: rgba(217,96,31,0.4); box-shadow: 0 6px 24px rgba(217,96,31,0.2); }
-        .footer-social-btn--wa        { color: #25D366; border-color: rgba(37,211,102,0.2); background: rgba(37,211,102,0.06); }
-        .footer-social-btn--wa:hover  { background: rgba(37,211,102,0.18); border-color: rgba(37,211,102,0.45); box-shadow: 0 6px 24px rgba(37,211,102,0.22); color: #4ee886; }
+        .footer-social-btn--ig:hover {
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(253, 121, 36, 0.25));
+            border-color: rgba(225, 48, 108, 0.4);
+            box-shadow: 0 6px 24px rgba(225, 48, 108, 0.2);
+        }
+
+        .footer-social-btn--fb:hover {
+            background: rgba(24, 119, 242, 0.2);
+            border-color: rgba(24, 119, 242, 0.4);
+            box-shadow: 0 6px 24px rgba(24, 119, 242, 0.2);
+        }
+
+        .footer-social-btn--li:hover {
+            background: rgba(10, 102, 194, 0.2);
+            border-color: rgba(10, 102, 194, 0.4);
+            box-shadow: 0 6px 24px rgba(10, 102, 194, 0.2);
+        }
+
+        .footer-social-btn--em:hover {
+            background: rgba(217, 96, 31, 0.2);
+            border-color: rgba(217, 96, 31, 0.4);
+            box-shadow: 0 6px 24px rgba(217, 96, 31, 0.2);
+        }
+
+        .footer-social-btn--wa {
+            color: #25D366;
+            border-color: rgba(37, 211, 102, 0.2);
+            background: rgba(37, 211, 102, 0.06);
+        }
+
+        .footer-social-btn--wa:hover {
+            background: rgba(37, 211, 102, 0.18);
+            border-color: rgba(37, 211, 102, 0.45);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.22);
+            color: #4ee886;
+        }
 
         /* ---- Nav columns ---- */
         .footer-nav {
@@ -2233,7 +2406,7 @@
         }
 
         .footer-nav-col a:hover {
-            color: rgba(251,248,243,0.92);
+            color: rgba(251, 248, 243, 0.92);
             transform: translateX(6px);
         }
 
@@ -2260,15 +2433,15 @@
             align-items: center;
             gap: 14px;
             padding: 12px 16px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 14px;
             transition: all 0.3s ease;
         }
 
         .footer-logo-card:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(217,96,31,0.25);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(217, 96, 31, 0.25);
             transform: translateY(-2px);
         }
 
@@ -2284,7 +2457,7 @@
 
         .footer-logo-label {
             font-size: 0.78rem;
-            color: rgba(251,248,243,0.45);
+            color: rgba(251, 248, 243, 0.45);
             line-height: 1.4;
             max-width: 110px;
         }
@@ -2301,7 +2474,7 @@
 
         .footer-bottom-left {
             font-size: 0.8rem;
-            color: rgba(251,248,243,0.3);
+            color: rgba(251, 248, 243, 0.3);
             display: flex;
             align-items: center;
             gap: 14px;
@@ -2311,13 +2484,13 @@
             width: 3px;
             height: 3px;
             border-radius: 50%;
-            background: rgba(217,96,31,0.5);
+            background: rgba(217, 96, 31, 0.5);
         }
 
         .footer-signoff {
             font-family: var(--font-mono);
             font-size: 0.78rem;
-            color: rgba(251,248,243,0.28);
+            color: rgba(251, 248, 243, 0.28);
             display: flex;
             align-items: center;
             gap: 7px;
@@ -2723,7 +2896,9 @@
                 font-size: 0.74rem;
             }
 
-            .footer-bottom-dot { display: none; }
+            .footer-bottom-dot {
+                display: none;
+            }
 
             .footer-signoff {
                 font-size: 0.72rem;
@@ -2738,10 +2913,18 @@
         }
 
         @media (max-width: 400px) {
-            .footer-social-btn span { display: none; }
-            .footer-social-btn { padding: 9px 10px; border-radius: 12px; }
+            .footer-social-btn span {
+                display: none;
+            }
 
-            .brand-word--footer { font-size: 1.2rem; }
+            .footer-social-btn {
+                padding: 9px 10px;
+                border-radius: 12px;
+            }
+
+            .brand-word--footer {
+                font-size: 1.2rem;
+            }
 
             .footer-top {
                 gap: 22px;
@@ -5017,14 +5200,17 @@
             .primary-nav {
                 gap: 4px;
             }
+
             .primary-nav a {
                 padding: 8px 12px;
                 font-size: 0.9rem;
                 white-space: nowrap;
             }
+
             .brand-word {
                 font-size: 1.4rem;
             }
+
             .brand-mark {
                 width: 42px;
                 height: 42px;
@@ -5101,7 +5287,8 @@
             }
 
             .ai-tool-card--wide {
-                grid-column: auto;    /* 3rd card, not full-width */
+                grid-column: auto;
+                /* 3rd card, not full-width */
             }
 
             .ai-tool-card {
@@ -5158,21 +5345,26 @@
             :root {
                 --nav-h: 88px;
             }
+
             .primary-nav {
                 gap: 8px;
             }
+
             .primary-nav a {
                 padding: 8px 14px;
                 font-size: 0.94rem;
                 white-space: nowrap;
             }
+
             .brand-word {
                 font-size: 1.62rem;
             }
+
             .brand-mark {
                 width: 48px;
                 height: 48px;
             }
+
             .nav-actions {
                 gap: 18px;
             }
@@ -5837,7 +6029,8 @@
                 </div>
 
                 <p class="news-disclaimer">
-                    World health news sourced from Reuters, The Week, Herald Sun, and Scientific American · 2026. Sudan news curated by the SCOPH editorial team.
+                    World health news sourced from Reuters, The Week, Herald Sun, and Scientific American · 2026. Sudan
+                    news curated by the SCOPH editorial team.
                 </p>
             </div>
         </section>
@@ -6140,26 +6333,36 @@
         <section class="content-section" id="ai-tools"
             style="background: linear-gradient(135deg, #0d0b07 0%, #1a1507 50%, #0d0b07 100%); border-top: 1px solid rgba(217,96,31,0.2);">
             <div class="section-inner">
-                <header class="section-head section-head--center" style="margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 36px; max-width: 800px;">
+                <header class="section-head section-head--center"
+                    style="margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 36px; max-width: 800px;">
                     <p class="eyebrow" style="color: var(--hive-amber-2); justify-content: center;"><span
                             class="eyebrow-hex" style="background: rgba(217,96,31,0.15);"></span>Powered by Puter AI</p>
                     <h2 style="color: #fff; margin-top: 6px;">AI Health Intelligence Tools</h2>
                     <p class="section-sub"
                         style="color: rgba(251,248,243,0.65); margin: 12px auto 0; max-width: 680px; text-align: center;">
-                        Four legendary AI-powered tools built for medical students — from situation reports & concept explainers to critical appraisal & outbreak matrix planning.
+                        Four legendary AI-powered tools built for medical students — from situation reports & concept
+                        explainers to critical appraisal & outbreak matrix planning.
                     </p>
                 </header>
 
                 <!-- AI Engine Global Control & Language Bar -->
-                <div class="ai-engine-bar" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: rgba(255,255,255,0.03); border: 1px solid rgba(217,96,31,0.18); padding: 14px 22px; border-radius: 16px; margin-bottom: 30px;">
+                <div class="ai-engine-bar"
+                    style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: rgba(255,255,255,0.03); border: 1px solid rgba(217,96,31,0.18); padding: 14px 22px; border-radius: 16px; margin-bottom: 30px;">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="width: 9px; height: 9px; border-radius: 50%; background: #3e7c5a; box-shadow: 0 0 10px #3e7c5a; display: inline-block;"></span>
-                        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: rgba(251,248,243,0.85); font-weight: 600;">Puter AI Engine Active</span>
-                        <span style="font-size: 0.72rem; background: rgba(217,96,31,0.15); color: var(--hive-amber-2); padding: 2px 8px; border-radius: 100px; font-weight: 600;">100% Free & Unlimited</span>
+                        <span
+                            style="width: 9px; height: 9px; border-radius: 50%; background: #3e7c5a; box-shadow: 0 0 10px #3e7c5a; display: inline-block;"></span>
+                        <span
+                            style="font-family: var(--font-mono); font-size: 0.8rem; color: rgba(251,248,243,0.85); font-weight: 600;">Puter
+                            AI Engine Active</span>
+                        <span
+                            style="font-size: 0.72rem; background: rgba(217,96,31,0.15); color: var(--hive-amber-2); padding: 2px 8px; border-radius: 100px; font-weight: 600;">100%
+                            Free & Unlimited</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                        <label style="font-size: 0.82rem; color: rgba(251,248,243,0.7); font-weight: 600;">Response Language:</label>
-                        <select id="aiGlobalLang" class="ai-format-select" style="padding: 6px 12px; font-size: 0.82rem; background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.15);">
+                        <label style="font-size: 0.82rem; color: rgba(251,248,243,0.7); font-weight: 600;">Response
+                            Language:</label>
+                        <select id="aiGlobalLang" class="ai-format-select"
+                            style="padding: 6px 12px; font-size: 0.82rem; background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.15);">
                             <option value="en">🌐 English (Global standard)</option>
                             <option value="ar">🇸🇩 Arabic (اللغة العربية)</option>
                             <option value="fr">🇫🇷 French (Français)</option>
@@ -6305,7 +6508,8 @@
                             </div>
                             <div>
                                 <h3 class="ai-tool-title">AI Abstract Summarizer & Critique</h3>
-                                <p class="ai-tool-sub">Paste a research abstract — get an AI-generated summary, key findings, study limitations, and CASP critique checklist.</p>
+                                <p class="ai-tool-sub">Paste a research abstract — get an AI-generated summary, key
+                                    findings, study limitations, and CASP critique checklist.</p>
                             </div>
                         </div>
 
@@ -6348,13 +6552,17 @@
                         <div class="ai-tool-head">
                             <div class="ai-tool-icon-wrap"
                                 style="background: linear-gradient(135deg, rgba(244,125,59,0.25), rgba(217,96,31,0.1));">
-                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="color: var(--hive-amber-2);">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                                    style="color: var(--hive-amber-2);">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <div>
                                 <h3 class="ai-tool-title">AI Outbreak & Risk Matrix Planner</h3>
-                                <p class="ai-tool-sub">Design rapid outbreak response protocols, risk ratings, and stakeholder action grids for emergency response.</p>
+                                <p class="ai-tool-sub">Design rapid outbreak response protocols, risk ratings, and
+                                    stakeholder action grids for emergency response.</p>
                             </div>
                         </div>
 
@@ -6375,7 +6583,8 @@
                                 <button type="submit" class="btn btn-primary" id="aiOutbreakSubmit"
                                     style="background: linear-gradient(135deg, #d9601f, #b34a12);">
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor"
+                                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     <span>Generate Response Plan</span>
                                 </button>
@@ -6411,23 +6620,44 @@
                         </span>
                         <span class="brand-word brand-word--footer">The <em>PHive</em></span>
                     </div>
-                    <p class="footer-tagline">Connecting Public Health.<br>Built for students, by students — shaping the next generation of global health leaders.</p>
+                    <p class="footer-tagline">Connecting Public Health.<br>Built for students, by students — shaping the
+                        next generation of global health leaders.</p>
 
                     <div class="footer-socials">
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--ig" aria-label="Instagram">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--ig"
+                            aria-label="Instagram">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
                             Instagram
                         </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--fb" aria-label="Facebook">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--fb"
+                            aria-label="Facebook">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
                             Facebook
                         </a>
-                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--li" aria-label="LinkedIn">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--li"
+                            aria-label="LinkedIn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
                             LinkedIn
                         </a>
-                        <a href="mailto:scoph@medsin-nusmsa.org" class="footer-social-btn footer-social-btn--em" aria-label="Email">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:scoph@medsin-nusmsa.org" class="footer-social-btn footer-social-btn--em"
+                            aria-label="Email">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
                             Email Us
                         </a>
                     </div>
@@ -6457,20 +6687,26 @@
                     <p class="footer-nav-head">Affiliated with</p>
                     <div class="footer-logos">
                         <div class="footer-logo-card">
-                            <img src="NUSMSA.png" alt="SCOPH — Standing Committee on Public Health" class="footer-logo footer-logo--scoph">
+                            <img src="NUSMSA logo-1.png" alt="SCOPH — Standing Committee on Public Health"
+                                class="footer-logo footer-logo--scoph">
                             <span class="footer-logo-label">SCOPH<br>MEDSIN‑NUSMSA</span>
                         </div>
                     </div>
                     <div style="margin-top: 28px;">
                         <p class="footer-nav-head">Contact</p>
-                        <a href="mailto:scoph@medsin-nusmsa.org" style="font-size:0.82rem; color:rgba(251,248,243,0.38); word-break:break-all; display:block; margin-top:6px; transition: color 0.2s ease;">scoph@medsin-nusmsa.org</a>
+                        <a href="mailto:scoph@medsin-nusmsa.org"
+                            style="font-size:0.82rem; color:rgba(251,248,243,0.38); word-break:break-all; display:block; margin-top:6px; transition: color 0.2s ease;">scoph@medsin-nusmsa.org</a>
                     </div>
                     <div style="margin-top: 24px;">
                         <p class="footer-nav-head">Developer</p>
-                        <a href="https://wa.me/201551357366" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--wa" aria-label="Contact developer on WhatsApp" style="margin-top: 8px; display: inline-flex;">
+                        <a href="https://wa.me/201551357366" target="_blank" rel="noopener"
+                            class="footer-social-btn footer-social-btn--wa" aria-label="Contact developer on WhatsApp"
+                            style="margin-top: 8px; display: inline-flex;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.378l-.36-.214-3.733.889.913-3.645-.235-.374A9.857 9.857 0 012.118 12C2.118 6.538 6.538 2.118 12 2.118c5.463 0 9.882 4.42 9.882 9.882 0 5.463-4.42 9.882-9.882 9.882z"/>
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                <path
+                                    d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.378l-.36-.214-3.733.889.913-3.645-.235-.374A9.857 9.857 0 012.118 12C2.118 6.538 6.538 2.118 12 2.118c5.463 0 9.882 4.42 9.882 9.882 0 5.463-4.42 9.882-9.882 9.882z" />
                             </svg>
                             Contact Developer
                         </a>
@@ -7288,7 +7524,7 @@
                     var lines = escaped.split('\n');
                     var htmlResult = [];
 
-                    lines.forEach(function(line) {
+                    lines.forEach(function (line) {
                         var trimmed = line.trim();
                         if (!trimmed) {
                             htmlResult.push('<div class="ai-spacer"></div>');
@@ -7348,7 +7584,7 @@
 
                 function attachResultToolbar(resultEl, text) {
                     var richContent = formatAiRichOutput(text);
-                    var toolbarHtml = 
+                    var toolbarHtml =
                         '<div class="ai-result-toolbar">' +
                         '<span style="font-weight:600; font-family:var(--font-mono); color:var(--hive-amber-2);">⚡ Puter AI Intelligence Engine</span>' +
                         '<div class="ai-result-actions">' +
@@ -7360,10 +7596,10 @@
 
                     var copyBtn = resultEl.querySelector('.copy-btn');
                     if (copyBtn) {
-                        copyBtn.addEventListener('click', function() {
-                            navigator.clipboard.writeText(text).then(function() {
+                        copyBtn.addEventListener('click', function () {
+                            navigator.clipboard.writeText(text).then(function () {
                                 copyBtn.textContent = '✓ Copied!';
-                                setTimeout(function() { copyBtn.textContent = '📋 Copy Output'; }, 2000);
+                                setTimeout(function () { copyBtn.textContent = '📋 Copy Output'; }, 2000);
                             });
                         });
                     }
