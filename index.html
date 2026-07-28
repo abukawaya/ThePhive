@@ -377,10 +377,12 @@
         .primary-nav a {
             display: flex;
             align-items: center;
-            gap: 7px;
-            padding: 9px 15px;
+            gap: 6px;
+            padding: 7px 12px;
             border-radius: 9px;
             color: var(--comb-ink-soft);
+            white-space: nowrap;
+            font-size: 0.88rem;
             transition: color 0.2s var(--ease-hive), background 0.2s var(--ease-hive);
             position: relative;
         }
@@ -827,103 +829,119 @@
         }
 
         /* ==========================================================================
-   Explore the Hive — true honeycomb grid
+   Explore the Hive — Legendary Dark Glassmorphism Honeycomb Colony
    ========================================================================== */
         .explore-section {
-            padding: 30px 0 110px;
+            padding: 30px 0 120px;
+            background: linear-gradient(180deg, transparent 0%, rgba(13, 11, 7, 0.04) 100%);
         }
 
+        /* ---- Honeycomb wrapper ---- */
         .honeycomb {
-            --hex-w: 280px;
-            --hex-h: 323px;
+            --hex-w: 290px;
+            --hex-h: 335px;
             position: relative;
             display: grid;
             grid-template-columns: repeat(3, var(--hex-w));
             grid-auto-rows: calc(var(--hex-h) * 0.75);
             justify-content: center;
-            gap: 0 18px;
-            padding: 40px 0 70px;
+            gap: 0 20px;
+            padding: 50px 0 80px;
         }
 
+        /* ---- Floating ambient orb behind honeycomb ---- */
+        .honeycomb::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217,96,31,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ---- Base cell ---- */
         .cell {
             position: relative;
             width: var(--hex-w);
             height: var(--hex-h);
             display: flex;
             opacity: 0;
-            transform: translateY(24px);
-            animation: cellRise 0.7s var(--ease-hive) forwards;
+            transform: translateY(32px) scale(0.94);
+            animation: cellRise 0.75s var(--ease-hive) forwards;
             animation-play-state: paused;
+            z-index: 1;
         }
 
         .cell.in-view {
             animation-play-state: running;
         }
 
-        .cell--news {
-            grid-column: 1;
-            grid-row: 1;
-        }
+        /* ---- Stagger delays ---- */
+        .cell[data-cell="0"] { animation-delay: 0.05s; }
+        .cell[data-cell="1"] { animation-delay: 0.15s; }
+        .cell[data-cell="2"] { animation-delay: 0.25s; }
+        .cell[data-cell="3"] { animation-delay: 0.35s; }
+        .cell[data-cell="4"] { animation-delay: 0.45s; }
 
-        .cell--research {
-            grid-column: 2;
-            grid-row: 1;
-            margin-top: calc(var(--hex-h) * 0.375);
-        }
+        /* ---- Grid positions ---- */
+        .cell--news      { grid-column: 1; grid-row: 1; }
+        .cell--research  { grid-column: 2; grid-row: 1; margin-top: calc(var(--hex-h) * 0.375); }
+        .cell--articles  { grid-column: 3; grid-row: 1; }
+        .cell--opportunities { grid-column: 1 / 2; grid-row: 2; margin-top: calc(var(--hex-h) * -0.375); }
+        .cell--center    { grid-column: 2; grid-row: 2; margin-top: calc(var(--hex-h) * 0.375); pointer-events: none; }
+        .cell--about     { grid-column: 3; grid-row: 2; margin-top: calc(var(--hex-h) * -0.375); }
 
-        .cell--articles {
-            grid-column: 3;
-            grid-row: 1;
-        }
-
-        .cell--opportunities {
-            grid-column: 1 / 2;
-            grid-row: 2;
-            grid-row-start: 2;
-        }
-
-        .cell--center {
-            grid-column: 2;
-            grid-row: 2;
-            margin-top: calc(var(--hex-h) * 0.375);
-            pointer-events: none;
-        }
-
-        .cell--about {
-            grid-column: 3;
-            grid-row: 2;
-        }
-
-        /* second row nudge to interlock beneath row 1 */
-        .cell--opportunities {
-            margin-top: calc(var(--hex-h) * -0.375);
-        }
-
-        .cell--about {
-            margin-top: calc(var(--hex-h) * -0.375);
-        }
-
+        /* ---- Rise animation ---- */
         @keyframes cellRise {
-            from {
-                opacity: 0;
-                transform: translateY(24px) scale(0.96);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(32px) scale(0.94); }
+            to   { opacity: 1; transform: translateY(0)   scale(1); }
         }
 
+        /* ---- Hex background shape (glassmorphism dark) ---- */
         .cell-hex {
             position: absolute;
             inset: 0;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: linear-gradient(160deg, #ffffff, var(--comb-paper-dim));
-            border: 1.5px solid rgba(27, 26, 23, 0.07);
-            transition: background 0.45s var(--ease-hive), transform 0.45s var(--ease-hive), border-color 0.45s var(--ease-hive);
+            background: linear-gradient(155deg, rgba(30,26,18,0.85) 0%, rgba(20,17,10,0.92) 100%);
+            border: none;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(8px);
         }
 
+        /* ---- Glowing hex outline ring ---- */
+        .cell-hex-glow {
+            position: absolute;
+            inset: -3px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0.35;
+            z-index: -1;
+        }
+
+        /* ---- Per-cell color personalities ---- */
+        .cell--news      .cell-hex-glow { background: linear-gradient(135deg, #D9601F, #FF8C42); }
+        .cell--research  .cell-hex-glow { background: linear-gradient(135deg, #2563EB, #06B6D4); }
+        .cell--articles  .cell-hex-glow { background: linear-gradient(135deg, #7C3AED, #A855F7); }
+        .cell--opportunities .cell-hex-glow { background: linear-gradient(135deg, #059669, #10B981); }
+        .cell--about     .cell-hex-glow { background: linear-gradient(135deg, #DC2626, #F97316); }
+
+        .cell--news      .cell-hex { background: linear-gradient(155deg, rgba(40,22,8,0.95), rgba(25,13,4,0.98)); }
+        .cell--research  .cell-hex { background: linear-gradient(155deg, rgba(10,18,40,0.95), rgba(6,12,30,0.98)); }
+        .cell--articles  .cell-hex { background: linear-gradient(155deg, rgba(22,10,40,0.95), rgba(14,6,28,0.98)); }
+        .cell--opportunities .cell-hex { background: linear-gradient(155deg, rgba(4,24,16,0.95), rgba(2,15,10,0.98)); }
+        .cell--about     .cell-hex { background: linear-gradient(155deg, rgba(38,10,10,0.95), rgba(24,6,6,0.98)); }
+
+        /* ---- Inner shimmer line ---- */
+        .cell-hex::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* ---- Cell content layout ---- */
         .cell-content {
             position: relative;
             z-index: 1;
@@ -934,62 +952,111 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 44px;
-            gap: 6px;
+            padding: 0 46px;
+            gap: 8px;
         }
 
+        /* ---- Icon circle ---- */
         .cell-icon {
-            width: 58px;
-            height: 58px;
+            width: 64px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: var(--hive-amber-pale);
-            color: var(--hive-amber-deep);
-            margin-bottom: 10px;
-            transition: background 0.4s var(--ease-hive), color 0.4s var(--ease-hive), transform 0.4s var(--ease-hive);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(251,248,243,0.85);
+            margin-bottom: 8px;
+            transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 0 0 rgba(217,96,31,0);
         }
 
+        .cell--news      .cell-icon { color: #FF8C42; border-color: rgba(217,96,31,0.3); background: rgba(217,96,31,0.12); }
+        .cell--research  .cell-icon { color: #60A5FA; border-color: rgba(37,99,235,0.3); background: rgba(37,99,235,0.12); }
+        .cell--articles  .cell-icon { color: #C084FC; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.12); }
+        .cell--opportunities .cell-icon { color: #34D399; border-color: rgba(5,150,105,0.3); background: rgba(5,150,105,0.12); }
+        .cell--about     .cell-icon { color: #FCA5A5; border-color: rgba(220,38,38,0.3); background: rgba(220,38,38,0.12); }
+
+        /* ---- Badge pill ---- */
+        .cell-badge {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.07);
+            color: rgba(251,248,243,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            white-space: nowrap;
+            z-index: 4;
+            pointer-events: none;
+            transition: all 0.35s ease;
+        }
+
+        .cell--news      .cell-badge { color: #FF8C42; background: rgba(217,96,31,0.15); border-color: rgba(217,96,31,0.3); }
+        .cell--research  .cell-badge { color: #60A5FA; background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
+        .cell--articles  .cell-badge { color: #C084FC; background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.3); }
+        .cell--opportunities .cell-badge { color: #34D399; background: rgba(5,150,105,0.15); border-color: rgba(5,150,105,0.3); }
+        .cell--about     .cell-badge { color: #FCA5A5; background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.3); }
+
+        /* ---- Title & description ---- */
         .cell-title {
             font-family: var(--font-display);
-            font-size: 1.24rem;
-            font-weight: 600;
-            color: var(--comb-ink);
-            transition: color 0.3s var(--ease-hive);
+            font-size: 1.22rem;
+            font-weight: 700;
+            color: rgba(251,248,243,0.92);
+            letter-spacing: -0.01em;
+            transition: color 0.35s ease;
         }
 
         .cell-desc {
-            font-size: 0.88rem;
-            color: var(--comb-ink-soft);
-            line-height: 1.4;
-            transition: color 0.3s var(--ease-hive), opacity 0.3s var(--ease-hive);
+            font-size: 0.84rem;
+            color: rgba(251,248,243,0.42);
+            line-height: 1.45;
+            transition: color 0.35s ease;
+        }
+
+        /* ---- Hover states ---- */
+        .cell:hover .cell-hex-glow,
+        .cell:focus-visible .cell-hex-glow {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         .cell:hover .cell-hex,
         .cell:focus-visible .cell-hex {
-            background: linear-gradient(155deg, var(--hive-amber-2), var(--hive-amber-deep));
-            border-color: transparent;
-            transform: scale(1.035);
+            transform: scale(1.04);
         }
 
         .cell:hover .cell-icon,
         .cell:focus-visible .cell-icon {
-            background: rgba(255, 255, 255, 0.22);
-            color: #fff;
-            transform: scale(1.08);
+            transform: scale(1.15) translateY(-4px);
+            box-shadow: 0 8px 32px rgba(217,96,31,0.3);
         }
+        .cell--research:hover .cell-icon { box-shadow: 0 8px 32px rgba(37,99,235,0.35); }
+        .cell--articles:hover .cell-icon { box-shadow: 0 8px 32px rgba(124,58,237,0.35); }
+        .cell--opportunities:hover .cell-icon { box-shadow: 0 8px 32px rgba(5,150,105,0.35); }
+        .cell--about:hover .cell-icon { box-shadow: 0 8px 32px rgba(220,38,38,0.35); }
 
         .cell:hover .cell-title,
-        .cell:focus-visible .cell-title {
-            color: #fff;
-        }
+        .cell:focus-visible .cell-title { color: #fff; }
 
         .cell:hover .cell-desc,
-        .cell:focus-visible .cell-desc {
-            color: rgba(255, 255, 255, 0.85);
+        .cell:focus-visible .cell-desc { color: rgba(255,255,255,0.72); }
+
+        .cell:hover .cell-badge,
+        .cell:focus-visible .cell-badge {
+            transform: translateX(-50%) translateY(-3px);
         }
 
+        /* ---- Center hex (logo hub) ---- */
         .cell--center {
             display: flex;
             align-items: center;
@@ -997,17 +1064,24 @@
         }
 
         .cell-hex--center {
-            background: var(--comb-ink);
+            background: linear-gradient(155deg, #1a1507, #0d0b04) !important;
             border: none;
+            box-shadow: 0 0 60px rgba(217,96,31,0.2), inset 0 0 40px rgba(217,96,31,0.05);
         }
 
         .cell-center-icon {
             position: relative;
             z-index: 1;
-            width: 76px;
+            width: 80px;
             height: auto;
             filter: brightness(0) invert(1);
-            opacity: 0.92;
+            opacity: 0.9;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .cell--center:hover .cell-center-icon {
+            transform: scale(1.08);
+            opacity: 1;
         }
 
         /* ==========================================================================
@@ -1318,6 +1392,170 @@
             background: var(--comb-paper-dim);
             border-radius: 10px;
             border-left: 3px solid var(--hive-amber);
+        }
+
+        /* ====== World-News Image Card Grid ====== */
+        .gn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .gn-card {
+            background: var(--comb-paper);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid rgba(217, 96, 31, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s var(--ease-hive), box-shadow 0.3s var(--ease-hive);
+            display: flex;
+            flex-direction: column !important;
+            position: relative;
+        }
+
+        .gn-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13);
+        }
+
+        .gn-card-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .gn-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s var(--ease-hive);
+            display: block;
+        }
+
+        .gn-card:hover .gn-card-img img {
+            transform: scale(1.07);
+        }
+
+        .gn-card-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 45%, rgba(10, 8, 4, 0.55));
+            pointer-events: none;
+        }
+
+        .gn-card-body {
+            padding: 18px 20px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .gn-card-tag-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .gn-card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--hive-amber-deep);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .gn-card-emoji {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .gn-card-title {
+            font-family: var(--font-display);
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--comb-ink);
+            line-height: 1.35;
+            margin: 2px 0 0;
+        }
+
+        .gn-card-excerpt {
+            font-size: 0.82rem;
+            color: var(--comb-ink-soft);
+            line-height: 1.6;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .gn-card-ref {
+            font-size: 0.67rem;
+            color: var(--comb-ink-soft);
+            opacity: 0.6;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .gn-card-footer {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid rgba(217, 96, 31, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .gn-card-meta {
+            font-size: 0.71rem;
+            color: var(--comb-ink-soft);
+            font-family: var(--font-mono);
+            opacity: 0.8;
+        }
+
+        /* Override conflicting .news-column .content-card row-direction for gn-cards */
+        .news-column .gn-card {
+            flex-direction: column !important;
+        }
+
+        .news-column .gn-card .content-card-media {
+            display: none;
+        }
+
+        /* Responsive – 1 column below 860 px */
+        @media (max-width: 860px) {
+            .gn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gn-card-img {
+                aspect-ratio: 16 / 7;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .gn-grid {
+                gap: 14px;
+            }
+
+            .gn-card-title {
+                font-size: 0.92rem;
+            }
+
+            .gn-card-body {
+                padding: 14px 16px 12px;
+            }
         }
 
         /* ---- Explain with AI — per-card ---- */
@@ -1791,134 +2029,309 @@
         /* ==========================================================================
    Footer
    ========================================================================== */
+        /* ==========================================================================
+           LEGENDARY FOOTER — Premium Dark Design
+           ========================================================================== */
+
         .site-footer {
             position: relative;
-            background: var(--comb-ink);
+            background: linear-gradient(180deg, #0d0b07 0%, #060503 60%, #0a0704 100%);
             color: rgba(251, 248, 243, 0.7);
             padding-top: 0;
+            overflow: hidden;
+        }
+
+        /* Hex grid pattern overlay */
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='69' viewBox='0 0 60 69'%3E%3Cpath d='M30 3L57 18v33L30 66 3 51V18z' fill='none' stroke='rgba(217,96,31,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 60px 69px;
+            pointer-events: none;
+            opacity: 1;
+            z-index: 0;
+        }
+
+        /* Ambient glow orbs */
+        .site-footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 300px;
+            background: radial-gradient(ellipse at center bottom, rgba(217,96,31,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .footer-seam {
             display: block;
             width: 100%;
-            height: 32px;
+            height: 40px;
             margin-bottom: -1px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-inner {
+            position: relative;
+            z-index: 1;
             max-width: var(--container-w);
             margin: 0 auto;
-            padding: 20px 32px 0;
+            padding: 0px 32px 0;
         }
 
+        /* ---- Top divider glow bar ---- */
+        .footer-glow-bar {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(217,96,31,0.5) 30%, rgba(244,125,59,0.8) 50%, rgba(217,96,31,0.5) 70%, transparent 100%);
+            margin-bottom: 52px;
+            position: relative;
+        }
+
+        .footer-glow-bar::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 6px;
+            background: radial-gradient(ellipse, rgba(244,125,59,0.6) 0%, transparent 70%);
+            filter: blur(4px);
+        }
+
+        /* ---- Main top area ---- */
         .footer-top {
             display: grid;
-            grid-template-columns: 1.3fr 1.4fr 1fr;
-            gap: 48px;
-            padding-bottom: 46px;
-            border-bottom: 1px solid rgba(251, 248, 243, 0.1);
+            grid-template-columns: 1.6fr 1.2fr 1.2fr 1fr;
+            gap: 52px;
+            padding-bottom: 52px;
+            border-bottom: 1px solid rgba(251, 248, 243, 0.06);
         }
 
+        /* ---- Brand column ---- */
         .footer-brand {
-            max-width: 280px;
+            max-width: 300px;
         }
 
         .brand-mark--footer {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .brand-word--footer {
+            font-size: 1.5rem;
             color: var(--comb-paper);
         }
 
         .brand-word--footer em {
             color: var(--hive-amber-2);
+            font-style: normal;
         }
 
         .footer-tagline {
-            font-size: 0.88rem;
-            color: rgba(251, 248, 243, 0.55);
-            margin-top: 12px;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: rgba(251, 248, 243, 0.45);
+            margin-top: 14px;
+            line-height: 1.65;
+            max-width: 260px;
         }
 
-        .footer-nav {
+        /* Social icons row */
+        .footer-socials {
             display: flex;
-            gap: 56px;
+            gap: 10px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.09);
+            color: rgba(251,248,243,0.65);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+            white-space: nowrap;
+        }
+
+        .footer-social-btn svg { flex-shrink: 0; }
+
+        .footer-social-btn:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .footer-social-btn--ig:hover  { background: linear-gradient(135deg, rgba(225,48,108,0.25), rgba(253,121,36,0.25)); border-color: rgba(225,48,108,0.4); box-shadow: 0 6px 24px rgba(225,48,108,0.2); }
+        .footer-social-btn--fb:hover  { background: rgba(24,119,242,0.2); border-color: rgba(24,119,242,0.4); box-shadow: 0 6px 24px rgba(24,119,242,0.2); }
+        .footer-social-btn--li:hover  { background: rgba(10,102,194,0.2); border-color: rgba(10,102,194,0.4); box-shadow: 0 6px 24px rgba(10,102,194,0.2); }
+        .footer-social-btn--em:hover  { background: rgba(217,96,31,0.2); border-color: rgba(217,96,31,0.4); box-shadow: 0 6px 24px rgba(217,96,31,0.2); }
+        .footer-social-btn--wa        { color: #25D366; border-color: rgba(37,211,102,0.2); background: rgba(37,211,102,0.06); }
+        .footer-social-btn--wa:hover  { background: rgba(37,211,102,0.18); border-color: rgba(37,211,102,0.45); box-shadow: 0 6px 24px rgba(37,211,102,0.22); color: #4ee886; }
+
+        /* ---- Nav columns ---- */
+        .footer-nav {
+            display: contents;
         }
 
         .footer-nav-col {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 0;
         }
 
         .footer-nav-head {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--hive-amber-2);
-            margin-bottom: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-nav-head::before {
+            content: '';
+            width: 18px;
+            height: 2px;
+            background: linear-gradient(90deg, #D9601F, #F47D3B);
+            border-radius: 2px;
+            flex-shrink: 0;
         }
 
         .footer-nav-col a {
-            font-size: 0.92rem;
-            color: rgba(251, 248, 243, 0.68);
-            transition: color 0.2s var(--ease-hive), padding-left 0.2s var(--ease-hive);
+            font-size: 0.9rem;
+            color: rgba(251, 248, 243, 0.5);
+            transition: all 0.25s ease;
             width: fit-content;
+            margin-bottom: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-nav-col a::before {
+            content: '';
+            width: 0;
+            height: 1px;
+            background: var(--hive-amber-2);
+            border-radius: 1px;
+            transition: width 0.25s ease;
+            flex-shrink: 0;
         }
 
         .footer-nav-col a:hover {
-            color: var(--comb-paper);
-            padding-left: 4px;
+            color: rgba(251,248,243,0.92);
+            transform: translateX(6px);
         }
 
+        .footer-nav-col a:hover::before {
+            width: 14px;
+        }
+
+        /* ---- Affiliated orgs ---- */
         .footer-orgs {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
         }
 
         .footer-logos {
             display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 14px 18px;
-            background: rgba(251, 248, 243, 0.05);
-            border-radius: 14px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
             margin-top: 4px;
         }
 
+        .footer-logo-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo-card:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(217,96,31,0.25);
+            transform: translateY(-2px);
+        }
+
         .footer-logo {
-            height: 52px;
+            height: 48px;
             width: auto;
             object-fit: contain;
         }
 
         .footer-logo--scoph {
-            height: 58px;
-        }
-
-        .footer-logo--nusmsa {
             height: 52px;
-            border-radius: 50%;
         }
 
+        .footer-logo-label {
+            font-size: 0.78rem;
+            color: rgba(251,248,243,0.45);
+            line-height: 1.4;
+            max-width: 110px;
+        }
+
+        /* ---- Bottom bar ---- */
         .footer-bottom {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
-            padding: 26px 0;
-            font-size: 0.82rem;
-            color: rgba(251, 248, 243, 0.45);
+            gap: 12px;
+            padding: 22px 0;
+        }
+
+        .footer-bottom-left {
+            font-size: 0.8rem;
+            color: rgba(251,248,243,0.3);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer-bottom-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(217,96,31,0.5);
         }
 
         .footer-signoff {
             font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(251,248,243,0.28);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .footer-signoff-hex {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: linear-gradient(135deg, #D9601F, #F47D3B);
+            font-size: 0.65rem;
         }
 
         /* ==========================================================================
@@ -1986,14 +2399,15 @@
 
             .footer-top {
                 grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
             }
 
             .footer-orgs {
                 grid-column: 1 / -1;
-            }
-
-            .footer-logos {
-                margin-top: 20px;
             }
         }
 
@@ -2165,16 +2579,53 @@
 
             .footer-top {
                 grid-template-columns: 1fr;
-                gap: 36px;
+                gap: 32px;
+                padding-bottom: 36px;
+            }
+
+            .footer-brand {
+                grid-column: 1;
+                max-width: 100%;
             }
 
             .footer-nav {
-                gap: 40px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .footer-nav-col {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .footer-socials {
+                flex-wrap: wrap;
+            }
+
+            .footer-orgs {
+                grid-column: 1;
+            }
+
+            .footer-glow-bar {
+                margin-bottom: 36px;
+            }
+
+            .footer-inner {
+                padding: 0 24px;
             }
 
             .footer-bottom {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 8px;
+                padding: 18px 0;
+            }
+
+            .footer-bottom-left {
+                flex-wrap: wrap;
+                gap: 8px;
             }
         }
 
@@ -2228,11 +2679,26 @@
 
             .opp-item {
                 flex-wrap: wrap;
+                gap: 12px;
             }
 
             .opp-status {
                 order: 3;
-                margin-left: 76px;
+                margin-left: 0 !important;
+                align-self: flex-start;
+            }
+
+            .footer-top {
+                gap: 28px;
+                padding-bottom: 28px;
+            }
+
+            .footer-inner {
+                padding: 0 18px;
+            }
+
+            .footer-glow-bar {
+                margin-bottom: 28px;
             }
 
             .footer-nav {
@@ -2240,8 +2706,27 @@
                 gap: 24px;
             }
 
-            .footer-logos {
-                flex-wrap: wrap;
+            .footer-nav-col {
+                min-width: unset;
+            }
+
+            .footer-social-btn {
+                padding: 7px 12px;
+                font-size: 0.76rem;
+            }
+
+            .footer-tagline {
+                font-size: 0.84rem;
+            }
+
+            .footer-bottom-left {
+                font-size: 0.74rem;
+            }
+
+            .footer-bottom-dot { display: none; }
+
+            .footer-signoff {
+                font-size: 0.72rem;
             }
 
             .back-to-top {
@@ -2249,6 +2734,21 @@
                 bottom: 16px;
                 width: 42px;
                 height: 42px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .footer-social-btn span { display: none; }
+            .footer-social-btn { padding: 9px 10px; border-radius: 12px; }
+
+            .brand-word--footer { font-size: 1.2rem; }
+
+            .footer-top {
+                gap: 22px;
+            }
+
+            .footer-bottom-left span:last-child {
+                display: none;
             }
         }
 
@@ -2619,54 +3119,31 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
-        /* 3D Cell Magnetic Physics & Edge Glow */
+        /* ---- Cell 3D hover physics (magnetic tilt) ---- */
         .honeycomb {
             perspective: 1200px;
         }
 
         .cell {
             transform-style: preserve-3d;
-            transition: transform 0.4s var(--ease-hive), filter 0.4s var(--ease-hive);
+            transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
             will-change: transform;
         }
 
+        /* ---- Outer ambient blur glow (behind the hex) ---- */
         .cell-hex-glow {
-            position: absolute;
-            inset: -4px;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: linear-gradient(135deg, var(--hive-amber-2), var(--hive-amber-deep));
-            opacity: 0;
-            transition: opacity 0.4s var(--ease-hive), filter 0.4s var(--ease-hive);
-            filter: blur(8px);
-            z-index: 0;
+            filter: blur(12px);
         }
 
-        .cell:hover .cell-hex-glow {
-            opacity: 0.7;
-            filter: blur(14px);
+        .cell:hover .cell-hex-glow,
+        .cell:focus-visible .cell-hex-glow {
+            filter: blur(18px);
         }
 
-        .cell-badge {
-            position: absolute;
-            top: 14%;
-            right: 14%;
-            z-index: 3;
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 100px;
-            background: var(--hive-amber-deep);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(217, 96, 31, 0.4);
-            transform: translateZ(20px);
-            transition: transform 0.3s var(--ease-hive), background 0.3s;
-        }
-
-        .cell:hover .cell-badge {
-            background: #fff;
-            color: var(--hive-amber-deep);
-            transform: translateZ(30px) scale(1.1);
+        /* ---- Badge hover nudge (in 3D space) ---- */
+        .cell:hover .cell-badge,
+        .cell:focus-visible .cell-badge {
+            transform: translateX(-50%) translateY(-4px) translateZ(20px);
         }
 
         /* Matrix Grid View Mode */
@@ -4037,8 +4514,24 @@
         }
 
         /* ============================================================
-           AI HEALTH INTELLIGENCE TOOLS — STYLES
+           AI HEALTH INTELLIGENCE TOOLS — STYLES & GENIUS UI
            ============================================================ */
+        #ai-tools .section-head {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ai-tools .section-sub {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+        }
+
         .ai-tools-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -4053,9 +4546,10 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-hive);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .ai-tool-card::before {
@@ -4065,16 +4559,191 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(217, 96, 31, 0.6), transparent);
+            background: linear-gradient(90deg, transparent, rgba(217, 96, 31, 0.7), transparent);
         }
 
         .ai-tool-card:hover {
-            border-color: rgba(217, 96, 31, 0.25);
-            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(217, 96, 31, 0.35);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(217, 96, 31, 0.1);
+            transform: translateY(-4px);
         }
 
         .ai-tool-card--wide {
             grid-column: 1 / -1;
+        }
+
+        .ai-result-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px 12px 0 0;
+            font-size: 0.78rem;
+            color: rgba(251, 248, 243, 0.75);
+            flex-wrap: wrap;
+        }
+
+        .ai-result-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 11px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--hive-amber-2);
+            background: rgba(217, 96, 31, 0.15);
+            border: 1px solid rgba(217, 96, 31, 0.25);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .ai-action-btn:hover {
+            background: var(--hive-amber);
+            color: #fff;
+            border-color: var(--hive-amber);
+        }
+
+        /* ---- High-Contrast & Bidi-Isolating AI Output Formatting ---- */
+        .ai-formatted-output {
+            padding: 18px 20px;
+            font-family: var(--font-body);
+            font-size: 0.94rem;
+            line-height: 1.75;
+            color: #FBF8F3 !important;
+            max-height: 500px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            direction: auto;
+            unicode-bidi: plaintext;
+            text-align: start;
+        }
+
+        .ai-formatted-output *,
+        .ai-formatted-output p,
+        .ai-formatted-output div,
+        .ai-formatted-output span,
+        .ai-formatted-output li,
+        .ai-formatted-output td,
+        .ai-formatted-output th {
+            color: #FBF8F3 !important;
+            unicode-bidi: isolate;
+        }
+
+        .ai-formatted-head {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #FFB37C !important;
+            background: linear-gradient(135deg, rgba(217, 96, 31, 0.35), rgba(244, 125, 59, 0.12)) !important;
+            border-left: 4px solid #F47D3B !important;
+            padding: 10px 16px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 18px rgba(217, 96, 31, 0.15);
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .ai-formatted-head * {
+            color: #FFB37C !important;
+        }
+
+        .ai-head-badge {
+            font-size: 0.85rem;
+            color: #F47D3B !important;
+        }
+
+        .ai-step-card {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(244, 125, 59, 0.35) !important;
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .ai-step-card:hover {
+            border-color: #F47D3B !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            transform: translateX(4px);
+        }
+
+        .ai-step-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #FFFFFF !important;
+            background: linear-gradient(135deg, #d9601f, #f47d3b) !important;
+            padding: 3px 9px;
+            border-radius: 100px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(217, 96, 31, 0.35);
+        }
+
+        .ai-step-content {
+            flex: 1;
+            color: #FFFFFF !important;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .ai-step-content * {
+            color: #FFFFFF !important;
+        }
+
+        .ai-bold-highlight {
+            color: #FFC091 !important;
+            font-weight: 700 !important;
+        }
+
+        .ai-bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding-left: 6px;
+            margin-bottom: 4px;
+            color: #FBF8F3 !important;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .ai-bullet-hex {
+            color: #FFB37C !important;
+            font-size: 0.7rem;
+            line-height: 1.75;
+            flex-shrink: 0;
+        }
+
+        .ai-para {
+            margin: 0;
+            line-height: 1.7;
+            color: #FBF8F3 !important;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .ai-spacer {
+            height: 6px;
         }
 
         .ai-tool-head {
@@ -4304,6 +4973,294 @@
         .section-inner,
         .footer-inner {
             overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           INTERMEDIATE LARGE SCREENS — 1280 px to 1439 px
+           ========================================================================== */
+        @media (min-width: 1280px) and (max-width: 1439px) {
+            :root {
+                --container-w: 1240px;
+            }
+
+            .ai-tools-grid {
+                gap: 20px;
+            }
+
+            .card-row {
+                gap: 22px;
+            }
+
+            .news-split {
+                gap: 36px;
+            }
+        }
+
+        /* ==========================================================================
+           LARGE-SCREEN ENHANCEMENTS — 1440 px and above
+           ========================================================================== */
+        @media (min-width: 1440px) {
+
+            /* ---- Container ---- */
+            :root {
+                --container-w: 1380px;
+            }
+
+            .section-inner,
+            .nav-inner,
+            .footer-inner {
+                padding-left: 52px;
+                padding-right: 52px;
+            }
+
+            /* ---- Navigation ---- */
+            .primary-nav {
+                gap: 4px;
+            }
+            .primary-nav a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                white-space: nowrap;
+            }
+            .brand-word {
+                font-size: 1.4rem;
+            }
+            .brand-mark {
+                width: 42px;
+                height: 42px;
+            }
+
+            /* ---- Hero ---- */
+            .hero {
+                padding-top: calc(var(--nav-h) + 80px);
+                padding-bottom: 90px;
+            }
+
+            .hero-inner {
+                gap: 80px;
+            }
+
+            .hero-title {
+                font-size: clamp(3rem, 3.5vw, 4.2rem);
+            }
+
+            .hero-sub {
+                font-size: 1.15rem;
+            }
+
+            /* ---- Section headings ---- */
+            .section-head {
+                max-width: 780px;
+                margin-bottom: 52px;
+            }
+
+            .section-head h2 {
+                font-size: clamp(2.2rem, 2.8vw, 3rem);
+            }
+
+            .section-sub {
+                font-size: 1.1rem;
+            }
+
+            /* ---- Content sections ---- */
+            .content-section {
+                padding: 60px 0 110px;
+            }
+
+            /* ---- Card rows (Research / Articles) ---- */
+            .card-row {
+                gap: 28px;
+            }
+
+            /* ---- News ---- */
+            .news-split {
+                gap: 48px;
+            }
+
+            .gn-grid {
+                gap: 22px;
+            }
+
+            .news-column-cards {
+                gap: 22px;
+            }
+
+            /* ---- Honeycomb ---- */
+            .honeycomb {
+                --hex-w: 330px;
+                --hex-h: 380px;
+                grid-template-columns: repeat(3, var(--hex-w));
+                gap: 0 28px;
+                padding: 60px 0 100px;
+            }
+
+            /* ---- AI Tools — 3-column layout ---- */
+            .ai-tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+            }
+
+            .ai-tool-card--wide {
+                grid-column: auto;    /* 3rd card, not full-width */
+            }
+
+            .ai-tool-card {
+                padding: 32px;
+            }
+
+            /* ---- AI Section — header scales wider ---- */
+            #ai-tools .section-head {
+                max-width: 900px;
+            }
+
+            #ai-tools .section-sub {
+                max-width: 760px !important;
+            }
+
+            /* ---- Opportunities tabs ---- */
+            .opp-tabs {
+                gap: 10px;
+            }
+
+            /* ---- Footer ---- */
+            .footer-top {
+                gap: 72px;
+                padding-bottom: 60px;
+            }
+
+            .footer-brand {
+                max-width: 360px;
+            }
+
+            .footer-glow-bar {
+                margin-bottom: 60px;
+            }
+        }
+
+        /* ==========================================================================
+           ULTRA-WIDE SCREENS — 1920 px and above
+           ========================================================================== */
+        @media (min-width: 1920px) {
+
+            /* ---- Container ---- */
+            :root {
+                --container-w: 1680px;
+            }
+
+            .section-inner,
+            .nav-inner,
+            .footer-inner {
+                padding-left: 64px;
+                padding-right: 64px;
+            }
+
+            /* ---- Navigation Ultra-Wide ---- */
+            :root {
+                --nav-h: 88px;
+            }
+            .primary-nav {
+                gap: 8px;
+            }
+            .primary-nav a {
+                padding: 8px 14px;
+                font-size: 0.94rem;
+                white-space: nowrap;
+            }
+            .brand-word {
+                font-size: 1.62rem;
+            }
+            .brand-mark {
+                width: 48px;
+                height: 48px;
+            }
+            .nav-actions {
+                gap: 18px;
+            }
+
+            /* ---- Hero ---- */
+            .hero {
+                padding-top: calc(var(--nav-h) + 100px);
+                padding-bottom: 120px;
+            }
+
+            .hero-inner {
+                gap: 100px;
+            }
+
+            .hero-title {
+                font-size: clamp(3.6rem, 4vw, 5rem);
+            }
+
+            /* ---- Section headings ---- */
+            .section-head {
+                max-width: 900px;
+                margin-bottom: 60px;
+            }
+
+            .section-head h2 {
+                font-size: clamp(2.6rem, 3vw, 3.6rem);
+            }
+
+            /* ---- Content sections ---- */
+            .content-section {
+                padding: 80px 0 140px;
+            }
+
+            /* ---- Card rows — 4 columns ---- */
+            .card-row {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 32px;
+            }
+
+            /* ---- News ---- */
+            .news-split {
+                gap: 64px;
+            }
+
+            .gn-grid {
+                gap: 28px;
+            }
+
+            .news-column-cards {
+                gap: 26px;
+            }
+
+            /* ---- Honeycomb ---- */
+            .honeycomb {
+                --hex-w: 380px;
+                --hex-h: 440px;
+                gap: 0 36px;
+                padding: 70px 0 120px;
+            }
+
+            /* ---- AI Tools ---- */
+            .ai-tools-grid {
+                gap: 36px;
+            }
+
+            .ai-tool-card {
+                padding: 40px;
+                border-radius: 26px;
+            }
+
+            /* ---- Footer ---- */
+            .footer-top {
+                gap: 96px;
+                padding-bottom: 80px;
+            }
+
+            .footer-brand {
+                max-width: 420px;
+            }
+
+            .footer-glow-bar {
+                margin-bottom: 70px;
+            }
+
+            .footer-tagline {
+                font-size: 0.96rem;
+                max-width: 320px;
+            }
         }
     </style>
 
@@ -4880,8 +5837,7 @@
                 </div>
 
                 <p class="news-disclaimer">
-                    Illustrative headlines for demonstration — SCOPH's editorial team will replace these
-                    with verified reporting from the Federal Ministry of Health, WHO, and trusted outlets.
+                    World health news sourced from Reuters, The Week, Herald Sun, and Scientific American · 2026. Sudan news curated by the SCOPH editorial team.
                 </p>
             </div>
         </section>
@@ -5184,15 +6140,33 @@
         <section class="content-section" id="ai-tools"
             style="background: linear-gradient(135deg, #0d0b07 0%, #1a1507 50%, #0d0b07 100%); border-top: 1px solid rgba(217,96,31,0.2);">
             <div class="section-inner">
-                <header class="section-head" style="text-align: center; margin-bottom: 40px;">
+                <header class="section-head section-head--center" style="margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 36px; max-width: 800px;">
                     <p class="eyebrow" style="color: var(--hive-amber-2); justify-content: center;"><span
                             class="eyebrow-hex" style="background: rgba(217,96,31,0.15);"></span>Powered by Puter AI</p>
-                    <h2 style="color: #fff;">AI Health Intelligence Tools</h2>
+                    <h2 style="color: #fff; margin-top: 6px;">AI Health Intelligence Tools</h2>
                     <p class="section-sub"
-                        style="color: rgba(251,248,243,0.65); margin: 10px auto 0; max-width: 600px;">Three legendary
-                        AI-powered tools built for medical students — from report generation to concept explainability.
+                        style="color: rgba(251,248,243,0.65); margin: 12px auto 0; max-width: 680px; text-align: center;">
+                        Four legendary AI-powered tools built for medical students — from situation reports & concept explainers to critical appraisal & outbreak matrix planning.
                     </p>
                 </header>
+
+                <!-- AI Engine Global Control & Language Bar -->
+                <div class="ai-engine-bar" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: rgba(255,255,255,0.03); border: 1px solid rgba(217,96,31,0.18); padding: 14px 22px; border-radius: 16px; margin-bottom: 30px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 9px; height: 9px; border-radius: 50%; background: #3e7c5a; box-shadow: 0 0 10px #3e7c5a; display: inline-block;"></span>
+                        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: rgba(251,248,243,0.85); font-weight: 600;">Puter AI Engine Active</span>
+                        <span style="font-size: 0.72rem; background: rgba(217,96,31,0.15); color: var(--hive-amber-2); padding: 2px 8px; border-radius: 100px; font-weight: 600;">100% Free & Unlimited</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <label style="font-size: 0.82rem; color: rgba(251,248,243,0.7); font-weight: 600;">Response Language:</label>
+                        <select id="aiGlobalLang" class="ai-format-select" style="padding: 6px 12px; font-size: 0.82rem; background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.15);">
+                            <option value="en">🌐 English (Global standard)</option>
+                            <option value="ar">🇸🇩 Arabic (اللغة العربية)</option>
+                            <option value="fr">🇫🇷 French (Français)</option>
+                            <option value="dual">🧬 Dual (English + Arabic Summary)</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="ai-tools-grid">
 
@@ -5315,7 +6289,7 @@
                     </div>
 
                     <!-- TOOL 3: AI Research Abstract Summarizer & Critique -->
-                    <div class="ai-tool-card ai-tool-card--wide" id="aiSummarizerTool">
+                    <div class="ai-tool-card" id="aiSummarizerTool">
                         <div class="ai-tool-head">
                             <div class="ai-tool-icon-wrap"
                                 style="background: linear-gradient(135deg, rgba(100,120,200,0.25), rgba(100,120,200,0.1));">
@@ -5330,9 +6304,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="ai-tool-title">AI Research Abstract Summarizer & Critique</h3>
-                                <p class="ai-tool-sub">Paste a research abstract — get an AI-generated plain-language
-                                    summary, key findings, study limitations, and a critical appraisal checklist.</p>
+                                <h3 class="ai-tool-title">AI Abstract Summarizer & Critique</h3>
+                                <p class="ai-tool-sub">Paste a research abstract — get an AI-generated summary, key findings, study limitations, and CASP critique checklist.</p>
                             </div>
                         </div>
 
@@ -5346,7 +6319,7 @@
                         </div>
 
                         <form class="ai-tool-form" id="aiSummarizerForm">
-                            <textarea id="aiSummarizerInput" class="ai-tool-textarea" rows="5"
+                            <textarea id="aiSummarizerInput" class="ai-tool-textarea" rows="4"
                                 placeholder="Paste a research abstract here (from PubMed, WHO reports, Lancet, etc.)…"
                                 maxlength="2000"></textarea>
                             <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
@@ -5363,11 +6336,52 @@
                                 <label
                                     style="display:flex; align-items:center; gap:6px; color: rgba(251,248,243,0.6); font-size:0.85rem; cursor:pointer;">
                                     <input type="checkbox" id="aiSummarizerCAPS"
-                                        style="accent-color: var(--hive-amber-deep);"> Include CASP Checklist
+                                        style="accent-color: var(--hive-amber-deep);"> CASP Checklist
                                 </label>
                             </div>
                         </form>
                         <div class="ai-tool-result" id="aiSummarizerResult" hidden></div>
+                    </div>
+
+                    <!-- TOOL 4: AI Outbreak Intervention & Risk Matrix Planner -->
+                    <div class="ai-tool-card" id="aiOutbreakTool">
+                        <div class="ai-tool-head">
+                            <div class="ai-tool-icon-wrap"
+                                style="background: linear-gradient(135deg, rgba(244,125,59,0.25), rgba(217,96,31,0.1));">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="color: var(--hive-amber-2);">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="ai-tool-title">AI Outbreak & Risk Matrix Planner</h3>
+                                <p class="ai-tool-sub">Design rapid outbreak response protocols, risk ratings, and stakeholder action grids for emergency response.</p>
+                            </div>
+                        </div>
+
+                        <div class="ai-tool-presets" id="outbreakPresets">
+                            <button class="ai-preset-chip"
+                                data-preset-outbreak="Plan a rapid response protocol for a Dengue fever outbreak during flooding season in eastern Sudan">🦟
+                                Dengue Outbreak Protocol</button>
+                            <button class="ai-preset-chip"
+                                data-preset-outbreak="Create a risk matrix and vaccination strategy for a Measles cluster in refugee shelters">💉
+                                Measles Shelter Response</button>
+                        </div>
+
+                        <form class="ai-tool-form" id="aiOutbreakForm">
+                            <input type="text" id="aiOutbreakInput" class="ai-tool-input"
+                                placeholder="Enter an outbreak scenario or health hazard... e.g. 'Cholera response in flood zones'"
+                                maxlength="300" autocomplete="off">
+                            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                                <button type="submit" class="btn btn-primary" id="aiOutbreakSubmit"
+                                    style="background: linear-gradient(135deg, #d9601f, #b34a12);">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Generate Response Plan</span>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="ai-tool-result" id="aiOutbreakResult" hidden></div>
                     </div>
 
                 </div>
@@ -5380,21 +6394,47 @@
     <footer class="site-footer">
         <svg class="footer-seam" viewBox="0 0 1600 40" preserveAspectRatio="none" aria-hidden="true">
             <path
-                d="M0 0 L80 24 L160 4 L240 24 L320 4 L400 24 L480 4 L560 24 L640 4 L720 24 L800 4 L880 24 L960 4 L1040 24 L1120 4 L1200 24 L1280 4 L1360 24 L1440 4 L1520 24 L1600 0 L1600 40 L0 40 Z"
-                fill="var(--comb-ink)" />
+                d="M0 0 L80 28 L160 6 L240 28 L320 6 L400 28 L480 6 L560 28 L640 6 L720 28 L800 6 L880 28 L960 6 L1040 28 L1120 6 L1200 28 L1280 6 L1360 28 L1440 6 L1520 28 L1600 0 L1600 40 L0 40 Z"
+                fill="#0d0b07" />
         </svg>
 
         <div class="footer-inner">
+
+            <div class="footer-glow-bar"></div>
+
             <div class="footer-top">
+                <!-- Brand Column -->
                 <div class="footer-brand">
-                    <span class="brand-mark brand-mark--footer">
-                        <img src="main_logo.png" alt="" width="44" height="44">
-                    </span>
-                    <span class="brand-word brand-word--footer">The <em>PHive</em></span>
-                    <p class="footer-tagline">Connecting Public Health.</p>
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                        <span class="brand-mark brand-mark--footer">
+                            <img src="main_logo.png" alt="" width="44" height="44">
+                        </span>
+                        <span class="brand-word brand-word--footer">The <em>PHive</em></span>
+                    </div>
+                    <p class="footer-tagline">Connecting Public Health.<br>Built for students, by students — shaping the next generation of global health leaders.</p>
+
+                    <div class="footer-socials">
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--ig" aria-label="Instagram">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            Instagram
+                        </a>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--fb" aria-label="Facebook">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            Facebook
+                        </a>
+                        <a href="#" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--li" aria-label="LinkedIn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="mailto:scoph@medsin-nusmsa.org" class="footer-social-btn footer-social-btn--em" aria-label="Email">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Email Us
+                        </a>
+                    </div>
                 </div>
 
-                <nav class="footer-nav" aria-label="Footer">
+                <!-- Explore Links -->
+                <nav class="footer-nav" aria-label="Footer navigation">
                     <div class="footer-nav-col">
                         <p class="footer-nav-head">Explore</p>
                         <a href="#news">Health News</a>
@@ -5404,27 +6444,53 @@
                         <a href="#about">About the PHive</a>
                     </div>
                     <div class="footer-nav-col">
-                        <p class="footer-nav-head">Connect</p>
-                        <a href="#" target="_blank" rel="noopener">Instagram</a>
-                        <a href="#" target="_blank" rel="noopener">Facebook</a>
-                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="mailto:scoph@medsin-nusmsa.org">scoph@medsin-nusmsa.org</a>
+                        <p class="footer-nav-head">Tools & Features</p>
+                        <a href="#ai-tools">AI Health Intelligence</a>
+                        <a href="#pulse">Global Health Hub</a>
+                        <a href="#explore">Hex Colony</a>
+                        <a href="#hero">Back to Top ↑</a>
                     </div>
                 </nav>
 
+                <!-- Affiliation -->
                 <div class="footer-orgs">
                     <p class="footer-nav-head">Affiliated with</p>
                     <div class="footer-logos">
-                        <img src="NUSMSA.png" alt="SCOPH — Standing Committee on Public Health"
-                            class="footer-logo footer-logo--scoph">
+                        <div class="footer-logo-card">
+                            <img src="NUSMSA.png" alt="SCOPH — Standing Committee on Public Health" class="footer-logo footer-logo--scoph">
+                            <span class="footer-logo-label">SCOPH<br>MEDSIN‑NUSMSA</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 28px;">
+                        <p class="footer-nav-head">Contact</p>
+                        <a href="mailto:scoph@medsin-nusmsa.org" style="font-size:0.82rem; color:rgba(251,248,243,0.38); word-break:break-all; display:block; margin-top:6px; transition: color 0.2s ease;">scoph@medsin-nusmsa.org</a>
+                    </div>
+                    <div style="margin-top: 24px;">
+                        <p class="footer-nav-head">Developer</p>
+                        <a href="https://wa.me/201551357366" target="_blank" rel="noopener" class="footer-social-btn footer-social-btn--wa" aria-label="Contact developer on WhatsApp" style="margin-top: 8px; display: inline-flex;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.858L0 24l6.335-1.508A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.031-1.378l-.36-.214-3.733.889.913-3.645-.235-.374A9.857 9.857 0 012.118 12C2.118 6.538 6.538 2.118 12 2.118c5.463 0 9.882 4.42 9.882 9.882 0 5.463-4.42 9.882-9.882 9.882z"/>
+                            </svg>
+                            Contact Developer
+                        </a>
                     </div>
                 </div>
             </div>
 
+
             <div class="footer-bottom">
-                <p>&copy; <span id="footerYear"></span> SCOPH · MEDSIN‑NUSMSA. The PHive is a student-run initiative.
+                <div class="footer-bottom-left">
+                    <span>&copy; <span id="footerYear"></span> SCOPH · MEDSIN‑NUSMSA</span>
+                    <span class="footer-bottom-dot"></span>
+                    <span>Student-run initiative</span>
+                    <span class="footer-bottom-dot"></span>
+                    <span>Open to all health sciences students</span>
+                </div>
+                <p class="footer-signoff">
+                    <span class="footer-signoff-hex">🐝</span>
+                    One hive, many cells
                 </p>
-                <p class="footer-signoff">One hive, many cells 🐝</p>
             </div>
         </div>
     </footer>
@@ -6195,11 +7261,112 @@
                Tool 1: Public Health Report Generator
                Tool 2: Plain-Language Concept Explainer
                Tool 3: Research Abstract Summarizer & CASP Critique
+               Tool 4: AI Outbreak & Risk Matrix Planner
                ========================================================================== */
             (function initAiTools() {
 
                 function getAI() {
                     return (window.puter && window.puter.ai) ? window.puter.ai : null;
+                }
+
+                function applyLangInstruction(prompt) {
+                    var langSel = document.getElementById('aiGlobalLang');
+                    var lang = langSel ? langSel.value : 'en';
+                    if (lang === 'ar') {
+                        return prompt + '\n\nIMPORTANT: Write the entire response in clear, professional Arabic (اللغة العربية الفصيحة الخاصة بالصحة العامة والطب).';
+                    } else if (lang === 'fr') {
+                        return prompt + '\n\nIMPORTANT: Write the entire response in professional French (Français pour la santé publique).';
+                    } else if (lang === 'dual') {
+                        return prompt + '\n\nIMPORTANT: Write the main body in English, followed by a section titled "🇸🇩 ملخص تنفيذي باللغة العربية" containing a concise 3-4 sentence Arabic summary.';
+                    }
+                    return prompt;
+                }
+
+                function formatAiRichOutput(text) {
+                    if (!text) return '';
+                    var escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    var lines = escaped.split('\n');
+                    var htmlResult = [];
+
+                    lines.forEach(function(line) {
+                        var trimmed = line.trim();
+                        if (!trimmed) {
+                            htmlResult.push('<div class="ai-spacer"></div>');
+                            return;
+                        }
+
+                        // Headings: "1. Executive Summary", "### Title", "Header:", "Section 1:"
+                        var isHeading = /^(\d+[\.\)]\s+[A-Z\u0600-\u06FF]|#{1,4}\s+|[A-Z\u0600-\u06FF\s\d]{3,35}:)/.test(trimmed);
+                        if (isHeading) {
+                            var cleanHead = trimmed.replace(/^#{1,4}\s+/, '').replace(/\*\*([^*]+)\*\*/g, '$1');
+                            htmlResult.push(
+                                '<div class="ai-formatted-head">' +
+                                '<span class="ai-head-badge">❖</span>' +
+                                '<span>' + cleanHead + '</span>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Steps: "Step 1:", "1)", "1.", "- Step"
+                        var isStep = /^(\d+[\.\)]|Step\s+\d+:?|الخطوة\s+\d+:?)/i.test(trimmed);
+                        if (isStep) {
+                            var stepNumMatch = trimmed.match(/^(\d+[\.\)]|Step\s+\d+:?|الخطوة\s+\d+:?)/i);
+                            var stepNum = stepNumMatch ? stepNumMatch[0] : '•';
+                            var stepBody = trimmed.substring(stepNum.length).trim();
+                            stepBody = stepBody.replace(/\*\*([^*]+)\*\*/g, '<strong class="ai-bold-highlight">$1</strong>');
+                            htmlResult.push(
+                                '<div class="ai-step-card">' +
+                                '<span class="ai-step-num">' + stepNum + '</span>' +
+                                '<div class="ai-step-content">' + stepBody + '</div>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Bullet Points: "- ", "* ", "• "
+                        var isBullet = /^[\-\*\•]\s+/.test(trimmed);
+                        if (isBullet) {
+                            var bulletText = trimmed.replace(/^[\-\*\•]\s+/, '');
+                            bulletText = bulletText.replace(/\*\*([^*]+)\*\*/g, '<strong class="ai-bold-highlight">$1</strong>');
+                            htmlResult.push(
+                                '<div class="ai-bullet-item">' +
+                                '<span class="ai-bullet-hex">◆</span>' +
+                                '<div>' + bulletText + '</div>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Paragraph with bold highlights
+                        var formattedPara = trimmed.replace(/\*\*([^*]+)\*\*/g, '<strong class="ai-bold-highlight">$1</strong>');
+                        htmlResult.push('<p class="ai-para">' + formattedPara + '</p>');
+                    });
+
+                    return '<div class="ai-formatted-output" dir="auto">' + htmlResult.join('') + '</div>';
+                }
+
+                function attachResultToolbar(resultEl, text) {
+                    var richContent = formatAiRichOutput(text);
+                    var toolbarHtml = 
+                        '<div class="ai-result-toolbar">' +
+                        '<span style="font-weight:600; font-family:var(--font-mono); color:var(--hive-amber-2);">⚡ Puter AI Intelligence Engine</span>' +
+                        '<div class="ai-result-actions">' +
+                        '<button class="ai-action-btn copy-btn" type="button">📋 Copy Output</button>' +
+                        '</div>' +
+                        '</div>' + richContent;
+
+                    resultEl.innerHTML = toolbarHtml;
+
+                    var copyBtn = resultEl.querySelector('.copy-btn');
+                    if (copyBtn) {
+                        copyBtn.addEventListener('click', function() {
+                            navigator.clipboard.writeText(text).then(function() {
+                                copyBtn.textContent = '✓ Copied!';
+                                setTimeout(function() { copyBtn.textContent = '📋 Copy Output'; }, 2000);
+                            });
+                        });
+                    }
                 }
 
                 function streamToResult(resultEl, btn, btnLabel, prompt) {
@@ -6213,22 +7380,25 @@
                     var origLabel = btn.querySelector('span') ? btn.querySelector('span').textContent : btnLabel;
                     if (btn.querySelector('span')) btn.querySelector('span').textContent = 'Generating…';
                     resultEl.hidden = false;
-                    resultEl.textContent = '';
+                    resultEl.textContent = '⚡ Requesting AI analysis…';
 
-                    // Streaming-style token append
+                    var finalPrompt = applyLangInstruction(prompt);
                     var fullText = '';
-                    ai.chat(prompt, { stream: true }).then(function (stream) {
+
+                    ai.chat(finalPrompt, { stream: true }).then(function (stream) {
                         var reader = stream.getReader ? stream.getReader() : null;
                         if (!reader) {
-                            // fallback: non-streaming
-                            return ai.chat(prompt).then(function (resp) {
+                            return ai.chat(finalPrompt).then(function (resp) {
                                 var t = (resp && resp.message && resp.message.content) ? resp.message.content : (typeof resp === 'string' ? resp : JSON.stringify(resp));
-                                resultEl.textContent = t;
+                                attachResultToolbar(resultEl, t);
                             });
                         }
                         function readChunk() {
                             return reader.read().then(function (res) {
-                                if (res.done) return;
+                                if (res.done) {
+                                    attachResultToolbar(resultEl, fullText);
+                                    return;
+                                }
                                 var chunk = res.value;
                                 if (chunk && chunk.choices && chunk.choices[0] && chunk.choices[0].delta && chunk.choices[0].delta.content) {
                                     fullText += chunk.choices[0].delta.content;
@@ -6240,10 +7410,9 @@
                         }
                         return readChunk();
                     }).catch(function () {
-                        // Fallback without streaming
-                        return ai.chat(prompt).then(function (resp) {
+                        return ai.chat(finalPrompt).then(function (resp) {
                             var t = (resp && resp.message && resp.message.content) ? resp.message.content : (typeof resp === 'string' ? resp : String(resp));
-                            resultEl.textContent = t;
+                            attachResultToolbar(resultEl, t);
                         }).catch(function (e2) {
                             resultEl.textContent = '⚠ AI error: ' + (e2.message || 'Unknown. Try again shortly.');
                         });
@@ -6259,7 +7428,6 @@
                 var reportResult = document.getElementById('aiReportResult');
                 var reportBtn = document.getElementById('aiReportSubmit');
 
-                // Preset chips → fill textarea
                 document.querySelectorAll('#reportPresets .ai-preset-chip').forEach(function (chip) {
                     chip.addEventListener('click', function () {
                         if (reportInput) reportInput.value = chip.dataset.preset || '';
@@ -6279,7 +7447,7 @@
                             student: 'Write as a student-friendly study summary with: Key Concepts, Why It Matters, Essential Statistics, and Study Tips. Use plain language.',
                             advocacy: 'Write as a public health advocacy memo: Problem Statement, Evidence Base, Call to Action, and Proposed Next Steps. Persuasive and evidence-driven.'
                         };
-                        var prompt = 'You are a senior public health expert writing for medical students at a public health student association (SCOPH, MEDSIN-NUSMSA, Sudan). ' + (fmtInstructions[fmt_type] || fmtInstructions.report) + '\n\nTopic: ' + topic + '\n\nUse relevant statistics, WHO guidelines, and evidence-based recommendations where applicable. Be professional yet accessible.';
+                        var prompt = 'You are a senior public health expert writing for medical students at SCOPH, MEDSIN-NUSMSA, Sudan. ' + (fmtInstructions[fmt_type] || fmtInstructions.report) + '\n\nTopic: ' + topic + '\n\nIMPORTANT RULES:\n- Use WHO guidelines and evidence-based data where applicable.\n- Be concise and professional. Maximum 400 words total.\n- Do NOT ask any follow-up questions. Do NOT suggest what the user could explore next. End your response after the final recommendation.';
                         streamToResult(reportResult, reportBtn, 'Generate Report', prompt);
                     });
                 }
@@ -6308,7 +7476,7 @@
                             basic: 'for a complete beginner with no medical background. Avoid jargon. Use simple analogies and everyday examples.',
                             clinical: 'for a clinical-year medical student or junior doctor. Include clinical applications, relevant calculations or thresholds, and references to major guidelines.'
                         };
-                        var prompt = 'You are a brilliant public health educator known for clear, engaging explanations. Explain the following public health concept ' + (levelInstr[level] || levelInstr.student) + '\n\nConcept: "' + concept + '"\n\nStructure your answer as: 1) Simple Definition (1-2 sentences), 2) Plain-Language Explanation (2-3 paragraphs), 3) Why It Matters in Public Health Practice, 4) A Memorable Analogy or Example. Keep it engaging and educational.';
+                        var prompt = 'You are a brilliant public health educator. Explain the following concept ' + (levelInstr[level] || levelInstr.student) + '\n\nConcept: "' + concept + '"\n\nStructure EXACTLY as:\n1. Simple Definition (1-2 sentences)\n2. Plain-Language Explanation (2 short paragraphs)\n3. Why It Matters in Public Health (3-4 sentences)\n4. A Memorable Analogy or Real-World Example (2-3 sentences)\n\nIMPORTANT RULES:\n- Maximum 300 words total.\n- Do NOT ask any questions at the end. Do NOT say "Would you like..." or "Feel free to ask". End after the analogy.';
                         streamToResult(explainerResult, explainerBtn, 'Explain Concept', prompt);
                     });
                 }
@@ -6333,8 +7501,30 @@
                         if (!abstract) { if (summarizerResult) { summarizerResult.hidden = false; summarizerResult.textContent = 'Please paste an abstract first.'; } return; }
                         var withCASP = document.getElementById('aiSummarizerCAPS') && document.getElementById('aiSummarizerCAPS').checked;
                         var caspBlock = withCASP ? '\n\n5. CASP Quick Checklist:\n   - Is there a clear research question? (Yes/No/Unclear)\n   - Is the study design appropriate? (Yes/No/Unclear)\n   - Were participants adequately described? (Yes/No/Unclear)\n   - Are the results valid and precise? (Yes/No/Unclear)\n   - Could the results be applied in practice? (Yes/No/Unclear)' : '';
-                        var prompt = 'You are a critical appraisal expert and public health professor. A medical student has submitted the following research abstract for review. Provide a structured analysis:\n\n1. Plain-Language Summary (2-3 sentences anyone can understand)\n2. Key Findings (bullet points)\n3. Study Strengths (2-3 points)\n4. Limitations & Potential Biases (2-3 points)\n5. Public Health Relevance — what this means for students and practitioners' + caspBlock + '\n\nAbstract:\n"""\n' + abstract + '\n"""\n\nBe constructive, educational, and use terminology appropriate for medical students.';
+                        var prompt = 'You are a critical appraisal expert and public health professor. Analyze the research abstract below.\n\nProvide EXACTLY this structure:\n1. Plain-Language Summary (2 sentences)\n2. Key Findings (3-4 bullet points)\n3. Strengths (2 bullet points)\n4. Limitations (2 bullet points)\n5. Public Health Relevance (2-3 sentences)' + caspBlock + '\n\nAbstract:\n"""\n' + abstract + '\n"""\n\nIMPORTANT RULES:\n- Maximum 350 words total.\n- Do NOT ask follow-up questions. Do NOT offer to do more analysis. End after Public Health Relevance.';
                         streamToResult(summarizerResult, summarizerBtn, 'Summarize & Critique', prompt);
+                    });
+                }
+
+                /* ---- Tool 4: Outbreak & Risk Matrix Planner ---- */
+                var outbreakForm = document.getElementById('aiOutbreakForm');
+                var outbreakInput = document.getElementById('aiOutbreakInput');
+                var outbreakResult = document.getElementById('aiOutbreakResult');
+                var outbreakBtn = document.getElementById('aiOutbreakSubmit');
+
+                document.querySelectorAll('#outbreakPresets .ai-preset-chip').forEach(function (chip) {
+                    chip.addEventListener('click', function () {
+                        if (outbreakInput && chip.dataset.presetOutbreak) outbreakInput.value = chip.dataset.presetOutbreak;
+                        outbreakInput && outbreakInput.focus();
+                    });
+                });
+
+                if (outbreakForm) {
+                    outbreakForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        var scenario = (outbreakInput ? outbreakInput.value.trim() : '') || 'Dengue fever outbreak during flood season';
+                        var prompt = 'You are an emergency outbreak response specialist. Provide a concise action matrix for this outbreak scenario.\n\nScenario: "' + scenario + '"\n\nStructure EXACTLY into 5 sections:\n1. 🚨 Risk Level (High/Moderate/Low + 2-sentence justification)\n2. 🔬 Case Definition Criteria (3-4 bullet points)\n3. 🏥 Immediate Actions — First 48 hours (4-5 bullet points)\n4. 👥 Community Engagement (3 bullet points)\n5. 📊 KPIs to Track (3-4 bullet points)\n\nIMPORTANT RULES:\n- Maximum 400 words total.\n- Be direct and action-oriented.\n- Do NOT ask follow-up questions. Do NOT offer further help at the end. End after the KPIs section.';
+                        streamToResult(outbreakResult, outbreakBtn, 'Generate Response Plan', prompt);
                     });
                 }
 
@@ -6379,25 +7569,44 @@
 
             var NEWS_WORLD_ITEMS = [
                 {
-                    tag: 'منظمة الصحة العالمية · WHO Update',
-                    title: 'تحديثات الأمراض غير السارية 2026 — WHO 2026 noncommunicable disease targets',
-                    excerpt: 'شرح مبسط لاستراتيجية منظمة الصحة العالمية لمكافحة الأمراض المزمنة وأهميتها لطلاب الطب. A breakdown of WHO NCD strategy for future clinicians.',
-                    meta: 'SCOPH Editorial · 2026',
-                    read: '6 min read'
+                    tag: 'Vaccines · Breakthrough',
+                    emoji: '🧬',
+                    title: 'A New Tuberculosis Vaccine Brings New Hope',
+                    excerpt: 'The M72/AS01E vaccine reached advanced clinical trials in 2026, marking one of the biggest breakthroughs in TB prevention in decades. The Serum Institute of India announced plans to manufacture it — potentially becoming the first new TB vaccine in over 100 years.',
+                    meta: 'Reuters · 2026',
+                    read: '4 min read',
+                    image: 'gb-news-1.jpeg',
+                    ref: 'Reuters. (2026). Serum Institute partners to manufacture the M72/AS01E tuberculosis vaccine.'
                 },
                 {
-                    tag: 'تنبيه موسمي · Seasonal Alert',
-                    title: 'الوقاية من حمى الضنك — Dengue prevention ahead of peak transmission season',
-                    excerpt: 'إرشادات التوعية والوقاية من الأمراض المنقولة بالحشرات مع ارتفاع درجات الحرارة. Prevention basics for clinics during peak transmission season.',
-                    meta: 'SCOPH Editorial · 2026',
-                    read: '4 min read'
+                    tag: 'AI & Medicine · Technology',
+                    emoji: '🤖',
+                    title: 'Artificial Intelligence is Changing Modern Medicine',
+                    excerpt: 'AI is rapidly transforming healthcare — from analyzing medical images and diagnosing diseases to discovering new medicines. These tools improve accuracy, reduce waiting times, and help doctors make faster clinical decisions.',
+                    meta: 'The Week · 2026',
+                    read: '5 min read',
+                    image: 'gb-news-2.jpeg',
+                    ref: 'The Week. (2026). How Artificial Intelligence is Transforming Healthcare.'
                 },
                 {
-                    tag: 'الصحة العالمية · Global Health',
-                    title: 'تنبيهات الإجهاد الحراري — Heat-health advisories for health students',
-                    excerpt: 'دليل سريع لمراحل التنبيه للضربات الحرارية وكيفية التعامل معها في المراكز الصحية. Stages of heat advisories and practical clinical management.',
-                    meta: 'SCOPH Editorial · 2026',
-                    read: '5 min read'
+                    tag: 'Cancer Research · Immunotherapy',
+                    emoji: '🧬',
+                    title: 'New Progress in Cancer Immunotherapy',
+                    excerpt: 'Major progress in CAR-T cell therapy was reported in 2026 after promising lab results showed the treatment could effectively target difficult-to-treat solid tumors, opening new possibilities for patients with limited options.',
+                    meta: 'Herald Sun · 2026',
+                    read: '5 min read',
+                    image: 'gb-news-3.jpeg',
+                    ref: 'Herald Sun. (2026). New CAR-T Cell Therapy Shows Promise Against Solid Tumors.'
+                },
+                {
+                    tag: 'Public Health · Alert',
+                    emoji: '💉',
+                    title: 'Global Rise in Measles Cases',
+                    excerpt: 'Health organizations reported a rise in measles outbreaks across several countries in 2026, linked mainly to declining childhood vaccination rates. Authorities stress that vaccination remains the safest and most effective protection.',
+                    meta: 'Scientific American · 2026',
+                    read: '4 min read',
+                    image: 'gb-news-4.jpeg',
+                    ref: 'Scientific American. (2026). Global Measles Resurgence and the Importance of Vaccination.'
                 }
             ];
 
@@ -6538,6 +7747,47 @@
                 }).join('');
 
                 container.innerHTML = html;
+            }
+
+            /* ---- World News: image-card grid renderer ---- */
+            function renderWorldNewsCards() {
+                var container = document.getElementById('newsWorldCards');
+                if (!container) return;
+
+                var cards = NEWS_WORLD_ITEMS.map(function (item, idx) {
+                    var cardId = 'newsWorldCards-' + idx;
+                    var isSaved = isBookmarked(cardId);
+                    return (
+                        '<article class="gn-card content-card" data-card-id="' + cardId + '" data-card-title="' + escapeAttr(item.title) + '">' +
+                        '<div class="gn-card-img">' +
+                        '<img src="' + item.image + '" alt="' + escapeAttr(item.title) + '" loading="lazy">' +
+                        '<div class="gn-card-img-overlay"></div>' +
+                        '</div>' +
+                        '<div class="gn-card-body">' +
+                        '<div class="gn-card-tag-row">' +
+                        '<span class="gn-card-tag"><span class="gn-card-emoji">' + item.emoji + '</span>' + escapeAttr(item.tag) + '</span>' +
+                        '<button class="bookmark-btn ' + (isSaved ? 'is-bookmarked' : '') + '" data-bm-id="' + cardId + '" data-bm-title="' + escapeAttr(item.title) + '" data-bm-type="Article" aria-label="Save item">' +
+                        '<svg width="15" height="15" viewBox="0 0 20 20" fill="' + (isSaved ? 'currentColor' : 'none') + '"><path d="M5 3.5C5 2.67 5.67 2 6.5 2H13.5C14.33 2 15 2.67 15 3.5V18L10 14.5L5 18V3.5Z" stroke="currentColor" stroke-width="1.8"/></svg>' +
+                        '</button>' +
+                        '</div>' +
+                        '<h3 class="gn-card-title">' + item.title + '</h3>' +
+                        '<p class="gn-card-excerpt">' + item.excerpt + '</p>' +
+                        '<p class="gn-card-ref">' + item.ref + '</p>' +
+                        '<div class="gn-card-footer">' +
+                        '<span class="gn-card-meta">' + item.meta + ' &middot; ' + item.read + '</span>' +
+                        '<button type="button" class="card-explain-btn" data-explain-target="' + cardId + '">' +
+                        '<span class="card-explain-hex" aria-hidden="true">' +
+                        '<svg width="13" height="13" viewBox="0 0 22 22" fill="none"><path d="M11 2 2 6.5v9L11 20l9-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
+                        '</span><span>Explain with AI</span>' +
+                        '</button>' +
+                        '</div>' +
+                        '<div class="card-explain-panel" id="explain-' + cardId + '" hidden></div>' +
+                        '</div>' +
+                        '</article>'
+                    );
+                }).join('');
+
+                container.innerHTML = '<div class="gn-grid">' + cards + '</div>';
             }
 
             function escapeAttr(str) {
@@ -6744,7 +7994,7 @@
             })();
 
             renderCards('newsSudanCards', NEWS_SUDAN_ITEMS, 'news');
-            renderCards('newsWorldCards', NEWS_WORLD_ITEMS, 'news');
+            renderWorldNewsCards();
             renderCards('researchCards', RESEARCH_ITEMS, 'research');
             renderCards('articleCards', ARTICLE_ITEMS, 'articles');
             renderOpportunities('all');
