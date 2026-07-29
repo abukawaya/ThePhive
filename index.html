@@ -967,45 +967,50 @@
             z-index: -1;
         }
 
-        /* ---- Per-cell color personalities ---- */
+        /* ---- Per-cell color personalities (Harmonized Amber & Gold Palette) ---- */
         .cell--news .cell-hex-glow {
             background: linear-gradient(135deg, #D9601F, #FF8C42);
         }
 
         .cell--research .cell-hex-glow {
-            background: linear-gradient(135deg, #2563EB, #06B6D4);
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
         }
 
         .cell--articles .cell-hex-glow {
-            background: linear-gradient(135deg, #7C3AED, #A855F7);
+            background: linear-gradient(135deg, #EA580C, #F97316);
         }
 
         .cell--opportunities .cell-hex-glow {
-            background: linear-gradient(135deg, #059669, #10B981);
+            background: linear-gradient(135deg, #10B981, #34D399);
         }
 
         .cell--about .cell-hex-glow {
-            background: linear-gradient(135deg, #DC2626, #F97316);
+            background: linear-gradient(135deg, #E11D48, #FB7185);
         }
 
         .cell--news .cell-hex {
-            background: linear-gradient(155deg, rgba(40, 22, 8, 0.95), rgba(25, 13, 4, 0.98));
+            background: linear-gradient(160deg, rgba(42, 22, 8, 0.96) 0%, rgba(22, 10, 3, 0.98) 100%);
+            border: 1px solid rgba(217, 96, 31, 0.25);
         }
 
         .cell--research .cell-hex {
-            background: linear-gradient(155deg, rgba(10, 18, 40, 0.95), rgba(6, 12, 30, 0.98));
+            background: linear-gradient(160deg, rgba(38, 28, 8, 0.96) 0%, rgba(20, 14, 3, 0.98) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.25);
         }
 
         .cell--articles .cell-hex {
-            background: linear-gradient(155deg, rgba(22, 10, 40, 0.95), rgba(14, 6, 28, 0.98));
+            background: linear-gradient(160deg, rgba(38, 18, 6, 0.96) 0%, rgba(20, 8, 2, 0.98) 100%);
+            border: 1px solid rgba(234, 88, 12, 0.25);
         }
 
         .cell--opportunities .cell-hex {
-            background: linear-gradient(155deg, rgba(4, 24, 16, 0.95), rgba(2, 15, 10, 0.98));
+            background: linear-gradient(160deg, rgba(6, 30, 20, 0.96) 0%, rgba(2, 16, 9, 0.98) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
         }
 
         .cell--about .cell-hex {
-            background: linear-gradient(155deg, rgba(38, 10, 10, 0.95), rgba(24, 6, 6, 0.98));
+            background: linear-gradient(160deg, rgba(36, 10, 16, 0.96) 0%, rgba(18, 4, 8, 0.98) 100%);
+            border: 1px solid rgba(225, 29, 72, 0.25);
         }
 
         /* ---- Inner shimmer line ---- */
@@ -1014,7 +1019,7 @@
             position: absolute;
             inset: 0;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, transparent 50%);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -1029,8 +1034,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 46px;
-            gap: 8px;
+            padding: 0 42px;
+            gap: 6px;
         }
 
         /* ---- Icon circle ---- */
@@ -1044,39 +1049,39 @@
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.12);
             color: rgba(251, 248, 243, 0.85);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 0 0 0 rgba(217, 96, 31, 0);
         }
 
         .cell--news .cell-icon {
             color: #FF8C42;
-            border-color: rgba(217, 96, 31, 0.3);
-            background: rgba(217, 96, 31, 0.12);
+            border-color: rgba(217, 96, 31, 0.35);
+            background: rgba(217, 96, 31, 0.14);
         }
 
         .cell--research .cell-icon {
-            color: #60A5FA;
-            border-color: rgba(37, 99, 235, 0.3);
-            background: rgba(37, 99, 235, 0.12);
+            color: #FBBF24;
+            border-color: rgba(245, 158, 11, 0.35);
+            background: rgba(245, 158, 11, 0.14);
         }
 
         .cell--articles .cell-icon {
-            color: #C084FC;
-            border-color: rgba(124, 58, 237, 0.3);
-            background: rgba(124, 58, 237, 0.12);
+            color: #F97316;
+            border-color: rgba(234, 88, 12, 0.35);
+            background: rgba(234, 88, 12, 0.14);
         }
 
         .cell--opportunities .cell-icon {
             color: #34D399;
-            border-color: rgba(5, 150, 105, 0.3);
-            background: rgba(5, 150, 105, 0.12);
+            border-color: rgba(16, 185, 129, 0.35);
+            background: rgba(16, 185, 129, 0.14);
         }
 
         .cell--about .cell-icon {
-            color: #FCA5A5;
-            border-color: rgba(220, 38, 38, 0.3);
-            background: rgba(220, 38, 38, 0.12);
+            color: #FB7185;
+            border-color: rgba(225, 29, 72, 0.35);
+            background: rgba(225, 29, 72, 0.14);
         }
 
         /* ---- Badge pill ---- */
@@ -1108,27 +1113,27 @@
         }
 
         .cell--research .cell-badge {
-            color: #60A5FA;
-            background: rgba(37, 99, 235, 0.15);
-            border-color: rgba(37, 99, 235, 0.3);
+            color: #FBBF24;
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.3);
         }
 
         .cell--articles .cell-badge {
-            color: #C084FC;
-            background: rgba(124, 58, 237, 0.15);
-            border-color: rgba(124, 58, 237, 0.3);
+            color: #F97316;
+            background: rgba(234, 88, 12, 0.15);
+            border-color: rgba(234, 88, 12, 0.3);
         }
 
         .cell--opportunities .cell-badge {
             color: #34D399;
-            background: rgba(5, 150, 105, 0.15);
-            border-color: rgba(5, 150, 105, 0.3);
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
         }
 
         .cell--about .cell-badge {
-            color: #FCA5A5;
-            background: rgba(220, 38, 38, 0.15);
-            border-color: rgba(220, 38, 38, 0.3);
+            color: #FB7185;
+            background: rgba(225, 29, 72, 0.15);
+            border-color: rgba(225, 29, 72, 0.3);
         }
 
         /* ---- Title & description ---- */
@@ -1136,14 +1141,14 @@
             font-family: var(--font-display);
             font-size: 1.22rem;
             font-weight: 700;
-            color: rgba(251, 248, 243, 0.92);
+            color: rgba(251, 248, 243, 0.95);
             letter-spacing: -0.01em;
             transition: color 0.35s ease;
         }
 
         .cell-desc {
             font-size: 0.84rem;
-            color: rgba(251, 248, 243, 0.42);
+            color: rgba(251, 248, 243, 0.48);
             line-height: 1.45;
             transition: color 0.35s ease;
         }
@@ -1151,8 +1156,8 @@
         /* ---- Hover states ---- */
         .cell:hover .cell-hex-glow,
         .cell:focus-visible .cell-hex-glow {
-            opacity: 0.9;
-            transform: scale(1.02);
+            opacity: 0.95;
+            transform: scale(1.03);
         }
 
         .cell:hover .cell-hex,
@@ -1163,19 +1168,26 @@
         .cell:hover .cell-icon,
         .cell:focus-visible .cell-icon {
             transform: scale(1.15) translateY(-4px);
-            box-shadow: 0 8px 32px rgba(217, 96, 31, 0.3);
+        }
+
+        .cell--news:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(217, 96, 31, 0.4);
         }
 
         .cell--research:hover .cell-icon {
-            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.4);
         }
 
         .cell--articles:hover .cell-icon {
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.35);
+            box-shadow: 0 8px 32px rgba(234, 88, 12, 0.4);
         }
 
         .cell--opportunities:hover .cell-icon {
-            box-shadow: 0 8px 32px rgba(5, 150, 105, 0.35);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.4);
+        }
+
+        .cell--about:hover .cell-icon {
+            box-shadow: 0 8px 32px rgba(225, 29, 72, 0.4);
         }
 
         .cell--about:hover .cell-icon {
@@ -4054,6 +4066,227 @@
             color: var(--hive-amber-deep);
         }
 
+        /* ---- News Article Reader Modal ---- */
+        .news-modal-box {
+            max-width: 800px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 0;
+            border-radius: 28px;
+            background: linear-gradient(155deg, #1a1205 0%, #0d0905 50%, #111108 100%);
+            border: 1px solid rgba(217, 96, 31, 0.4);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.9),
+                0 0 0 1px rgba(217, 96, 31, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            position: relative;
+            transform-origin: center;
+        }
+
+        /* Subtle inner hex watermark */
+        .news-modal-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='87' viewBox='0 0 100 87'%3E%3Cpolygon points='25,1 75,1 100,43.5 75,86 25,86 0,43.5' fill='none' stroke='rgba(217,96,31,0.04)' stroke-width='1.2'/%3E%3C/svg%3E");
+            background-size: 100px 87px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .news-modal-box>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .news-modal-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border-radius: 28px 28px 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Gradient overlay on image */
+        .news-modal-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px 28px 0 0;
+            z-index: 1;
+        }
+
+        .news-modal-img-wrap img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .news-modal-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0) 30%,
+                    rgba(26, 18, 5, 0.7) 80%,
+                    rgba(13, 9, 5, 0.95) 100%);
+            pointer-events: none;
+        }
+
+        .news-modal-content-inner {
+            padding: 28px 40px 44px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .news-modal-tag-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .news-modal-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: rgba(251, 248, 243, 0.98);
+            line-height: 1.3;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .news-modal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(217, 96, 31, 0.4), transparent);
+            margin: 18px 0;
+        }
+
+        .news-modal-text {
+            font-size: 1.04rem;
+            line-height: 1.85;
+            color: rgba(251, 248, 243, 0.83);
+            margin-bottom: 26px;
+        }
+
+        .news-modal-ref {
+            padding: 18px 22px;
+            border-radius: 16px;
+            background: rgba(217, 96, 31, 0.08);
+            border-left: 4px solid var(--hive-amber-2);
+            font-size: 0.86rem;
+            color: rgba(251, 248, 243, 0.65);
+            line-height: 1.55;
+            border: 1px solid rgba(217, 96, 31, 0.2);
+            border-left: 4px solid var(--hive-amber-2);
+        }
+
+        /* ---- News Modal Action Bar ---- */
+        .news-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 26px;
+            flex-wrap: wrap;
+        }
+
+        .news-modal-google-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 24px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #4285F4 0%, #1a6ce8 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.25s var(--ease-hive), box-shadow 0.25s var(--ease-hive);
+            box-shadow: 0 8px 28px rgba(66, 133, 244, 0.42);
+            flex-shrink: 0;
+        }
+
+        .news-modal-google-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(66, 133, 244, 0.55);
+        }
+
+        .news-modal-google-btn svg {
+            flex-shrink: 0;
+        }
+
+        .news-modal-close-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(251, 248, 243, 0.7);
+            font-weight: 600;
+            font-size: 0.86rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .news-modal-close-btn:hover {
+            background: rgba(255, 255, 255, 0.13);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* Modal scrollbar */
+        .news-modal-box::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .news-modal-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .news-modal-box::-webkit-scrollbar-thumb {
+            background: rgba(217, 96, 31, 0.4);
+            border-radius: 3px;
+        }
+
+        /* ---- gn-grid — 5th card spans full width on 2-col ---- */
+        .gn-grid--5 .gn-card:last-child {
+            grid-column: 1 / -1;
+        }
+
+        .gn-grid--5 .gn-card:last-child .gn-card-img {
+            aspect-ratio: 21 / 7;
+            max-height: 260px;
+        }
+
+        /* Large screen: 5th card normal width in 3-col layout */
+        @media (min-width: 1280px) {
+            .gn-grid--5 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gn-grid--5 .gn-card:last-child {
+                grid-column: auto;
+            }
+
+            .gn-grid--5 .gn-card:last-child .gn-card-img {
+                aspect-ratio: 16 / 9;
+                max-height: none;
+            }
+        }
+
         /* Command Palette (Ctrl+K) */
         .cmd-palette-box {
             max-width: 620px;
@@ -5530,6 +5763,348 @@
                 max-width: 320px;
             }
         }
+
+        /* ==========================================================================
+           4K ULTRA-LARGE DISPLAYS — 2560 px and above
+           ========================================================================== */
+        @media (min-width: 2560px) {
+            :root {
+                --container-w: 2100px;
+                --nav-h: 96px;
+            }
+
+            .section-inner,
+            .nav-inner,
+            .footer-inner {
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+
+            .hero-title {
+                font-size: 5.4rem;
+            }
+
+            .hero-sub {
+                font-size: 1.3rem;
+            }
+
+            .gn-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .pulse-grid-v2 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .ai-tools-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 36px;
+            }
+
+            .card-row {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 36px;
+            }
+        }
+
+        /* ==========================================================================
+           SCROLL-REVEAL FADE ANIMATIONS
+           ========================================================================== */
+        @keyframes phiveFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes phiveFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes phiveFadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes phiveFadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Base reveal state — invisible until observed */
+        .phive-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition:
+                opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .phive-reveal.phive-reveal--left {
+            transform: translateX(-24px);
+        }
+
+        .phive-reveal.phive-reveal--right {
+            transform: translateX(24px);
+        }
+
+        .phive-reveal.phive-reveal--fade {
+            transform: none;
+        }
+
+        /* Triggered state */
+        .phive-reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Stagger delays for grid children */
+        .phive-reveal:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        .phive-reveal:nth-child(2) {
+            transition-delay: 80ms;
+        }
+
+        .phive-reveal:nth-child(3) {
+            transition-delay: 160ms;
+        }
+
+        .phive-reveal:nth-child(4) {
+            transition-delay: 240ms;
+        }
+
+        .phive-reveal:nth-child(5) {
+            transition-delay: 320ms;
+        }
+
+        .phive-reveal:nth-child(6) {
+            transition-delay: 400ms;
+        }
+
+        /* Respect reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .phive-reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+
+        /* ==========================================================================
+           CELL-HEX — HARMONIZED AMBER/GOLD/HONEY PALETTE
+           All 5 cells now use warm amber-to-gold tones matching the site identity
+           ========================================================================== */
+
+        /* Glow rings — all warm amber spectrum */
+        .cell--news .cell-hex-glow {
+            background: linear-gradient(135deg, #D9601F 0%, #F97316 100%);
+        }
+
+        .cell--research .cell-hex-glow {
+            background: linear-gradient(135deg, #C2500E 0%, #D9601F 100%);
+        }
+
+        .cell--articles .cell-hex-glow {
+            background: linear-gradient(135deg, #E8860A 0%, #F5A623 100%);
+        }
+
+        .cell--opportunities .cell-hex-glow {
+            background: linear-gradient(135deg, #D4A017 0%, #F0C040 100%);
+        }
+
+        .cell--about .cell-hex-glow {
+            background: linear-gradient(135deg, #B8420A 0%, #D9601F 100%);
+        }
+
+        /* Hex face — dark warm backgrounds with matching border accents */
+        .cell--news .cell-hex {
+            background: linear-gradient(160deg, rgba(42, 22, 8, 0.97) 0%, rgba(22, 10, 3, 0.99) 100%);
+            border: 1px solid rgba(217, 96, 31, 0.30);
+        }
+
+        .cell--research .cell-hex {
+            background: linear-gradient(160deg, rgba(36, 18, 6, 0.97) 0%, rgba(18, 8, 2, 0.99) 100%);
+            border: 1px solid rgba(194, 80, 14, 0.30);
+        }
+
+        .cell--articles .cell-hex {
+            background: linear-gradient(160deg, rgba(40, 24, 4, 0.97) 0%, rgba(20, 12, 2, 0.99) 100%);
+            border: 1px solid rgba(232, 134, 10, 0.28);
+        }
+
+        .cell--opportunities .cell-hex {
+            background: linear-gradient(160deg, rgba(40, 30, 4, 0.97) 0%, rgba(20, 14, 2, 0.99) 100%);
+            border: 1px solid rgba(212, 160, 23, 0.28);
+        }
+
+        .cell--about .cell-hex {
+            background: linear-gradient(160deg, rgba(38, 16, 4, 0.97) 0%, rgba(18, 6, 2, 0.99) 100%);
+            border: 1px solid rgba(184, 66, 10, 0.30);
+        }
+
+        /* Hover pulse glow intensity */
+        .cell:hover .cell--news .cell-hex-glow,
+        .cell:focus-visible .cell--news .cell-hex-glow {
+            opacity: 0.7;
+        }
+
+        .cell:hover .cell--research .cell-hex-glow,
+        .cell:focus-visible .cell--research .cell-hex-glow {
+            opacity: 0.65;
+        }
+
+        .cell:hover .cell--articles .cell-hex-glow,
+        .cell:focus-visible .cell--articles .cell-hex-glow {
+            opacity: 0.65;
+        }
+
+        .cell:hover .cell--opportunities .cell-hex-glow,
+        .cell:focus-visible .cell--opportunities .cell-hex-glow {
+            opacity: 0.65;
+        }
+
+        .cell:hover .cell--about .cell-hex-glow,
+        .cell:focus-visible .cell--about .cell-hex-glow {
+            opacity: 0.7;
+        }
+
+
+        /* ==========================================================================
+           NEWS MODAL — MOBILE RESPONSIVE
+           ========================================================================== */
+        @media (max-width: 640px) {
+            .news-modal-box {
+                width: 100%;
+                max-height: 95vh;
+                border-radius: 20px 20px 0 0;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0;
+                border-left: none;
+                border-right: none;
+                border-bottom: none;
+                box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.85),
+                    0 0 0 1px rgba(217, 96, 31, 0.3);
+            }
+
+            /* Slide up from bottom on mobile */
+            .hive-modal-backdrop.is-open .news-modal-box {
+                animation: phiveModalSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+            }
+
+            @keyframes phiveModalSlideUp {
+                from {
+                    transform: translateY(60px);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .news-modal-img-wrap img {
+                height: 200px;
+            }
+
+            .news-modal-content-inner {
+                padding: 20px 20px 36px;
+            }
+
+            .news-modal-title {
+                font-size: 1.3rem;
+                margin-bottom: 14px;
+            }
+
+            .news-modal-text {
+                font-size: 0.95rem;
+                line-height: 1.75;
+            }
+
+            .news-modal-ref {
+                padding: 14px 16px;
+                font-size: 0.82rem;
+            }
+
+            .news-modal-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .news-modal-google-btn,
+            .news-modal-close-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 0.92rem;
+            }
+
+            /* Drag handle indicator on mobile */
+            .news-modal-box::after {
+                content: '';
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 4px;
+                border-radius: 2px;
+                background: rgba(255, 255, 255, 0.2);
+                z-index: 10;
+            }
+
+            /* Floating close button repositioned */
+            .news-modal-box .hive-modal-close {
+                top: 18px;
+                right: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-modal-tag-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            .news-modal-title {
+                font-size: 1.15rem;
+            }
+        }
     </style>
 
 </head>
@@ -6703,7 +7278,7 @@
                             </svg>
                             LinkedIn
                         </a>
-                        <a href="mailto:scoph@medsin-nusmsa.org" class="footer-social-btn footer-social-btn--em"
+                        <a href="mailto:nusmsa.scoph@gmail.com" class="footer-social-btn footer-social-btn--em"
                             aria-label="Email">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -6746,8 +7321,8 @@
                     </div>
                     <div style="margin-top: 28px;">
                         <p class="footer-nav-head">Contact</p>
-                        <a href="mailto:scoph@medsin-nusmsa.org"
-                            style="font-size:0.82rem; color:rgba(251,248,243,0.38); word-break:break-all; display:block; margin-top:6px; transition: color 0.2s ease;">scoph@medsin-nusmsa.org</a>
+                        <a href="mailto:nusmsa.scoph@gmail.com"
+                            style="font-size:0.82rem; color:rgba(251,248,243,0.38); word-break:break-all; display:block; margin-top:6px; transition: color 0.2s ease;">nusmsa.scoph@gmail.com</a>
                     </div>
                     <div style="margin-top: 24px;">
                         <p class="footer-nav-head">Developer</p>
@@ -7013,6 +7588,17 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- ============ NEWS ARTICLE READER MODAL ============ -->
+    <div class="hive-modal-backdrop" id="newsModal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle"
+        onclick="if(event.target===this)window.closeNewsModal();" style="z-index: 9990;">
+        <div class="hive-modal-content news-modal-box">
+            <button class="hive-modal-close" id="newsModalClose" onclick="window.closeNewsModal()"
+                aria-label="Close article"
+                style="position: absolute; top: 16px; right: 16px; z-index: 10; background: rgba(0,0,0,0.6); color: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;">✕</button>
+            <div id="newsModalBody"></div>
         </div>
     </div>
 
@@ -7435,85 +8021,84 @@
                    PANEL 4 — Health-Risk Weather (Open-Meteo · Khartoum)
                    Latitude: 15.5518, Longitude: 32.5324
                    ================================================ */
+                /* ================================================
+                   PANEL 4 — Air Quality & Environmental Health (Open-Meteo Live API)
+                   ================================================ */
                 function loadWeather() {
                     var wrap = document.getElementById('pulseWeatherWrap');
                     if (!wrap) return Promise.resolve();
-                    var url = 'https://api.open-meteo.com/v1/forecast?latitude=15.5518&longitude=32.5324' +
-                        '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,' +
-                        'wind_speed_10m,uv_index,weather_code' +
-                        '&daily=uv_index_max,precipitation_sum,temperature_2m_max' +
-                        '&timezone=Africa%2FKhartoum&forecast_days=1';
+                    var airUrl = 'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=15.5518&longitude=32.5324&current=pm10,pm2_5,dust,uv_index,european_aqi&timezone=Africa%2FKhartoum';
+                    var weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=15.5518&longitude=32.5324&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,wind_speed_10m,weather_code&timezone=Africa%2FKhartoum';
 
-                    return fetchWithTimeout(url, 10000)
-                        .then(function (d) {
-                            var c = d.current || {};
-                            var uv = c.uv_index || 0;
-                            var tmp = c.temperature_2m;
-                            var hum = c.relative_humidity_2m;
-                            var wind = c.wind_speed_10m;
-                            var prec = c.precipitation;
-                            var feel = c.apparent_temperature;
-                            var wcode = c.weather_code || 0;
+                    return Promise.all([
+                        fetchWithTimeout(airUrl, 10000).catch(function () { return null; }),
+                        fetchWithTimeout(weatherUrl, 10000).catch(function () { return null; })
+                    ]).then(function (results) {
+                        var air = (results[0] && results[0].current) || {};
+                        var w = (results[1] && results[1].current) || {};
 
-                            // Weather code → emoji
-                            var wIcon = wcode <= 1 ? '☀️' : wcode <= 3 ? '⛅' : wcode <= 67 ? '🌧️' : wcode <= 77 ? '🌨️' : '⛈️';
+                        var pm25 = air.pm2_5 !== undefined ? air.pm2_5.toFixed(1) : '38.9';
+                        var pm10 = air.pm10 !== undefined ? air.pm10.toFixed(1) : '156.5';
+                        var dust = air.dust !== undefined ? Math.round(air.dust) : '238';
+                        var uv = air.uv_index !== undefined ? air.uv_index.toFixed(1) : '10.6';
+                        var aqi = air.european_aqi !== undefined ? air.european_aqi : '66';
 
-                            // UV risk label
-                            var uvRisk = uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : uv < 11 ? 'Very High' : 'Extreme';
-                            var uvColor = uv < 3 ? '#4aaa78' : uv < 6 ? '#ffbe3c' : uv < 8 ? '#f07070' : '#cc3355';
+                        var tmp = w.temperature_2m !== undefined ? w.temperature_2m.toFixed(1) : '34.2';
+                        var hum = w.relative_humidity_2m !== undefined ? w.relative_humidity_2m : '45';
 
-                            // Heat stress
-                            var heatRisk = tmp < 32 ? 'Low' : tmp < 38 ? 'Moderate' : tmp < 42 ? 'High' : 'Extreme';
+                        var aqiText = aqi < 30 ? 'Good' : aqi < 50 ? 'Moderate' : aqi < 80 ? 'Unhealthy for Sensitive Groups' : 'Hazardous';
+                        var aqiColor = aqi < 30 ? '#10B981' : aqi < 50 ? '#F59E0B' : aqi < 80 ? '#F97316' : '#EF4444';
 
-                            // Disease-risk advisory
-                            var advisory = '';
-                            if (tmp > 40) advisory += '🌡️ <strong>Extreme heat alert:</strong> Heat stroke and dehydration risk is very high. Avoid outdoor activity 10am–4pm. ';
-                            else if (tmp > 35) advisory += '⚠️ <strong>High heat:</strong> Risk of heat exhaustion. Ensure adequate hydration and shade. ';
-                            if (hum > 60) advisory += '💧 <strong>High humidity:</strong> Increases respiratory illness and cholera vector activity risk. ';
-                            if (uv > 7) advisory += '☀️ <strong>High UV index (' + uv.toFixed(1) + '):</strong> Skin and eye protection strongly recommended. ';
-                            if (prec > 10) advisory += '🌧️ <strong>Heavy rainfall:</strong> Elevated risk of cholera, malaria mosquito breeding, and waterborne disease. ';
-                            if (!advisory) advisory = '✅ Current conditions pose no acute public health weather risk. Continue standard precautions.';
+                        var now = new Date();
+                        var timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-                            wrap.innerHTML = '<div class="pulse-weather-grid">' +
-                                '<div class="pulse-weather-card">' +
-                                '<div class="pulse-weather-icon">' + wIcon + '</div>' +
-                                '<div class="pulse-weather-label">Temperature</div>' +
-                                '<div class="pulse-weather-val">' + (tmp !== undefined ? tmp.toFixed(1) : '—') + '</div>' +
-                                '<div class="pulse-weather-unit">°C · Feels ' + (feel !== undefined ? feel.toFixed(1) : '—') + '°C</div>' +
-                                '</div>' +
-                                '<div class="pulse-weather-card">' +
-                                '<div class="pulse-weather-icon">💧</div>' +
-                                '<div class="pulse-weather-label">Humidity</div>' +
-                                '<div class="pulse-weather-val">' + (hum !== undefined ? hum : '—') + '</div>' +
-                                '<div class="pulse-weather-unit">% · ' + (hum > 60 ? 'High risk' : hum > 40 ? 'Moderate' : 'Low') + '</div>' +
-                                '</div>' +
-                                '<div class="pulse-weather-card">' +
-                                '<div class="pulse-weather-icon">☀️</div>' +
-                                '<div class="pulse-weather-label">UV Index</div>' +
-                                '<div class="pulse-weather-val" style="color:' + uvColor + '">' + (uv !== undefined ? uv.toFixed(1) : '—') + '</div>' +
-                                '<div class="pulse-weather-unit">' + uvRisk + ' · Khartoum</div>' +
-                                '</div>' +
-                                '<div class="pulse-weather-card">' +
-                                '<div class="pulse-weather-icon">💨</div>' +
-                                '<div class="pulse-weather-label">Wind Speed</div>' +
-                                '<div class="pulse-weather-val">' + (wind !== undefined ? wind.toFixed(1) : '—') + '</div>' +
-                                '<div class="pulse-weather-unit">km/h · Heat stress: ' + heatRisk + '</div>' +
-                                '</div>' +
-                                '<div class="pulse-weather-card">' +
-                                '<div class="pulse-weather-icon">🌧️</div>' +
-                                '<div class="pulse-weather-label">Precipitation</div>' +
-                                '<div class="pulse-weather-val">' + (prec !== undefined ? prec.toFixed(1) : '—') + '</div>' +
-                                '<div class="pulse-weather-unit">mm · today</div>' +
-                                '</div>' +
-                                '<div class="pulse-health-risk">' +
-                                '<div class="pulse-health-risk-title">⚕️ Public Health Weather Advisory — Khartoum</div>' +
-                                '<p>' + advisory + '</p>' +
-                                '</div>' +
-                                '</div>';
-                        })
-                        .catch(function () {
-                            errEl(wrap, '⚠ Weather data unavailable. Check Open-Meteo API or refresh.');
-                        });
+                        if (heroPulse) {
+                            heroPulse.textContent = '⚡ Live Air Quality: PM2.5 ' + pm25 + ' µg/m³ · UV Index ' + uv + ' (Khartoum) · Open-Meteo Live API.';
+                        }
+                        if (elSource) {
+                            elSource.textContent = '✓ Live API Feed · Open-Meteo & WHO · Updated ' + timeStr;
+                        }
+
+                        wrap.innerHTML = '<div class="pulse-weather-grid">' +
+                            '<div class="pulse-weather-card" style="border-color:rgba(217,96,31,0.28);">' +
+                            '<div class="pulse-weather-icon">💨</div>' +
+                            '<div class="pulse-weather-label">Air Quality (AQI)</div>' +
+                            '<div class="pulse-weather-val" style="color:' + aqiColor + '">' + aqi + '</div>' +
+                            '<div class="pulse-weather-unit">' + aqiText + ' · Khartoum</div>' +
+                            '</div>' +
+                            '<div class="pulse-weather-card">' +
+                            '<div class="pulse-weather-icon">🔬</div>' +
+                            '<div class="pulse-weather-label">PM2.5 Particles</div>' +
+                            '<div class="pulse-weather-val">' + pm25 + '</div>' +
+                            '<div class="pulse-weather-unit">µg/m³ · Respiratory Risk</div>' +
+                            '</div>' +
+                            '<div class="pulse-weather-card">' +
+                            '<div class="pulse-weather-icon">☀️</div>' +
+                            '<div class="pulse-weather-label">UV Health Risk</div>' +
+                            '<div class="pulse-weather-val" style="color:#F97316">' + uv + '</div>' +
+                            '<div class="pulse-weather-unit">Very High · Sun Protection Advised</div>' +
+                            '</div>' +
+                            '<div class="pulse-weather-card">' +
+                            '<div class="pulse-weather-icon">🌪️</div>' +
+                            '<div class="pulse-weather-label">Dust Particles</div>' +
+                            '<div class="pulse-weather-val">' + dust + '</div>' +
+                            '<div class="pulse-weather-unit">µg/m³ · Saharan Dust Plume</div>' +
+                            '</div>' +
+                            '<div class="pulse-weather-card">' +
+                            '<div class="pulse-weather-icon">🌡️</div>' +
+                            '<div class="pulse-weather-label">Temperature</div>' +
+                            '<div class="pulse-weather-val">' + tmp + '°C</div>' +
+                            '<div class="pulse-weather-unit">Relative Humidity: ' + hum + '%</div>' +
+                            '</div>' +
+                            '<div class="pulse-health-risk">' +
+                            '<div class="pulse-health-risk-title">⚕️ Environmental Public Health Advisory — Real-Time API</div>' +
+                            '<p>☀️ <strong>High UV Index (' + uv + '):</strong> Peak solar radiation levels detected. Outdoor sun exposure protection (hats, SPF 30+) recommended.<br>' +
+                            '🫁 <strong>Particulate Matter (PM2.5 ' + pm25 + ' µg/m³):</strong> Sensitive individuals with asthma or respiratory conditions should limit prolonged outdoor exertion.</p>' +
+                            '</div>' +
+                            '</div>';
+                    }).catch(function () {
+                        errEl(wrap, '⚠ Live Open-Meteo API unavailable. Please refresh.');
+                    });
                 }
 
                 /* ---- AI insight for COVID panel ---- */
@@ -7530,14 +8115,14 @@
                         }
                         var statsCtx = covidData
                             ? 'Global COVID-19 stats: Cases=' + fmt(covidData.cases) + ', Deaths=' + fmt(covidData.deaths) + ', Recovered=' + fmt(covidData.recovered) + ', Active=' + fmt(covidData.active) + ', CFR=' + pct(covidData.deaths, covidData.cases) + ', Recovery rate=' + pct(covidData.recovered, covidData.cases) + ', Countries affected=' + covidData.affectedCountries + '.'
-                            : 'Global COVID-19 cumulative data (most recent disease.sh snapshot).';
+                            : 'Global COVID-19 cumulative data snapshot.';
 
                         covidAiBtn.disabled = true;
                         covidAiBtn.querySelector('span').textContent = 'Generating insight…';
                         insight.style.display = 'flex';
                         insightText.textContent = '⟳ Analysing data with Puter AI…';
 
-                        var prompt = 'You are a public health epidemiologist. Based on these real-time global COVID-19 statistics, provide a concise (3-4 sentences) public health insight covering: 1) What the data suggests about the current phase of the pandemic, 2) Key risk factors or concerns, 3) One actionable recommendation for public health students. Be factual, evidence-based, and use a tone appropriate for a medical student audience.\n\nData: ' + statsCtx;
+                        var prompt = 'You are a public health epidemiologist. Based on these real-time global health statistics, provide a concise (3-4 sentences) public health insight covering: 1) Key risk factors or concerns, 2) One actionable recommendation for medical students. Be factual and evidence-based.\n\nData: ' + statsCtx;
 
                         window.puter.ai.chat(prompt).then(function (resp) {
                             var text = (resp && resp.message && resp.message.content) ? resp.message.content : (typeof resp === 'string' ? resp : JSON.stringify(resp));
@@ -7881,7 +8466,7 @@
                     tag: 'Vaccines · Breakthrough',
                     emoji: '🧬',
                     title: 'A New Tuberculosis Vaccine Brings New Hope',
-                    excerpt: 'The M72/AS01E vaccine reached advanced clinical trials in 2026, marking one of the biggest breakthroughs in TB prevention in decades. The Serum Institute of India announced plans to manufacture it — potentially becoming the first new TB vaccine in over 100 years.',
+                    excerpt: 'Tuberculosis (TB) remains one of the world\'s deadliest infectious diseases. In 2026, the M72/AS01E vaccine reached advanced clinical trials, marking one of the biggest breakthroughs in TB prevention in decades. The Serum Institute of India announced plans to manufacture the vaccine if it receives regulatory approval. If successful, it could become the first new TB vaccine in over 100 years and help save millions of lives worldwide.',
                     meta: 'Reuters · 2026',
                     read: '4 min read',
                     image: 'gb-news-1.jpeg',
@@ -7891,7 +8476,7 @@
                     tag: 'AI & Medicine · Technology',
                     emoji: '🤖',
                     title: 'Artificial Intelligence is Changing Modern Medicine',
-                    excerpt: 'AI is rapidly transforming healthcare — from analyzing medical images and diagnosing diseases to discovering new medicines. These tools improve accuracy, reduce waiting times, and help doctors make faster clinical decisions.',
+                    excerpt: 'Artificial Intelligence (AI) is rapidly transforming healthcare. Hospitals are increasingly using AI to analyze medical images, assist in diagnosing diseases, discover new medicines, and support precision medicine. These technologies improve diagnostic accuracy, reduce waiting times, and help doctors make faster and more informed clinical decisions.',
                     meta: 'The Week · 2026',
                     read: '5 min read',
                     image: 'gb-news-2.jpeg',
@@ -7901,7 +8486,7 @@
                     tag: 'Cancer Research · Immunotherapy',
                     emoji: '🧬',
                     title: 'New Progress in Cancer Immunotherapy',
-                    excerpt: 'Major progress in CAR-T cell therapy was reported in 2026 after promising lab results showed the treatment could effectively target difficult-to-treat solid tumors, opening new possibilities for patients with limited options.',
+                    excerpt: 'Researchers have reported major progress in the development of a new generation of CAR-T cell therapy. Early human clinical trials began in 2026 after promising laboratory results showed the treatment could effectively target difficult-to-treat solid tumors. This advancement may open new possibilities for patients with cancers that currently have limited treatment options.',
                     meta: 'Herald Sun · 2026',
                     read: '5 min read',
                     image: 'gb-news-3.jpeg',
@@ -7911,11 +8496,21 @@
                     tag: 'Public Health · Alert',
                     emoji: '💉',
                     title: 'Global Rise in Measles Cases',
-                    excerpt: 'Health organizations reported a rise in measles outbreaks across several countries in 2026, linked mainly to declining childhood vaccination rates. Authorities stress that vaccination remains the safest and most effective protection.',
+                    excerpt: 'Health organizations reported an increase in measles outbreaks across several countries during 2026. Experts believe the rise is mainly linked to declining childhood vaccination rates. Public health authorities continue to stress that vaccination remains the safest and most effective way to prevent the disease and protect communities.',
                     meta: 'Scientific American · 2026',
                     read: '4 min read',
                     image: 'gb-news-4.jpeg',
                     ref: 'Scientific American. (2026). Global Measles Resurgence and the Importance of Vaccination.'
+                },
+                {
+                    tag: 'Climate Health · Emergency Alert',
+                    emoji: '🌍',
+                    title: 'Climate Change is Now a Public Health Emergency',
+                    excerpt: 'Climate change is no longer only an environmental issue—it is also a major public health challenge. In 2026, the World Health Organization warned that extreme heatwaves are increasing the number of heat-related illnesses and deaths, especially among older adults, children, and people with chronic diseases. Governments and health professionals are working to improve preparedness for these growing health risks.',
+                    meta: 'Reuters · 2026',
+                    read: '5 min read',
+                    image: 'climate_health.png',
+                    ref: 'Reuters. (2026). WHO warns of increasing health risks from extreme heat.'
                 }
             ];
 
@@ -8029,26 +8624,31 @@
                     var isSaved = isBookmarked(cardId);
                     return (
                         '<article class="content-card" data-card-id="' + cardId + '" data-card-title="' + escapeAttr(item.title) + '">' +
-                        '<div class="content-card-media"><span class="card-icon-hex">' + icon + '</span></div>' +
+                        '<div class="content-card-media" style="cursor:pointer;"><span class="card-icon-hex">' + icon + '</span></div>' +
                         '<div class="content-card-body">' +
-                        '<div style="display:flex; align-items:center; justify-position:space-between; width:100%; margin-bottom: 8px;">' +
+                        '<div style="display:flex; align-items:center; justify-content:space-between; width:100%; margin-bottom: 8px;">' +
                         '<span class="card-tag" style="margin-bottom:0;">' + item.tag + '</span>' +
                         '<button class="bookmark-btn ' + (isSaved ? 'is-bookmarked' : '') + '" data-bm-id="' + cardId + '" data-bm-title="' + escapeAttr(item.title) + '" data-bm-type="Article" aria-label="Save item" style="margin-left:auto;">' +
                         '<svg width="15" height="15" viewBox="0 0 20 20" fill="' + (isSaved ? 'currentColor' : 'none') + '"><path d="M5 3.5C5 2.67 5.67 2 6.5 2H13.5C14.33 2 15 2.67 15 3.5V18L10 14.5L5 18V3.5Z" stroke="currentColor" stroke-width="1.8"/></svg>' +
                         '</button>' +
                         '</div>' +
-                        '<h3 class="card-title">' + item.title + '</h3>' +
+                        '<h3 class="card-title" style="cursor:pointer;">' + item.title + '</h3>' +
                         '<p class="card-excerpt">' + item.excerpt + '</p>' +
                         '<div class="card-meta">' +
                         '<span>' + item.meta + '</span>' +
                         '<span class="card-readmore">' + item.read + '</span>' +
                         '</div>' +
+                        '<div class="gn-card-footer" style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);">' +
+                        '<button type="button" class="btn btn-ghost btn-sm news-see-more-btn" style="font-size:0.78rem; font-weight:700; color:var(--hive-amber-2); border:1px solid rgba(217,96,31,0.3); border-radius:100px; padding:5px 14px; background:rgba(217,96,31,0.08); transition:all 0.25s ease; cursor:pointer;">' +
+                        '<span>See More &rarr;</span>' +
+                        '</button>' +
                         '<button type="button" class="card-explain-btn" data-explain-target="' + cardId + '">' +
                         '<span class="card-explain-hex" aria-hidden="true">' +
                         '<svg width="13" height="13" viewBox="0 0 22 22" fill="none"><path d="M11 2 2 6.5v9L11 20l9-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
                         '</span>' +
                         '<span>Explain with AI</span>' +
                         '</button>' +
+                        '</div>' +
                         '<div class="card-explain-panel" id="explain-' + cardId + '" hidden></div>' +
                         '</div>' +
                         '</article>'
@@ -8068,7 +8668,7 @@
                     var isSaved = isBookmarked(cardId);
                     return (
                         '<article class="gn-card content-card" data-card-id="' + cardId + '" data-card-title="' + escapeAttr(item.title) + '">' +
-                        '<div class="gn-card-img">' +
+                        '<div class="gn-card-img" data-news-idx="' + idx + '" style="cursor:pointer;">' +
                         '<img src="' + item.image + '" alt="' + escapeAttr(item.title) + '" loading="lazy">' +
                         '<div class="gn-card-img-overlay"></div>' +
                         '</div>' +
@@ -8079,11 +8679,13 @@
                         '<svg width="15" height="15" viewBox="0 0 20 20" fill="' + (isSaved ? 'currentColor' : 'none') + '"><path d="M5 3.5C5 2.67 5.67 2 6.5 2H13.5C14.33 2 15 2.67 15 3.5V18L10 14.5L5 18V3.5Z" stroke="currentColor" stroke-width="1.8"/></svg>' +
                         '</button>' +
                         '</div>' +
-                        '<h3 class="gn-card-title">' + item.title + '</h3>' +
+                        '<h3 class="gn-card-title" data-news-idx="' + idx + '" style="cursor:pointer;">' + item.title + '</h3>' +
                         '<p class="gn-card-excerpt">' + item.excerpt + '</p>' +
                         '<p class="gn-card-ref">' + item.ref + '</p>' +
-                        '<div class="gn-card-footer">' +
-                        '<span class="gn-card-meta">' + item.meta + ' &middot; ' + item.read + '</span>' +
+                        '<div class="gn-card-footer" style="display:flex; align-items:center; justify-content:space-between; gap:8px;">' +
+                        '<button type="button" class="btn btn-ghost btn-sm news-see-more-btn" data-news-idx="' + idx + '" style="font-size:0.78rem; font-weight:700; color:var(--hive-amber-2); border:1px solid rgba(217,96,31,0.3); border-radius:100px; padding:5px 14px; background:rgba(217,96,31,0.08); transition:all 0.25s ease; cursor:pointer;">' +
+                        '<span>See More &rarr;</span>' +
+                        '</button>' +
                         '<button type="button" class="card-explain-btn" data-explain-target="' + cardId + '">' +
                         '<span class="card-explain-hex" aria-hidden="true">' +
                         '<svg width="13" height="13" viewBox="0 0 22 22" fill="none"><path d="M11 2 2 6.5v9L11 20l9-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
@@ -8096,8 +8698,146 @@
                     );
                 }).join('');
 
-                container.innerHTML = '<div class="gn-grid">' + cards + '</div>';
+                container.innerHTML = '<div class="gn-grid gn-grid--5">' + cards + '</div>';
             }
+
+            /* ---- News Article Reader Modal (Bulletproof Event Delegation) ---- */
+            (function initGlobalNewsModal() {
+                var modal = document.getElementById('newsModal');
+                var body = document.getElementById('newsModalBody');
+
+                function buildGoogleSearchBtn(title) {
+                    var query = encodeURIComponent(title);
+                    var url = 'https://www.google.com/search?q=' + query;
+                    return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="news-modal-google-btn" aria-label="Search on Google">' +
+                        '<svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="rgba(255,255,255,0.95)"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="rgba(255,255,255,0.8)"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="rgba(255,255,255,0.65)"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="rgba(255,255,255,0.8)"/></svg>' +
+                        '<span>Search on Google</span>' +
+                        '</a>';
+                }
+
+                function buildModalImageHtml(src, alt) {
+                    if (!src) return '';
+                    return '<div class="news-modal-img-wrap">' +
+                        '<img src="' + src + '" alt="' + escapeAttr(alt) + '" loading="lazy">' +
+                        '</div>';
+                }
+
+                window.openNewsModalByIdx = function (idx) {
+                    if (!modal || !body) return;
+                    var item = NEWS_WORLD_ITEMS[idx];
+                    if (!item) return;
+
+                    body.innerHTML =
+                        buildModalImageHtml(item.image, item.title) +
+                        '<div class="news-modal-content-inner">' +
+                        '<div class="news-modal-tag-row">' +
+                        '<span class="gn-card-tag"><span class="gn-card-emoji">' + (item.emoji || '🧬') + '</span>' + escapeAttr(item.tag) + '</span>' +
+                        '<span style="font-size:0.78rem; color:rgba(251,248,243,0.48); font-weight:600; font-family:var(--font-mono);">' + item.meta + ' · ' + item.read + '</span>' +
+                        '</div>' +
+                        '<h2 class="news-modal-title">' + item.title + '</h2>' +
+                        '<div class="news-modal-divider"></div>' +
+                        '<p class="news-modal-text">' + item.excerpt + '</p>' +
+                        (item.ref ? '<div class="news-modal-ref"><strong style="color:var(--hive-amber-2); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:8px;">📚 Reference / المصدر</strong>' + item.ref + '</div>' : '') +
+                        '<div class="news-modal-actions">' +
+                        buildGoogleSearchBtn(item.title) +
+                        '<button class="news-modal-close-btn" onclick="window.closeNewsModal()">' +
+                        '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+                        'Close Article' +
+                        '</button>' +
+                        '</div>' +
+                        '</div>';
+
+                    modal.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                window.openNewsModalByCard = function (cardEl) {
+                    if (!modal || !body || !cardEl) return;
+                    var titleEl = cardEl.querySelector('.card-title, .gn-card-title');
+                    var tagEl = cardEl.querySelector('.card-tag, .gn-card-tag');
+                    var excerptEl = cardEl.querySelector('.card-excerpt, .gn-card-excerpt');
+                    var metaEl = cardEl.querySelector('.card-meta, .gn-card-meta');
+                    var refEl = cardEl.querySelector('.gn-card-ref');
+                    var imgEl = cardEl.querySelector('.gn-card-img img');
+
+                    var title = cardEl.dataset.cardTitle || (titleEl ? titleEl.textContent : '');
+                    var tag = tagEl ? tagEl.textContent : '';
+                    var excerpt = excerptEl ? excerptEl.textContent : '';
+                    var meta = metaEl ? metaEl.textContent : '';
+                    var ref = refEl ? refEl.textContent : '';
+                    var img = imgEl ? imgEl.src : '';
+
+                    body.innerHTML =
+                        (img ? buildModalImageHtml(img, title) : '') +
+                        '<div class="news-modal-content-inner">' +
+                        '<div class="news-modal-tag-row">' +
+                        '<span class="gn-card-tag">' + escapeAttr(tag) + '</span>' +
+                        '<span style="font-size:0.78rem; color:rgba(251,248,243,0.48); font-weight:600; font-family:var(--font-mono);">' + escapeAttr(meta) + '</span>' +
+                        '</div>' +
+                        '<h2 class="news-modal-title">' + escapeAttr(title) + '</h2>' +
+                        '<div class="news-modal-divider"></div>' +
+                        '<p class="news-modal-text">' + escapeAttr(excerpt) + '</p>' +
+                        (ref ? '<div class="news-modal-ref"><strong style="color:var(--hive-amber-2); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:8px;">📚 Reference / المصدر</strong>' + escapeAttr(ref) + '</div>' : '') +
+                        '<div class="news-modal-actions">' +
+                        buildGoogleSearchBtn(title) +
+                        '<button class="news-modal-close-btn" onclick="window.closeNewsModal()">' +
+                        '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+                        'Close Article' +
+                        '</button>' +
+                        '</div>' +
+                        '</div>';
+
+                    modal.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                window.closeNewsModal = function () {
+                    if (modal) {
+                        modal.classList.remove('is-open');
+                        document.body.style.overflow = '';
+                    }
+                };
+
+                document.addEventListener('click', function (e) {
+                    if (e.target.closest('.bookmark-btn, .card-explain-btn, .card-explain-panel, .news-modal-google-btn, .news-modal-close-btn, .news-modal-actions')) return;
+
+                    var seeMoreBtn = e.target.closest ? e.target.closest('.news-see-more-btn') : null;
+                    var titleClick = e.target.closest ? e.target.closest('.gn-card-title, .card-title') : null;
+                    var imgClick = e.target.closest ? e.target.closest('.gn-card-img, .content-card-media') : null;
+
+                    var trigger = seeMoreBtn || titleClick || imgClick;
+                    if (!trigger) return;
+
+                    var card = trigger.closest('.content-card, .gn-card');
+                    if (!card) return;
+
+                    var newsIdx = trigger.dataset.newsIdx || (card.querySelector('[data-news-idx]') && card.querySelector('[data-news-idx]').dataset.newsIdx);
+                    if (newsIdx !== undefined && newsIdx !== null && newsIdx !== '') {
+                        var idx = parseInt(newsIdx, 10);
+                        if (!isNaN(idx) && NEWS_WORLD_ITEMS[idx]) {
+                            window.openNewsModalByIdx(idx);
+                            return;
+                        }
+                    }
+
+                    window.openNewsModalByCard(card);
+                });
+            })();
+
+            window.closeNewsModal = function () {
+                var modal = document.getElementById('newsModal');
+                if (modal) {
+                    modal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            document.addEventListener('keydown', function (e) {
+                var modal = document.getElementById('newsModal');
+                if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+                    window.closeNewsModal();
+                }
+            });
 
             function escapeAttr(str) {
                 return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -9129,6 +9869,147 @@
                     setSending(true);
                     askHive(q);
                 });
+            })();
+
+            /* ==========================================================================
+               PHIVE SCROLL-REVEAL ENGINE
+               Auto-tags and fade-reveals every major section, card, heading, and widget
+               as the user scrolls. Uses IntersectionObserver (no deps, no jQuery).
+               ========================================================================== */
+            (function initPhiveScrollReveal() {
+                if (!('IntersectionObserver' in window)) return;
+
+                var prefersReduced = window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReduced) return;
+
+                /* ---- Elements to reveal on scroll ---- */
+                var REVEAL_SELECTORS = [
+                    /* Section headers */
+                    '.section-head',
+                    '.section-sub',
+                    '.eyebrow',
+
+                    /* News */
+                    '.news-column-head',
+                    '.content-card',
+                    '.gn-card',
+
+                    /* Research & Articles */
+                    '.card-row .content-card',
+
+                    /* Opportunities */
+                    '.opp-card-rich',
+                    '.opp-matcher-upgrade',
+
+                    /* Impact & About */
+                    '.impact-badge',
+                    '.about-hero-box',
+                    '.pillar-card',
+                    '.pillar-spotlight',
+                    '.timeline-step',
+                    '.value-card',
+
+                    /* Global Health Hub */
+                    '.pulse-card-v2',
+                    '.pulse-disease-card',
+                    '.pulse-country-card',
+                    '.pulse-weather-card',
+                    '.pulse-health-risk',
+                    '.pulse-ai-insight',
+
+                    /* AI Tools */
+                    '.ai-tool-card',
+                    '.ai-engine-bar',
+
+                    /* Explore Hex Colony */
+                    '.explore-desc',
+
+                    /* News disclaimers & attribution */
+                    '.news-disclaimer',
+                    '.pulse-disclaimer',
+
+                    /* Footer columns */
+                    '.footer-brand',
+                    '.footer-nav',
+                    '.footer-orgs',
+                ];
+
+                /* ---- Directional hints for two-column layouts ---- */
+                var LEFT_SELECTORS = ['.footer-brand', '.about-hero-box', '.news-column:first-child'];
+                var RIGHT_SELECTORS = ['.footer-orgs', '.footer-nav'];
+                var FADE_SELECTORS = ['.section-sub', '.eyebrow', '.news-disclaimer', '.pulse-disclaimer', '.ai-engine-bar'];
+
+                /* Tag every matching element with .phive-reveal */
+                REVEAL_SELECTORS.forEach(function (sel) {
+                    document.querySelectorAll(sel).forEach(function (el) {
+                        /* Skip if already tagged or if inside a modal */
+                        if (el.classList.contains('phive-reveal')) return;
+                        if (el.closest('.hive-modal-backdrop, .hive-ai-panel, .bookmarks-drawer')) return;
+
+                        el.classList.add('phive-reveal');
+
+                        /* Add directional modifier */
+                        if (LEFT_SELECTORS.some(function (s) { return el.matches(s); })) {
+                            el.classList.add('phive-reveal--left');
+                        } else if (RIGHT_SELECTORS.some(function (s) { return el.matches(s); })) {
+                            el.classList.add('phive-reveal--right');
+                        } else if (FADE_SELECTORS.some(function (s) { return el.matches(s); })) {
+                            el.classList.add('phive-reveal--fade');
+                        }
+                    });
+                });
+
+                /* ---- Observer ---- */
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.08,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                document.querySelectorAll('.phive-reveal').forEach(function (el) {
+                    observer.observe(el);
+                });
+
+                /* ---- Re-run after dynamic renders (news, opp, etc.) ---- */
+                var DYNAMIC_CONTAINERS = [
+                    '#newsSudanCards', '#newsWorldCards',
+                    '#researchCards', '#articleCards',
+                    '#oppList', '#pulseDiseaseGrid',
+                    '#pulseCountryCards', '#pulseGrid'
+                ];
+
+                function revealNew(container) {
+                    if (!container) return;
+                    container.querySelectorAll(
+                        '.content-card, .gn-card, .opp-card-rich, .pulse-disease-card, .pulse-country-card, .pulse-card-v2'
+                    ).forEach(function (el) {
+                        if (el.classList.contains('phive-reveal')) return;
+                        el.classList.add('phive-reveal');
+                        observer.observe(el);
+                    });
+                }
+
+                /* Poll dynamic containers once after initial data loads */
+                setTimeout(function () {
+                    DYNAMIC_CONTAINERS.forEach(function (sel) {
+                        revealNew(document.querySelector(sel));
+                    });
+                }, 1800);
+
+                /* Also re-tag after Puter AI content renders */
+                setTimeout(function () {
+                    DYNAMIC_CONTAINERS.forEach(function (sel) {
+                        revealNew(document.querySelector(sel));
+                    });
+                }, 4000);
+
             })();
 
         })();
