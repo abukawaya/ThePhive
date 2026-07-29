@@ -3265,10 +3265,129 @@
         .hive-ai-msg-body {
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
         .hive-ai-msg-body p {
             margin: 0;
+        }
+
+        /* ==========================================================================
+           CHATBOT (ASK THE HIVE) RICH AI FORMATTING DESIGN SYSTEM
+           ========================================================================== */
+        .chat-formatted-output {
+            background: linear-gradient(145deg, rgba(30, 24, 15, 0.92), rgba(16, 12, 6, 0.96));
+            border: 1px solid rgba(217, 96, 31, 0.3);
+            border-radius: 16px 16px 16px 4px;
+            padding: 12px 15px;
+            color: rgba(251, 248, 243, 0.92);
+            font-size: 0.86rem;
+            line-height: 1.65;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            width: 100%;
+            direction: auto;
+            unicode-bidi: plaintext;
+            word-wrap: break-word;
+        }
+
+        /* Headings: Executive / Section Head Card */
+        .chat-head-card {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #FFC091 !important;
+            background: linear-gradient(135deg, rgba(217, 96, 31, 0.32), rgba(244, 125, 59, 0.12)) !important;
+            border-left: 3.5px solid var(--hive-amber-2) !important;
+            padding: 7px 12px;
+            border-radius: 0 10px 10px 0;
+            margin: 10px 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 12px rgba(217, 96, 31, 0.2);
+            letter-spacing: -0.01em;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .chat-head-card:first-child {
+            margin-top: 2px;
+        }
+
+        .chat-head-icon {
+            color: var(--hive-amber-2);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Bullet items: Custom golden hexagon bullets */
+        .chat-bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 3px 0;
+            margin: 2px 0;
+            color: rgba(251, 248, 243, 0.9);
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .chat-bullet-hex {
+            color: var(--hive-amber-2);
+            font-size: 0.68rem;
+            line-height: 1.65;
+            flex-shrink: 0;
+        }
+
+        /* Numbered Step Cards */
+        .chat-step-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(217, 96, 31, 0.25);
+            border-radius: 10px;
+            padding: 8px 11px;
+            margin: 5px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .chat-step-item:hover {
+            border-color: var(--hive-amber-2);
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        .chat-step-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #FFFFFF !important;
+            background: linear-gradient(135deg, #d9601f, #f47d3b) !important;
+            padding: 2px 8px;
+            border-radius: 100px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(217, 96, 31, 0.35);
+        }
+
+        /* Bold text highlights */
+        .chat-bold-highlight {
+            color: #FFC091 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Paragraphs */
+        .chat-para {
+            margin: 4px 0;
+            line-height: 1.65;
+            color: rgba(251, 248, 243, 0.88);
+            direction: auto;
+            unicode-bidi: plaintext;
+        }
+
+        .chat-spacer {
+            height: 6px;
         }
 
         /* ---- Message slide-in animation ---- */
@@ -9711,25 +9830,76 @@
 
                 /* ---- Format bot reply as rich HTML ---- */
                 function formatBotReply(text) {
-                    var lines = text.split('\n');
-                    var html = '';
-                    lines.forEach(function (line) {
-                        var t = line.trim();
-                        if (!t) { html += '<div style="height:6px"></div>'; return; }
-                        if (/^(\d+[\.\-]|#{1,3}\s|[\u0660-\u0669]+\.)/.test(t) || t.endsWith(':')) {
-                            t = t.replace(/^#+\s*/, '');
-                            html += '<p style="font-weight:700; color:var(--hive-amber-2); margin:8px 0 2px; font-size:0.88rem;">' + escHtml(t) + '</p>';
-                        } else if (/^[\-\*\u2022]\s/.test(t)) {
-                            html += '<p style="margin:2px 0 2px 12px; font-size:0.84rem; color:rgba(251,248,243,0.82);">• ' + escHtml(t.slice(2)) + '</p>';
-                        } else {
-                            html += '<p style="margin:3px 0; font-size:0.84rem; line-height:1.6; color:rgba(251,248,243,0.8);">' + escHtml(t) + '</p>';
-                        }
-                    });
-                    return html;
-                }
+                    if (!text) return '';
 
-                function escHtml(s) {
-                    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    function esc(s) {
+                        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    }
+
+                    function formatInline(str) {
+                        var escaped = esc(str);
+                        return escaped.replace(/\*\*([^*]+)\*\*/g, '<strong class="chat-bold-highlight">$1</strong>');
+                    }
+
+                    var lines = text.split('\n');
+                    var htmlResult = [];
+
+                    lines.forEach(function (line) {
+                        var trimmed = line.trim();
+                        if (!trimmed) {
+                            htmlResult.push('<div class="chat-spacer"></div>');
+                            return;
+                        }
+
+                        // Headings: "1. Title", "### Title", "Title:", "القسم الأول:" or ending with ":"
+                        var isHeading = /^(\d+[\.\)]\s+[A-Z\u0600-\u06FF]|#{1,4}\s+|[A-Z\u0600-\u06FF\s\d]{3,40}:)/i.test(trimmed) ||
+                            (trimmed.endsWith(':') && trimmed.length < 50 && !trimmed.includes('.'));
+
+                        if (isHeading) {
+                            var cleanHead = trimmed.replace(/^#{1,4}\s*/, '').replace(/\*\*([^*]+)\*\*/g, '$1');
+                            if (cleanHead.endsWith(':')) cleanHead = cleanHead.slice(0, -1);
+                            htmlResult.push(
+                                '<div class="chat-head-card">' +
+                                '<span class="chat-head-icon">🐝</span>' +
+                                '<span>' + esc(cleanHead) + '</span>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Steps / Numbered items: "Step 1:", "1)", "1.", "الخطوة 1:"
+                        var isStep = /^(\d+[\.\)]|Step\s+\d+:?|الخطوة\s+\d+:?)/i.test(trimmed);
+                        if (isStep) {
+                            var stepNumMatch = trimmed.match(/^(\d+[\.\)]|Step\s+\d+:?|الخطوة\s+\d+:?)/i);
+                            var stepNum = stepNumMatch ? stepNumMatch[0] : '•';
+                            var stepBody = trimmed.substring(stepNum.length).trim();
+                            htmlResult.push(
+                                '<div class="chat-step-item">' +
+                                '<span class="chat-step-badge">' + esc(stepNum) + '</span>' +
+                                '<div>' + formatInline(stepBody) + '</div>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Bullet Points: "- ", "* ", "• "
+                        var isBullet = /^[\-\*\•]\s+/.test(trimmed);
+                        if (isBullet) {
+                            var bulletText = trimmed.replace(/^[\-\*\•]\s+/, '');
+                            htmlResult.push(
+                                '<div class="chat-bullet-item">' +
+                                '<span class="chat-bullet-hex">⬡</span>' +
+                                '<div>' + formatInline(bulletText) + '</div>' +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Standard Paragraph
+                        htmlResult.push('<p class="chat-para">' + formatInline(trimmed) + '</p>');
+                    });
+
+                    return '<div class="chat-formatted-output" dir="auto">' + htmlResult.join('') + '</div>';
                 }
 
                 function openPanel() {
