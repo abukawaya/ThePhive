@@ -6224,6 +6224,1587 @@
                 font-size: 1.15rem;
             }
         }
+
+        /* ==========================================================================
+           HEALTH QUIZ ARENA — FULL GAME-STYLE STYLES
+           ========================================================================== */
+
+        /* Nav quiz link special style */
+        .nav-quiz-link {
+            background: linear-gradient(135deg, rgba(244, 125, 59, 0.15), rgba(217, 96, 31, 0.1));
+            border: 1px solid rgba(244, 125, 59, 0.3);
+            border-radius: 8px;
+            padding: 5px 12px !important;
+            color: var(--hive-amber-deep) !important;
+            font-weight: 700 !important;
+            transition: all 0.25s var(--ease-hive);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-quiz-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(244, 125, 59, 0.25), rgba(217, 96, 31, 0.15));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .nav-quiz-link:hover {
+            transform: scale(1.04);
+            border-color: rgba(244, 125, 59, 0.6);
+        }
+
+        .nav-quiz-link:hover::after {
+            opacity: 1;
+        }
+
+        /* QUIZ SECTION — Entry Point */
+        .quiz-arena-section {
+            padding: 80px 0;
+            background: linear-gradient(170deg, #0f0d0a 0%, #16120a 50%, #1c1608 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-arena-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 20% 50%, rgba(244, 125, 59, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 30%, rgba(217, 96, 31, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .quiz-arena-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(244, 125, 59, 0.4), transparent);
+        }
+
+        .quiz-arena-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .quiz-arena-inner {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        .quiz-arena-copy h2 {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            color: #fbf8f3;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .quiz-arena-copy p {
+            color: rgba(251, 248, 243, 0.65);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .quiz-arena-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .quiz-stat-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(251, 248, 243, 0.05);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(251, 248, 243, 0.7);
+        }
+
+        .quiz-stat-pill span.dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--hive-amber);
+            box-shadow: 0 0 8px rgba(244, 125, 59, 0.8);
+            animation: pulseLiveDot 1.6s ease-in-out infinite;
+        }
+
+        .quiz-launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--hive-amber-deep), #c24a0a);
+            color: #fff;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s var(--ease-hive), box-shadow 0.2s;
+            box-shadow: 0 8px 32px rgba(217, 96, 31, 0.45);
+        }
+
+        .quiz-launch-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+        }
+
+        .quiz-launch-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 44px rgba(217, 96, 31, 0.6);
+        }
+
+        .quiz-launch-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .quiz-launch-btn .btn-glow {
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--hive-amber), var(--hive-amber-deep));
+            z-index: -1;
+            opacity: 0;
+            filter: blur(12px);
+            transition: opacity 0.3s;
+        }
+
+        .quiz-launch-btn:hover .btn-glow {
+            opacity: 0.6;
+        }
+
+        /* Quiz preview card */
+        .quiz-preview-card {
+            background: rgba(251, 248, 243, 0.04);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .quiz-preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(244, 125, 59, 0.8), rgba(217, 96, 31, 0.5), transparent);
+        }
+
+        .qp-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .qp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(244, 125, 59, 0.15);
+            border: 1px solid rgba(244, 125, 59, 0.3);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--hive-amber);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .qp-score-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: conic-gradient(var(--hive-amber-deep) 0deg, rgba(251, 248, 243, 0.08) 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .qp-score-ring-inner {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(15, 13, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--hive-amber);
+        }
+
+        .qp-sample-q {
+            font-size: 0.95rem;
+            color: rgba(251, 248, 243, 0.85);
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .qp-sample-opts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .qp-opt {
+            padding: 9px 12px;
+            border-radius: 10px;
+            background: rgba(251, 248, 243, 0.06);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            font-size: 0.82rem;
+            color: rgba(251, 248, 243, 0.7);
+            transition: all 0.2s;
+        }
+
+        .qp-opt.qp-opt--correct {
+            background: rgba(62, 124, 90, 0.25);
+            border-color: rgba(62, 124, 90, 0.5);
+            color: #7be0a8;
+        }
+
+        .qp-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .qp-topic {
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(251, 248, 243, 0.05);
+            border: 1px solid rgba(251, 248, 243, 0.08);
+            font-size: 0.74rem;
+            color: rgba(251, 248, 243, 0.5);
+        }
+
+        /* ==========================================================================
+           QUIZ MODAL — FULL SCREEN GAME UI
+           ========================================================================== */
+        .quiz-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(10, 8, 5, 0.97);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s var(--ease-hive);
+            overflow-y: auto;
+        }
+
+        .quiz-modal-overlay.is-open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .quiz-modal-shell {
+            width: 100%;
+            max-width: 680px;
+            margin: 20px auto;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        /* === SCREEN: Name Entry === */
+        .quiz-screen {
+            display: none;
+            animation: quizScreenIn 0.5s var(--ease-hive) both;
+        }
+
+        .quiz-screen.is-active {
+            display: block;
+        }
+
+        @keyframes quizScreenIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes quizScreenOut {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.97);
+            }
+        }
+
+        .quiz-name-box {
+            background: rgba(251, 248, 243, 0.04);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            border-radius: 28px;
+            padding: 48px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-name-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--hive-amber), var(--hive-amber-deep), transparent);
+        }
+
+        .quiz-name-hex {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            display: block;
+            animation: floatBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .quiz-name-box h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: #fbf8f3;
+            margin-bottom: 10px;
+        }
+
+        .quiz-name-box p {
+            color: rgba(251, 248, 243, 0.55);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .quiz-name-input-wrap {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .quiz-name-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(251, 248, 243, 0.07);
+            border: 2px solid rgba(251, 248, 243, 0.15);
+            border-radius: 14px;
+            color: #fbf8f3;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .quiz-name-input::placeholder {
+            color: rgba(251, 248, 243, 0.3);
+        }
+
+        .quiz-name-input:focus {
+            border-color: var(--hive-amber);
+            box-shadow: 0 0 0 4px rgba(244, 125, 59, 0.15);
+        }
+
+        .quiz-start-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--hive-amber-deep), #c24a0a);
+            color: #fff;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 28px rgba(217, 96, 31, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-start-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+        }
+
+        .quiz-start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(217, 96, 31, 0.55);
+        }
+
+        .quiz-start-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-mode-info {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .quiz-mode-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(251, 248, 243, 0.05);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            color: rgba(251, 248, 243, 0.6);
+            font-family: var(--font-mono);
+        }
+
+        /* === SCREEN: Question === */
+        .quiz-game-box {
+            background: rgba(15, 12, 8, 0.9);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 28px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(244, 125, 59, 0.08);
+        }
+
+        /* HUD top bar */
+        .quiz-hud {
+            background: rgba(251, 248, 243, 0.03);
+            border-bottom: 1px solid rgba(251, 248, 243, 0.08);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .quiz-hud-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .quiz-hud-name {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(251, 248, 243, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .quiz-hud-player {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--hive-amber);
+        }
+
+        /* Progress bar */
+        .quiz-progress-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .quiz-q-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(251, 248, 243, 0.5);
+        }
+
+        .quiz-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(251, 248, 243, 0.08);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--hive-amber-deep), var(--hive-amber));
+            border-radius: 100px;
+            transition: width 0.5s var(--ease-hive);
+            box-shadow: 0 0 10px rgba(244, 125, 59, 0.5);
+        }
+
+        /* Score + Timer side */
+        .quiz-hud-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .quiz-score-display {
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fbf8f3;
+            line-height: 1;
+        }
+
+        .quiz-score-display span {
+            color: var(--hive-amber);
+        }
+
+        .quiz-score-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: rgba(251, 248, 243, 0.35);
+        }
+
+        /* Timer ring */
+        .quiz-timer-ring {
+            width: 52px;
+            height: 52px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .quiz-timer-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .quiz-timer-track {
+            fill: none;
+            stroke: rgba(251, 248, 243, 0.08);
+            stroke-width: 4;
+        }
+
+        .quiz-timer-fill {
+            fill: none;
+            stroke: var(--hive-amber);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 138;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear, stroke 0.3s;
+        }
+
+        .quiz-timer-fill.is-warning {
+            stroke: #f9b84d;
+        }
+
+        .quiz-timer-fill.is-danger {
+            stroke: #e85151;
+            animation: timerPulse 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes timerPulse {
+            from {
+                filter: drop-shadow(0 0 4px rgba(232, 81, 81, 0.4));
+            }
+
+            to {
+                filter: drop-shadow(0 0 10px rgba(232, 81, 81, 0.9));
+            }
+        }
+
+        .quiz-timer-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fbf8f3;
+        }
+
+        /* Question body */
+        .quiz-body {
+            padding: 32px 28px 28px;
+        }
+
+        .quiz-q-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(244, 125, 59, 0.12);
+            border: 1px solid rgba(244, 125, 59, 0.25);
+            border-radius: 100px;
+            padding: 4px 13px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--hive-amber-2);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question-text {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            color: #fbf8f3;
+            line-height: 1.5;
+            margin-bottom: 28px;
+            font-family: var(--font-display);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 560px) {
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .quiz-opt-btn {
+            padding: 14px 16px;
+            background: rgba(251, 248, 243, 0.05);
+            border: 1.5px solid rgba(251, 248, 243, 0.12);
+            border-radius: 14px;
+            color: rgba(251, 248, 243, 0.85);
+            font-size: 0.92rem;
+            font-family: var(--font-body);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-hive);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-opt-btn:not([disabled]):hover {
+            background: rgba(244, 125, 59, 0.12);
+            border-color: rgba(244, 125, 59, 0.4);
+            color: #fbf8f3;
+            transform: translateX(3px);
+        }
+
+        .quiz-opt-btn .opt-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: rgba(251, 248, 243, 0.08);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .quiz-opt-btn:not([disabled]):hover .opt-letter {
+            background: rgba(244, 125, 59, 0.25);
+            border-color: rgba(244, 125, 59, 0.4);
+            color: var(--hive-amber);
+        }
+
+        /* Answer result states */
+        .quiz-opt-btn.is-correct {
+            background: rgba(62, 124, 90, 0.2) !important;
+            border-color: #4aaa78 !important;
+            color: #7be0a8 !important;
+            animation: correctPop 0.4s var(--ease-hive);
+        }
+
+        .quiz-opt-btn.is-correct .opt-letter {
+            background: #3e7c5a;
+            border-color: #4aaa78;
+            color: #fff;
+        }
+
+        @keyframes correctPop {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.04);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .quiz-opt-btn.is-wrong {
+            background: rgba(220, 53, 69, 0.15) !important;
+            border-color: rgba(220, 53, 69, 0.5) !important;
+            color: rgba(240, 112, 112, 0.8) !important;
+        }
+
+        .quiz-opt-btn.is-wrong .opt-letter {
+            background: rgba(220, 53, 69, 0.3);
+            border-color: rgba(220, 53, 69, 0.5);
+        }
+
+        .quiz-opt-btn[disabled] {
+            cursor: not-allowed;
+        }
+
+        /* Feedback area */
+        .quiz-feedback {
+            margin-top: 20px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            display: none;
+            animation: quizScreenIn 0.3s var(--ease-hive) both;
+        }
+
+        .quiz-feedback.show-fb {
+            display: block;
+        }
+
+        .quiz-feedback--correct {
+            background: rgba(62, 124, 90, 0.12);
+            border: 1px solid rgba(74, 170, 120, 0.3);
+            color: #7be0a8;
+        }
+
+        .quiz-feedback--wrong {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.25);
+            color: rgba(240, 112, 112, 0.9);
+        }
+
+        .quiz-feedback-label {
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        /* Next button */
+        .quiz-next-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(244, 125, 59, 0.2), rgba(217, 96, 31, 0.15));
+            border: 1.5px solid rgba(244, 125, 59, 0.35);
+            border-radius: 14px;
+            color: var(--hive-amber);
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: var(--font-body);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .quiz-next-btn.show-next {
+            display: flex;
+            animation: quizScreenIn 0.35s var(--ease-hive) both;
+        }
+
+        .quiz-next-btn:hover {
+            background: rgba(244, 125, 59, 0.3);
+            border-color: rgba(244, 125, 59, 0.6);
+        }
+
+        /* Streak bar */
+        .quiz-streak {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 28px;
+            background: rgba(251, 248, 243, 0.02);
+            border-top: 1px solid rgba(251, 248, 243, 0.06);
+        }
+
+        .quiz-streak-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(251, 248, 243, 0.35);
+            text-transform: uppercase;
+        }
+
+        .quiz-streak-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .quiz-streak-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(251, 248, 243, 0.08);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            transition: all 0.3s;
+        }
+
+        .quiz-streak-dot.is-hit {
+            background: var(--hive-amber);
+            border-color: var(--hive-amber-deep);
+            box-shadow: 0 0 8px rgba(244, 125, 59, 0.6);
+        }
+
+        .quiz-streak-dot.is-miss {
+            background: rgba(220, 53, 69, 0.4);
+            border-color: rgba(220, 53, 69, 0.5);
+        }
+
+        /* Reaction time badge */
+        .quiz-reaction-badge {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(251, 248, 243, 0.4);
+        }
+
+        .quiz-reaction-badge strong {
+            color: var(--hive-amber-2);
+        }
+
+        /* AI generation loader */
+        .quiz-ai-loader {
+            padding: 60px 28px;
+            text-align: center;
+        }
+
+        .quiz-ai-loader-hex {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+            animation: floatBounce 2s ease-in-out infinite;
+        }
+
+        .quiz-ai-loader p {
+            color: rgba(251, 248, 243, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .quiz-ai-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(251, 248, 243, 0.08);
+            border-top-color: var(--hive-amber);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        /* === SCREEN: Results === */
+        .quiz-results-box {
+            background: rgba(15, 12, 8, 0.95);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+        }
+
+        .quiz-results-hero {
+            background: linear-gradient(155deg, #16120a, #0f0d0a);
+            padding: 40px 32px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-results-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(244, 125, 59, 0.12) 0%, transparent 70%);
+        }
+
+        .quiz-results-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--hive-amber), var(--hive-amber-deep), transparent);
+        }
+
+        .quiz-rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .quiz-rank-badge--legendary {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.15));
+            border: 1px solid rgba(255, 200, 0, 0.4);
+            color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 200, 0, 0.2);
+        }
+
+        .quiz-rank-badge--expert {
+            background: linear-gradient(135deg, rgba(74, 170, 120, 0.2), rgba(62, 124, 90, 0.15));
+            border: 1px solid rgba(74, 170, 120, 0.4);
+            color: #7be0a8;
+        }
+
+        .quiz-rank-badge--advanced {
+            background: linear-gradient(135deg, rgba(100, 120, 200, 0.2), rgba(80, 100, 180, 0.15));
+            border: 1px solid rgba(100, 140, 220, 0.4);
+            color: #a0b8ff;
+        }
+
+        .quiz-rank-badge--intermediate {
+            background: linear-gradient(135deg, rgba(244, 125, 59, 0.2), rgba(217, 96, 31, 0.15));
+            border: 1px solid rgba(244, 125, 59, 0.4);
+            color: var(--hive-amber);
+        }
+
+        .quiz-rank-badge--beginner {
+            background: rgba(251, 248, 243, 0.06);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            color: rgba(251, 248, 243, 0.6);
+        }
+
+        .quiz-result-score-ring {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .quiz-result-score-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .qsr-track {
+            fill: none;
+            stroke: rgba(251, 248, 243, 0.07);
+            stroke-width: 8;
+        }
+
+        .qsr-fill {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 345;
+            stroke-dashoffset: 345;
+            transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+        }
+
+        .qsr-fill--legendary {
+            stroke: url(#goldGrad);
+        }
+
+        .qsr-fill--expert {
+            stroke: #4aaa78;
+        }
+
+        .qsr-fill--advanced {
+            stroke: #7090e0;
+        }
+
+        .qsr-fill--intermediate {
+            stroke: var(--hive-amber);
+        }
+
+        .qsr-fill--beginner {
+            stroke: rgba(251, 248, 243, 0.3);
+        }
+
+        .quiz-result-score-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quiz-result-score-num {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fbf8f3;
+            line-height: 1;
+        }
+
+        .quiz-result-score-denom {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(251, 248, 243, 0.4);
+            margin-top: 2px;
+        }
+
+        .quiz-result-greeting {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: #fbf8f3;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .quiz-result-greeting em {
+            color: var(--hive-amber);
+            font-style: normal;
+        }
+
+        .quiz-result-tagline {
+            color: rgba(251, 248, 243, 0.55);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Result stats grid */
+        .quiz-result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border-top: 1px solid rgba(251, 248, 243, 0.07);
+        }
+
+        .qrs-cell {
+            padding: 20px;
+            text-align: center;
+            border-right: 1px solid rgba(251, 248, 243, 0.07);
+        }
+
+        .qrs-cell:last-child {
+            border-right: none;
+        }
+
+        .qrs-val {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fbf8f3;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .qrs-val .unit {
+            font-size: 0.75rem;
+            color: rgba(251, 248, 243, 0.4);
+        }
+
+        .qrs-label {
+            font-size: 0.72rem;
+            color: rgba(251, 248, 243, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: var(--font-mono);
+        }
+
+        /* Performance breakdown */
+        .quiz-result-breakdown {
+            padding: 24px 28px;
+            border-top: 1px solid rgba(251, 248, 243, 0.07);
+        }
+
+        .qrb-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(251, 248, 243, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 14px;
+        }
+
+        .qrb-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .qrb-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .qrb-q {
+            font-size: 0.82rem;
+            color: rgba(251, 248, 243, 0.6);
+            flex: 1;
+        }
+
+        .qrb-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(251, 248, 243, 0.4);
+            white-space: nowrap;
+        }
+
+        .qrb-icon {
+            font-size: 0.9rem;
+        }
+
+        /* CTA join section */
+        .quiz-result-cta {
+            padding: 24px 28px;
+            background: rgba(244, 125, 59, 0.07);
+            border-top: 1px solid rgba(244, 125, 59, 0.15);
+            text-align: center;
+        }
+
+        .quiz-result-cta p {
+            font-size: 0.9rem;
+            color: rgba(251, 248, 243, 0.7);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .quiz-result-cta p strong {
+            color: var(--hive-amber);
+        }
+
+        .quiz-cta-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quiz-cta-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--hive-amber-deep), #c24a0a);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(217, 96, 31, 0.35);
+        }
+
+        .quiz-cta-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(217, 96, 31, 0.5);
+        }
+
+        .quiz-cta-retry {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(251, 248, 243, 0.07);
+            border: 1.5px solid rgba(251, 248, 243, 0.14);
+            color: rgba(251, 248, 243, 0.8);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+        }
+
+        .quiz-cta-retry:hover {
+            background: rgba(251, 248, 243, 0.12);
+            border-color: rgba(251, 248, 243, 0.25);
+        }
+
+        .quiz-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(251, 248, 243, 0.08);
+            border: 1px solid rgba(251, 248, 243, 0.14);
+            color: rgba(251, 248, 243, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            z-index: 100000;
+        }
+
+        .quiz-close-btn:hover {
+            background: rgba(251, 248, 243, 0.15);
+            color: #fbf8f3;
+        }
+
+        /* AI badge in results */
+        .quiz-ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 13px;
+            background: rgba(244, 125, 59, 0.12);
+            border: 1px solid rgba(244, 125, 59, 0.25);
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--hive-amber-2);
+            margin-top: 16px;
+        }
+
+        /* Confetti particles */
+        .quiz-confetti-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100001;
+            overflow: hidden;
+        }
+
+        .quiz-confetti-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            animation: confettiFall linear both;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Speed tier badge */
+        .quiz-speed-tier {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+        }
+
+        .quiz-speed-tier--lightning {
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+
+        .quiz-speed-tier--fast {
+            background: rgba(74, 170, 120, 0.12);
+            border: 1px solid rgba(74, 170, 120, 0.3);
+            color: #7be0a8;
+        }
+
+        .quiz-speed-tier--normal {
+            background: rgba(244, 125, 59, 0.12);
+            border: 1px solid rgba(244, 125, 59, 0.3);
+            color: var(--hive-amber);
+        }
+
+        .quiz-speed-tier--slow {
+            background: rgba(251, 248, 243, 0.06);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            color: rgba(251, 248, 243, 0.5);
+        }
+
+        /* Language selector buttons */
+        .quiz-lang-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .quiz-lang-btn {
+            padding: 8px 20px;
+            border-radius: 100px;
+            background: rgba(251, 248, 243, 0.06);
+            border: 1px solid rgba(251, 248, 243, 0.12);
+            color: rgba(251, 248, 243, 0.7);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.25s var(--ease-hive);
+        }
+
+        .quiz-lang-btn:hover {
+            background: rgba(244, 125, 59, 0.15);
+            border-color: rgba(244, 125, 59, 0.3);
+            color: #fbf8f3;
+        }
+
+        .quiz-lang-btn.is-active {
+            background: linear-gradient(135deg, var(--hive-amber-deep), var(--hive-amber));
+            border-color: var(--hive-amber);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 4px 18px rgba(244, 125, 59, 0.35);
+        }
+
+        /* === EPIC GAMING VICTORY ANIMATIONS & AI CARD === */
+        .quiz-results-hero {
+            background: linear-gradient(155deg, #18120a, #0b0906);
+            padding: 44px 32px 36px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-results-hero::before {
+            content: '';
+            position: absolute;
+            inset: -50px;
+            background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(244, 125, 59, 0.2) 0%, transparent 70%);
+            animation: victoryGlowPulse 3s ease-in-out infinite alternate;
+        }
+
+        .quiz-results-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-25deg);
+            animation: shineSweep 4s ease-in-out infinite 1s;
+        }
+
+        @keyframes victoryGlowPulse {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes shineSweep {
+            0% {
+                left: -100%;
+            }
+
+            30%,
+            100% {
+                left: 200%;
+            }
+        }
+
+        .quiz-rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 22px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 2;
+            animation: rankPopScale 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes rankPopScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(30px);
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .quiz-result-score-ring {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 16px rgba(244, 125, 59, 0.35));
+            animation: scoreRingZoom 0.8s cubic-bezier(0.22, 1, 0.36, 1) both 0.2s;
+        }
+
+        @keyframes scoreRingZoom {
+            from {
+                opacity: 0;
+                transform: scale(0.6) rotate(-20deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .quiz-result-greeting {
+            position: relative;
+            z-index: 2;
+            animation: quizScreenIn 0.6s var(--ease-hive) both 0.3s;
+        }
+
+        .quiz-result-tagline {
+            position: relative;
+            z-index: 2;
+            animation: quizScreenIn 0.6s var(--ease-hive) both 0.4s;
+        }
+
+        /* AI Analysis Box in Results - Futuristic Gaming Card */
+        .quiz-ai-analysis-box {
+            margin: 24px 28px 0;
+            padding: 22px 26px;
+            background: linear-gradient(145deg, rgba(244, 125, 59, 0.12), rgba(15, 12, 8, 0.85));
+            border: 1px solid rgba(244, 125, 59, 0.35);
+            border-radius: 20px;
+            text-align: right;
+            direction: rtl;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(244, 125, 59, 0.05);
+            animation: quizScreenIn 0.7s var(--ease-hive) both 0.5s;
+        }
+
+        .quiz-ai-analysis-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--hive-amber), var(--hive-amber-deep));
+            border-radius: 4px;
+        }
+
+        .qai-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .qai-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(244, 125, 59, 0.3), rgba(217, 96, 31, 0.2));
+            border: 1px solid rgba(244, 125, 59, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(244, 125, 59, 0.3);
+        }
+
+        .qai-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--hive-amber-2);
+            margin: 0 0 2px 0;
+            font-family: var(--font-body);
+        }
+
+        .qai-sub {
+            font-size: 0.75rem;
+            color: rgba(251, 248, 243, 0.5);
+            margin: 0;
+            font-family: var(--font-mono);
+        }
+
+        .qai-body {
+            font-size: 0.92rem;
+            color: rgba(251, 248, 243, 0.92);
+            line-height: 1.8;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-ai-spinner-sm {
+            width: 22px;
+            height: 22px;
+            border: 2.5px solid rgba(244, 125, 59, 0.2);
+            border-top-color: var(--hive-amber);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            flex-shrink: 0;
+        }
     </style>
 
 </head>
@@ -6253,6 +7834,7 @@
                 <a href="#opportunities"><span class="nav-hex" aria-hidden="true"></span>Opportunities</a>
                 <a href="#ai-tools"><span class="nav-hex" aria-hidden="true"></span>AI Tools</a>
                 <a href="#about"><span class="nav-hex" aria-hidden="true"></span>About</a>
+                <a href="#quiz" class="nav-quiz-link"><span class="nav-hex" aria-hidden="true"></span>🎮 Quiz</a>
             </nav>
 
             <div class="nav-actions">
@@ -7343,6 +8925,73 @@
             </div>
         </section>
 
+        <!-- ============ QUIZ ARENA SECTION ============ -->
+        <section class="quiz-arena-section content-section" id="quiz">
+            <div class="section-inner">
+                <div class="quiz-arena-inner">
+                    <!-- Left: Copy -->
+                    <div class="quiz-arena-copy">
+                        <p class="eyebrow"><span class="eyebrow-hex" aria-hidden="true"></span>Knowledge Arena · Public
+                            Health Quiz</p>
+                        <h2>How sharp is your<br><em style="color: var(--hive-amber); font-style: normal;">health IQ?
+                                🧠</em></h2>
+                        <p>Think you know public health? Put yourself to the test with 10 expert-curated questions —
+                            from epidemiology to global disease trends. Your speed, accuracy, and knowledge level will
+                            all be scored. Real-time. No cheating. Legendary results.</p>
+                        <div class="quiz-arena-stats">
+                            <div class="quiz-stat-pill"><span class="dot"></span>10 Questions</div>
+                            <div class="quiz-stat-pill">⏱ Timed per question</div>
+                            <div class="quiz-stat-pill">🤖 AI-generated rounds</div>
+                            <div class="quiz-stat-pill">🏆 Rank revealed</div>
+                        </div>
+                        <button class="quiz-launch-btn" id="quizLaunchBtn" aria-haspopup="dialog">
+                            <span class="btn-glow"></span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Launch Quiz Arena
+                        </button>
+                    </div>
+                    <!-- Right: Preview card -->
+                    <div class="quiz-preview-card">
+                        <div class="qp-header">
+                            <div class="qp-badge"><span
+                                    style="width:7px;height:7px;border-radius:50%;background:var(--hive-amber);display:inline-block;"></span>Live
+                                Preview</div>
+                            <div class="qp-score-ring" id="qpRing">
+                                <svg width="70" height="70" viewBox="0 0 70 70">
+                                    <circle cx="35" cy="35" r="30" fill="none" stroke="rgba(251,248,243,0.06)"
+                                        stroke-width="5" />
+                                    <circle cx="35" cy="35" r="30" fill="none" stroke="var(--hive-amber-deep)"
+                                        stroke-width="5" stroke-linecap="round" stroke-dasharray="188"
+                                        stroke-dashoffset="70"
+                                        style="transform:rotate(-90deg);transform-origin:center;" />
+                                </svg>
+                                <div class="qp-score-ring-inner">7/10</div>
+                            </div>
+                        </div>
+                        <div class="qp-sample-q">💊 Which body system does the Human Immunodeficiency Virus (HIV)
+                            primarily target?</div>
+                        <div class="qp-sample-opts">
+                            <div class="qp-opt">A. Nervous system</div>
+                            <div class="qp-opt qp-opt--correct">✓ B. Immune system</div>
+                            <div class="qp-opt">C. Digestive system</div>
+                            <div class="qp-opt">D. Endocrine system</div>
+                        </div>
+                        <div class="qp-topics">
+                            <span class="qp-topic">🦠 Epidemiology</span>
+                            <span class="qp-topic">💉 Vaccination</span>
+                            <span class="qp-topic">🌍 Global Health</span>
+                            <span class="qp-topic">🧬 Disease</span>
+                            <span class="qp-topic">🥗 Nutrition</span>
+                            <span class="qp-topic">🧠 Mental Health</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- ============ FOOTER ============ -->
@@ -7720,6 +9369,185 @@
             <div id="newsModalBody"></div>
         </div>
     </div>
+
+    <!-- ============ QUIZ ARENA MODAL ============ -->
+    <div class="quiz-modal-overlay" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizModalTitle">
+        <div class="quiz-modal-shell">
+            <button class="quiz-close-btn" id="quizCloseBtn" aria-label="Close Quiz">✕</button>
+
+            <!-- SCREEN 1: Name & Language Entry -->
+            <div class="quiz-screen is-active" id="quizScreenName">
+                <div class="quiz-name-box">
+                    <span class="quiz-name-hex">🎮</span>
+                    <h2 id="quizModalTitle">Health Quiz Arena</h2>
+                    <p id="quizIntroDesc">اختر لغة الاختبار وأدخل اسمك للبدء. ستواجه <strong
+                            style="color:var(--hive-amber);">10 أسئلة صحية متدرجة</strong> مع حساب سرعة رد الفعل بدقة.
+                    </p>
+
+                    <!-- Language Selection -->
+                    <div class="quiz-lang-selector" id="quizLangSelector">
+                        <button type="button" class="quiz-lang-btn is-active" id="quizLangAr" data-lang="ar">🇸🇦
+                            العربية</button>
+                        <button type="button" class="quiz-lang-btn" id="quizLangEn" data-lang="en">🇬🇧 English</button>
+                    </div>
+
+                    <div class="quiz-name-input-wrap">
+                        <input type="text" class="quiz-name-input" id="quizNameInput"
+                            placeholder="اكتب اسمك هنا يا بطل..." maxlength="30" autocomplete="off">
+                    </div>
+                    <button class="quiz-start-btn" id="quizStartFixedBtn">
+                        ⚡ ابدأ الكويز والمتعة
+                    </button>
+                    <div class="quiz-mode-info">
+                        <span class="quiz-mode-badge" id="quizBadge1">🔒 10 أسئلة متدرجة</span>
+                        <span class="quiz-mode-badge" id="quizBadge2">⏱ 20 ثانية لكل سؤال</span>
+                        <span class="quiz-mode-badge" id="quizBadge3">🏆 تحليل ذكي بالزمن</span>
+                    </div>
+                    <div style="margin-top:20px; padding-top:20px; border-top:1px solid rgba(251,248,243,0.08);">
+                        <p style="font-size:0.8rem; color:rgba(251,248,243,0.4); margin-bottom:12px;"
+                            id="quizAiGenDesc">أو خض تحدياً فريداً مع أسئلة مولّدة بالذكاء الاصطناعي:</p>
+                        <button class="quiz-start-btn" id="quizStartAiBtn"
+                            style="background:linear-gradient(135deg,rgba(100,120,200,0.35),rgba(80,100,180,0.25)); box-shadow:0 8px 28px rgba(80,100,200,0.2);">
+                            🤖 توليد أسئلة جديدة بالذكاء الاصطناعي
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCREEN 2: AI Loading -->
+            <div class="quiz-screen" id="quizScreenLoading">
+                <div class="quiz-game-box">
+                    <div class="quiz-ai-loader">
+                        <span class="quiz-ai-loader-hex">🤖</span>
+                        <p>Generating <strong style="color:var(--hive-amber);">10 unique health questions</strong> using
+                            Puter AI...<br><span style="font-size:0.8rem;">This may take a few seconds.</span></p>
+                        <div class="quiz-ai-spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCREEN 3: Game / Question -->
+            <div class="quiz-screen" id="quizScreenGame">
+                <div class="quiz-game-box">
+                    <div class="quiz-hud">
+                        <div class="quiz-hud-left">
+                            <span class="quiz-hud-name">Player</span>
+                            <span class="quiz-hud-player" id="quizHudName">—</span>
+                        </div>
+                        <div class="quiz-progress-wrap">
+                            <span class="quiz-q-label" id="quizQLabel">Question 1 of 10</span>
+                            <div class="quiz-progress-bar">
+                                <div class="quiz-progress-fill" id="quizProgressFill" style="width:10%"></div>
+                            </div>
+                        </div>
+                        <div class="quiz-hud-right">
+                            <div class="quiz-score-display"><span id="quizScoreVal">0</span>/10</div>
+                            <div class="quiz-score-label">SCORE</div>
+                        </div>
+                        <div class="quiz-timer-ring">
+                            <svg width="52" height="52" viewBox="0 0 52 52">
+                                <circle class="quiz-timer-track" cx="26" cy="26" r="22" />
+                                <circle class="quiz-timer-fill" id="quizTimerFill" cx="26" cy="26" r="22" />
+                            </svg>
+                            <div class="quiz-timer-text" id="quizTimerText">20</div>
+                        </div>
+                    </div>
+                    <div class="quiz-body">
+                        <div class="quiz-q-category" id="quizCategory">🌍 Global Health</div>
+                        <div class="quiz-question-text" id="quizQuestionText">Loading question...</div>
+                        <div class="quiz-options" id="quizOptions"></div>
+                        <div class="quiz-feedback" id="quizFeedback">
+                            <span class="quiz-feedback-label" id="quizFeedbackLabel"></span>
+                            <span id="quizFeedbackBody"></span>
+                        </div>
+                        <button class="quiz-next-btn" id="quizNextBtn">
+                            Next Question →
+                        </button>
+                    </div>
+                    <div class="quiz-streak">
+                        <span class="quiz-streak-label">Streak</span>
+                        <div class="quiz-streak-dots" id="quizStreakDots"></div>
+                        <div class="quiz-reaction-badge" id="quizReactionBadge"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCREEN 4: Results -->
+            <div class="quiz-screen" id="quizScreenResults">
+                <div class="quiz-results-box">
+                    <div class="quiz-results-hero">
+                        <div class="quiz-rank-badge" id="quizRankBadge">🏆 Legendary</div>
+                        <div class="quiz-result-score-ring">
+                            <svg width="130" height="130" viewBox="0 0 130 130">
+                                <defs>
+                                    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#ffd700" />
+                                        <stop offset="100%" stop-color="#ffb300" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="qsr-track" cx="65" cy="65" r="55" />
+                                <circle class="qsr-fill" id="quizResultRingFill" cx="65" cy="65" r="55" />
+                            </svg>
+                            <div class="quiz-result-score-inner">
+                                <div class="quiz-result-score-num" id="quizResultScore">0</div>
+                                <div class="quiz-result-score-denom">OUT OF 10</div>
+                            </div>
+                        </div>
+                        <h2 class="quiz-result-greeting" id="quizResultGreeting">Amazing, <em>Champion</em>!</h2>
+                        <p class="quiz-result-tagline" id="quizResultTagline"></p>
+                        <div style="margin-top:14px;" id="quizSpeedTierWrap"></div>
+                        <div class="quiz-ai-badge" id="quizAiBadge" hidden>
+                            🤖 AI-generated questions · Puter AI
+                        </div>
+                    </div>
+                    <div class="quiz-result-stats">
+                        <div class="qrs-cell">
+                            <div class="qrs-val" id="qrCorrect">—</div>
+                            <div class="qrs-label">Correct</div>
+                        </div>
+                        <div class="qrs-cell">
+                            <div class="qrs-val" id="qrAvgTime">—<span class="unit">s</span></div>
+                            <div class="qrs-label">Avg. Speed</div>
+                        </div>
+                        <div class="qrs-cell">
+                            <div class="qrs-val" id="qrBestTime">—<span class="unit">s</span></div>
+                            <div class="qrs-label">Fastest Answer</div>
+                        </div>
+                    </div>
+
+                    <!-- AI Performance & Reaction Time Analysis Box -->
+                    <div class="quiz-ai-analysis-box" id="quizAiAnalysisBox">
+                        <div class="qai-head">
+                            <span class="qai-icon">🤖</span>
+                            <div>
+                                <h4 class="qai-title">التحليل الذكي بالأداء والزمن | AI Performance Analysis</h4>
+                                <p class="qai-sub">تحليل العقل الاصطناعي لمستوى الثقافة الطبية وسرعة رد الفعل</p>
+                            </div>
+                        </div>
+                        <div class="qai-body" id="quizAiAnalysisBody">
+                            <div class="quiz-ai-spinner-sm"></div>
+                            <span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">جاري تحليل الأداء وحساب زمن
+                                الاستجابة...</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-result-breakdown" id="quizBreakdown"></div>
+                    <div class="quiz-result-cta">
+                        <p id="quizCtaText">Impressed by your performance? Join our <strong>SCOPH public health
+                                community</strong> and take your knowledge further!</p>
+                        <div class="quiz-cta-btns">
+                            <a href="mailto:nusmsa.scoph@gmail.com?subject=Join Request — I Scored on The PHive Quiz"
+                                class="quiz-cta-email" id="quizCtaEmailBtn">
+                                📧 Join SCOPH Community
+                            </a>
+                            <button class="quiz-cta-retry" id="quizRetryBtn">🔄 Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-confetti-container" id="quizConfetti" aria-hidden="true"></div>
 
     <script src="https://js.puter.com/v2/"></script>
     <script>
@@ -9359,9 +11187,6 @@
                 });
             })();
 
-            /* ==========================================================================
-               GENIUS FEATURES: COMMAND PALETTE (Ctrl+K), BOOKMARKS, QUIZ ENGINE
-               ========================================================================== */
 
             /* ---- Bookmarks System ---- */
             function getSavedBookmarks() {
@@ -9658,7 +11483,7 @@
                     }
                     var promise;
                     try {
-                        promise = window.puter.ai.chat(prompt, { model: 'gpt-5.4-nano' });
+                        promise = window.puter.ai.chat(prompt);
                     } catch (err) {
                         reject('Something went wrong starting that request.');
                         return;
@@ -10179,6 +12004,916 @@
                         revealNew(document.querySelector(sel));
                     });
                 }, 4000);
+
+            })();
+
+            /* ==========================================================================
+               HEALTH QUIZ ARENA — Full Game Logic
+               ========================================================================== */
+            (function () {
+                'use strict';
+
+                /* -------- English Fixed Questions Bank (10 Progressive Moderate Conceptual Questions) -------- */
+                var FIXED_QUESTIONS_EN = [
+                    {
+                        category: '🌡️ Level 1 · Basic Prevention',
+                        question: 'What is the single simplest and most effective global action to stop the spread of most viral and bacterial infections?',
+                        options: [
+                            'Washing hands thoroughly with soap and water for 20 seconds',
+                            'Wearing dark sunglasses outdoors',
+                            'Taking daily vitamin supplements',
+                            'Drinking warm fruit juices daily'
+                        ],
+                        correct: 0,
+                        explanation: 'Handwashing with soap and water is the frontline physical barrier against direct microbe transmission.'
+                    },
+                    {
+                        category: '☀️ Level 2 · Nutrition & Sunshine',
+                        question: 'Which essential vitamin is naturally synthesized by human skin upon direct exposure to sunlight?',
+                        options: [
+                            'Vitamin C',
+                            'Vitamin D',
+                            'Vitamin B12',
+                            'Vitamin K'
+                        ],
+                        correct: 1,
+                        explanation: 'Vitamin D is produced in the skin via sunlight reaction and is vital for bone density and immune regulation.'
+                    },
+                    {
+                        category: '🫀 Level 3 · Physiology & Circulation',
+                        question: 'What is the primary function of the heart muscle in human circulation?',
+                        options: [
+                            'Filtering carbon dioxide out of lungs',
+                            'Digesting proteins and starches',
+                            'Pumping oxygenated blood and nutrients to all body tissues',
+                            'Regulating blood glucose levels directly'
+                        ],
+                        correct: 2,
+                        explanation: 'The heart pumps oxygen-rich blood through the vascular system to keep every cell alive and nourished.'
+                    },
+                    {
+                        category: '🛡️ Level 4 · Vaccines & Immunity',
+                        question: 'What is the main biological purpose of vaccines in protecting individuals and communities?',
+                        options: [
+                            'Destroying bacteria on contact immediately',
+                            'Training the immune system to recognize pathogens without causing disease',
+                            'Relieving acute pain and physical symptoms',
+                            'Filtering toxins directly out of the bloodstream'
+                        ],
+                        correct: 1,
+                        explanation: 'Vaccines introduce safe antigens to train immune memory cells so the body is prepared for real exposure.'
+                    },
+                    {
+                        category: '🩺 Level 5 · Community Health',
+                        question: 'Which of the following is a classic example of a "Social Determinant of Health" (SDOH)?',
+                        options: [
+                            'Natural eye and hair color',
+                            'Access to clean drinking water and safe housing',
+                            'Resting heart rate frequency',
+                            'Individual cellular DNA sequencing'
+                        ],
+                        correct: 1,
+                        explanation: 'Social Determinants of Health are non-medical environmental conditions like clean water and housing that shape health.'
+                    },
+                    {
+                        category: '💊 Level 6 · Medicine Stewardship',
+                        question: 'What is the primary danger of taking antibiotics inappropriately or without a prescription for viral illnesses?',
+                        options: [
+                            'Bacteria developing Antimicrobial Resistance (AMR)',
+                            'Permanent skin color changes',
+                            'Sudden loss of distance vision',
+                            'Inability to take deep breaths'
+                        ],
+                        correct: 0,
+                        explanation: 'Misusing antibiotics allows surviving bacteria to adapt and resist treatment, creating drug-resistant superbugs.'
+                    },
+                    {
+                        category: '🧬 Level 7 · Virology & Immune Defense',
+                        question: 'Which specific organ or system in the human body is primarily targeted by HIV?',
+                        options: [
+                            'Central nervous system',
+                            'Immune system (specifically CD4+ T-cells)',
+                            'Gastrointestinal tract',
+                            'Musculoskeletal system'
+                        ],
+                        correct: 1,
+                        explanation: 'HIV attacks key immune defense cells (CD4+ T-lymphocytes), weakening the body\'s ability to fight opportunistic infections.'
+                    },
+                    {
+                        category: '🌐 Level 8 · Outbreak Epidemiology',
+                        question: 'What does the Basic Reproduction Number (R0) measure during an epidemic outbreak?',
+                        options: [
+                            'The average number of hospital days per patient',
+                            'The average number of secondary infections generated by one infected individual',
+                            'The overall national recovery percentage',
+                            'The number of available doctors per capita'
+                        ],
+                        correct: 1,
+                        explanation: 'R0 quantifies disease contagiousness; an R0 greater than 1 indicates an expanding epidemic trajectory.'
+                    },
+                    {
+                        category: '🧠 Level 9 · Evidence-Based Practice',
+                        question: 'What is the core principle of "Evidence-Based Medicine" (EBM)?',
+                        options: [
+                            'Relying solely on anecdotal personal opinions',
+                            'Integrating the best available scientific research with clinical expertise for patient care',
+                            'Eliminating laboratory diagnostic tests entirely',
+                            'Replacing standard clinical therapies with diet alone'
+                        ],
+                        correct: 1,
+                        explanation: 'EBM combines rigorous peer-reviewed clinical trial evidence with doctor expertise to deliver optimal patient care.'
+                    },
+                    {
+                        category: '🏛️ Level 10 · Global Health Policy',
+                        question: 'What foundational concept was proclaimed by the WHO Alma-Ata Declaration (1978)?',
+                        options: [
+                            'Health as a fundamental human right anchored by Primary Health Care for all',
+                            'Imposing high tariffs on imported pharmaceuticals',
+                            'Restricting healthcare services to central capital city hospitals',
+                            'Banning international travel during seasonal flu cycles'
+                        ],
+                        correct: 0,
+                        explanation: 'Alma-Ata established health as a human right and placed Primary Health Care as the essential strategy for global health equity.'
+                    }
+                ];
+
+                /* -------- Arabic Fixed Questions Bank (10 Progressive Moderate Conceptual Questions) -------- */
+                var FIXED_QUESTIONS = [
+                    {
+                        category: '🌡️ المستوى 1 · استجابة الجسم والوقاية',
+                        question: 'ما الذي يحدث حقيقةً في جسم الإنسان عند الإصابة بالحُمى وتصاعد درجة الحرارة؟',
+                        options: [
+                            'تعطل كامل ومؤقت لأجهزة الجسم الحيوية عن العمل',
+                            'استجابة دفاعية موجهة من الجهاز المناعي لإبطاء تكاثر الميكروبات',
+                            'ارتفاع ضخم ومفاجئ في حجم كمية الدم',
+                            'انخفاض حاد ومستمر في كفاءة الرئتين'
+                        ],
+                        correct: 1,
+                        explanation: 'الحُمى استجابة موجهة يرفع بها الدماغ حرارة الجسم لإبطاء نمو الفيروسات والبكتيريا وتنشيط خلايا المناعة.'
+                    },
+                    {
+                        category: '🧬 المستوى 2 · المناعة واللقاحات',
+                        question: 'لماذا يُضطر العلماء لتحديث وتعديل تركيب لقاح الإنفلونزا الموسمية بشكل دوري؟',
+                        options: [
+                            'لأن مفعول المواد المحفزة للمناعة ينتهي تلقائياً بعد عام',
+                            'لأن فيروس الإنفلونزا يتطوّر ويغيّر طفرات سطحه البروتينية باستمرار',
+                            'لأن اللقاحات الدورية تحتوي على كميات ضعيفة جداً من الماء',
+                            'لمنع نمو البكتيريا النافعة داخل الجهاز الهضمي'
+                        ],
+                        correct: 1,
+                        explanation: 'يطرأ على فيروس الإنفلونزا تغير جيني مستمر (Antigenic Drift)، مما يستدعي تحديث اللقاح ليطابق السلالات السائدة.'
+                    },
+                    {
+                        category: '🫀 المستوى 3 · الأحياء الدقيقة والجسم',
+                        question: 'ما هي الفائدة الأساسية للبكتيريا والجراثيم النافعة المستقرة طبيعياً في أمعاء الإنسان (Microbiome)؟',
+                        options: [
+                            'مساعدة القلب في تنقية الدم من الغازات',
+                            'هضم بعض المغذيات ودعم الجهاز المناعي ومنع البكتيريا الضارة',
+                            'تنظيم مستوى سكر الدم دون الحاجة لأي هرمونات',
+                            'منع امتصاص السوائل تماماً في الأمعاء الغليظة'
+                        ],
+                        correct: 1,
+                        explanation: 'تشكل فلورا الأمعاء خط دفاع مناعي رائع، حيث تنافس البكتيريا الضارة وتنتج مغذيات وفيتامينات هامة للجسم.'
+                    },
+                    {
+                        category: '💊 المستوى 4 · الاستخدام الرشيد للأدوية',
+                        question: 'لماذا يُعتبر تناول المضادات الحيوية لعلاج نزلات البرد الشائعة تصرفاً غير مفيد صحياً؟',
+                        options: [
+                            'لأن المضادات الحيوية تقضي على البكتيريا فقط بينما نزلات البرد تسببها الفيروسات',
+                            'لأن المضادات الحيوية تعمل فقط إذا تم تناولها في ساعات الصباح الباكر',
+                            'لأن علاج نزلات البرد يقتصر دائماً على التدخل الجراحي',
+                            'لأن المضادات الحيوية تتسبب في رفع حرارة المريض فوراً'
+                        ],
+                        correct: 0,
+                        explanation: 'نزلات البرد والإنفلونزا عدوى فيروسية، والمضادات الحيوية تستهدف البكتيريا فقط ولا تؤثر على الفيروسات إطلاقاً.'
+                    },
+                    {
+                        category: '🩺 المستوى 5 · علم الأوبئة وإدارة الأزمات',
+                        question: 'ما الفرق الجوهري في الصحة العامة بين "العزل الصحي" (Isolation) و"الحجر الصحي" (Quarantine)؟',
+                        options: [
+                            'العزل يطبق في المستشفيات فقط، بينما الحجر يطبق في المنازل',
+                            'العزل يكون للمريض المؤكدة إصابته، والحجر للمخالط السليم المحتمل إحماله للمرض',
+                            'العزل يختص بالأمراض المزمنة فقط، بينما الحجر يختص بالعدوى الفيروسية',
+                            'لا يوجد أي فرق تنظيمي أو علمي بين مصطلحي العزل والحجر'
+                        ],
+                        correct: 1,
+                        explanation: 'يُفصل المريض المصاب مؤكداً بالعزل لمنع العدوى، بينما يُراقب الشخص المخالط السليم بالحجر خلال فترة الحضانة.'
+                    },
+                    {
+                        category: '🦟 المستوى 6 · الأمراض المدارية والمعدية',
+                        question: 'ما هي طريقة الانتقال الرئيسية والمسار الحاسم لإصابة الإنسان بطفيل الملاريا؟',
+                        options: [
+                            'استنشاق الهواء الرطب المحيط بالمستنقعات',
+                            'شرب المياه السطحية غير المغلية',
+                            'تعرض الإنسان لدغة أنثى بعوضة الأنوفيلس الحاملة للطفيل',
+                            'التلامس المباشر مع جلد الشخص المصاب'
+                        ],
+                        correct: 2,
+                        explanation: 'الملاريا مرض طفيلي لا ينتقل بالهواء أو التلامس، بل تنقله بعوضة الأنوفيلس الحاملة للطفيل عند حقنها للدورة الدموية.'
+                    },
+                    {
+                        category: '🔬 المستوى 7 · الطب الوقائي والمبكر',
+                        question: 'أي من الإجراءات التالية يُصنّف ضمن "الوقاية الثانوية" (Secondary Prevention)؟',
+                        options: [
+                            'إعطاء تطعيمات الأطفال الواردة في الجدول الوطني',
+                            'الفحوصات المبكرة كأشعة الماموجرام لاكتشاف الأورام قبل ظهور أي أعراض',
+                            'برامج التأهيل الطبيعي والعلاجي بعد السكتات الدماغية',
+                            'نشر ملصقات توعوية حول ممارسة الرياضة اليومية'
+                        ],
+                        correct: 1,
+                        explanation: 'تهدف الوقاية الثانوية لاكتشاف الأمراض في مراحلها المبكرة جداً قبل ظهور الأعراض للسيطرة عليها وعلاجها بكفاءة.'
+                    },
+                    {
+                        category: '🌐 المستوى 8 · إدارة الأزمات الصحية',
+                        question: 'ما الهدف الجوهري الذي تسعى السلطات الصحية لتحقيقه عند استراتيجية "تسطيح المنحنى" (Flattening the Curve)؟',
+                        options: [
+                            'إخفاء البيانات والوفيات عن التغطية الإعلامية',
+                            'توزيع معدل الإصابات على مدى زمني أطول لتفادي انهيار قدرة المستشفيات',
+                            'القضاء التام والمباشر على الفيروس في غضون 24 ساعة',
+                            'إغلاق الصيدليات وتأمين الأدوية منزلياً بشكل فردي'
+                        ],
+                        correct: 1,
+                        explanation: 'يسهم تسطيح المنحنى في توزيع الحالات على فترة أطول، مما يمنع تكدس المرضى ويضمن قدرة المستشفيات على علاج الجميع.'
+                    },
+                    {
+                        category: '🧠 المستوى 9 · الرعاية الصحية الشاملة',
+                        question: 'ما الهدف الأساسي الذي تسعى إليه منظمة الصحة العالمية عبر "التغطية الصحية الشاملة" (UHC)؟',
+                        options: [
+                            'تقديم جميع الخدمات العلاجية مجاناً للفئات الثرية فقط',
+                            'ضمان حصول الجميع على الخدمات الصحية الجودة دون التعرض لضائقة مالية خانقة',
+                            'إلغاء القطاع الطبي الخاص وتأميم العيادات',
+                            'اقتصار الخدمات الصحية على الجراحات الطارئة المعقدة'
+                        ],
+                        correct: 1,
+                        explanation: 'تعني التغطية الشاملة حصول جميع الأفراد على الخدمات الوقائية والعلاجية الأساسية دون مواجهة صعوبات مالية كارثية.'
+                    },
+                    {
+                        category: '🏛️ المستوى 10 · القيادة والنظم الصحية',
+                        question: 'لماذا تُشكل "الرعاية الصحية الأولية" (Primary Health Care) الركيزة الأساسية للأنظمة الطبية الناجحة؟',
+                        options: [
+                            'لأنها تقتصر فقط على شراء الأجهزة الحديثة للمستشفيات المركزية',
+                            'لأنها تقدم خدمات وقائية وعلاجية مبكرة مجتمعية تمنع مضاعفات الأمراض وتعالج غالبية الحالات',
+                            'لأنها تستغني عن وجود الأطباء والكوادر البشرية بالمطلق',
+                            'لأنها تقيد وصول السكان للخدمات الطبية في القرى'
+                        ],
+                        correct: 1,
+                        explanation: 'تُعد الرعاية الأولية خط الدفاع الأول في المجتمع، وتستطيع تلبية أكثر من 80-90% من الاحتياجات الصحية الشاملة بكفاءة.'
+                    }
+                ];
+
+                /* -------- State -------- */
+                var state = {
+                    lang: 'ar',         // 'ar' or 'en'
+                    playerName: '',
+                    questions: [],
+                    currentQ: 0,
+                    score: 0,
+                    answers: [],        // { correct: bool, timeMs: number }
+                    timerInterval: null,
+                    timeLeft: 20,
+                    questionStartTime: 0,
+                    answered: false,
+                    isAI: false
+                };
+
+                /* -------- DOM refs -------- */
+                var modal = document.getElementById('quizModal');
+                var closeBtn = document.getElementById('quizCloseBtn');
+                var launchBtn = document.getElementById('quizLaunchBtn');
+                var nameInput = document.getElementById('quizNameInput');
+                var startFixed = document.getElementById('quizStartFixedBtn');
+                var startAi = document.getElementById('quizStartAiBtn');
+                var nextBtn = document.getElementById('quizNextBtn');
+                var retryBtn = document.getElementById('quizRetryBtn');
+                var hudName = document.getElementById('quizHudName');
+                var qLabel = document.getElementById('quizQLabel');
+                var progressFill = document.getElementById('quizProgressFill');
+                var scoreVal = document.getElementById('quizScoreVal');
+                var timerFill = document.getElementById('quizTimerFill');
+                var timerText = document.getElementById('quizTimerText');
+                var qCategory = document.getElementById('quizCategory');
+                var qText = document.getElementById('quizQuestionText');
+                var qOptions = document.getElementById('quizOptions');
+                var feedbackEl = document.getElementById('quizFeedback');
+                var feedbackLbl = document.getElementById('quizFeedbackLabel');
+                var feedbackBody = document.getElementById('quizFeedbackBody');
+                var streakDots = document.getElementById('quizStreakDots');
+                var reactionBadge = document.getElementById('quizReactionBadge');
+                var confettiWrap = document.getElementById('quizConfetti');
+
+                /* -------- Show / hide screens -------- */
+                function showScreen(id) {
+                    var screens = document.querySelectorAll('.quiz-screen');
+                    screens.forEach(function (s) { s.classList.remove('is-active'); });
+                    var target = document.getElementById(id);
+                    if (target) { target.classList.add('is-active'); }
+                }
+
+                /* -------- Open / close modal -------- */
+                function openQuiz() {
+                    modal.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                    showScreen('quizScreenName');
+                    nameInput.value = '';
+                    nameInput.focus();
+                }
+                function closeQuiz() {
+                    modal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                    stopTimer();
+                }
+
+                launchBtn && launchBtn.addEventListener('click', openQuiz);
+                closeBtn && closeBtn.addEventListener('click', closeQuiz);
+                modal && modal.addEventListener('click', function (e) {
+                    if (e.target === modal) closeQuiz();
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) closeQuiz();
+                });
+
+                /* -------- Language Toggle Events -------- */
+                var langArBtn = document.getElementById('quizLangAr');
+                var langEnBtn = document.getElementById('quizLangEn');
+
+                function setQuizLang(lang) {
+                    state.lang = lang;
+                    if (langArBtn) langArBtn.classList.toggle('is-active', lang === 'ar');
+                    if (langEnBtn) langEnBtn.classList.toggle('is-active', lang === 'en');
+
+                    var nameInput = document.getElementById('quizNameInput');
+                    var startFixed = document.getElementById('quizStartFixedBtn');
+                    var startAi = document.getElementById('quizStartAiBtn');
+                    var introDesc = document.getElementById('quizIntroDesc');
+                    var b1 = document.getElementById('quizBadge1');
+                    var b2 = document.getElementById('quizBadge2');
+                    var b3 = document.getElementById('quizBadge3');
+                    var aiGenDesc = document.getElementById('quizAiGenDesc');
+
+                    if (lang === 'en') {
+                        if (nameInput) nameInput.placeholder = "Enter your name here, champion...";
+                        if (startFixed) startFixed.textContent = "⚡ Start Quiz & Fun";
+                        if (startAi) startAi.textContent = "🤖 Generate AI Questions";
+                        if (introDesc) introDesc.innerHTML = 'Select language & enter your name to begin. You will face <strong style="color:var(--hive-amber);">10 progressive health questions</strong> with reaction time tracking.';
+                        if (b1) b1.textContent = "🔒 10 Progressive Qs";
+                        if (b2) b2.textContent = "⏱ 20s Per Question";
+                        if (b3) b3.textContent = "🏆 AI Speed Analysis";
+                        if (aiGenDesc) aiGenDesc.textContent = "Or challenge yourself with AI-generated questions:";
+                    } else {
+                        if (nameInput) nameInput.placeholder = "اكتب اسمك هنا يا بطل...";
+                        if (startFixed) startFixed.textContent = "⚡ ابدأ الكويز والمتعة";
+                        if (startAi) startAi.textContent = "🤖 توليد أسئلة جديدة بالذكاء الاصطناعي";
+                        if (introDesc) introDesc.innerHTML = 'اختر لغة الاختبار وأدخل اسمك للبدء. ستواجه <strong style="color:var(--hive-amber);">10 أسئلة صحية متدرجة</strong> مع حساب سرعة رد الفعل بدقة.';
+                        if (b1) b1.textContent = "🔒 10 أسئلة متدرجة";
+                        if (b2) b2.textContent = "⏱ 20 ثانية لكل سؤال";
+                        if (b3) b3.textContent = "🏆 تحليل ذكي بالزمن";
+                        if (aiGenDesc) aiGenDesc.textContent = "أو خض تحدياً فريداً مع أسئلة مولّدة بالذكاء الاصطناعي:";
+                    }
+                }
+
+                langArBtn && langArBtn.addEventListener('click', function () { setQuizLang('ar'); });
+                langEnBtn && langEnBtn.addEventListener('click', function () { setQuizLang('en'); });
+
+                /* -------- Start quiz -------- */
+                function getPlayerName() {
+                    var defaultName = state.lang === 'en' ? 'Champion' : 'بطل الصحة';
+                    var n = (nameInput ? nameInput.value.trim() : '') || defaultName;
+                    return n;
+                }
+
+                startFixed && startFixed.addEventListener('click', function () {
+                    state.playerName = getPlayerName();
+                    state.isAI = false;
+                    state.questions = state.lang === 'en' ? FIXED_QUESTIONS_EN.slice() : FIXED_QUESTIONS.slice();
+                    beginGame();
+                });
+
+                startAi && startAi.addEventListener('click', function () {
+                    state.playerName = getPlayerName();
+                    state.isAI = true;
+                    showScreen('quizScreenLoading');
+                    generateAiQuestions();
+                });
+
+                /* -------- AI Question Generation (Puter AI) -------- */
+                function generateAiQuestions() {
+                    var isEn = state.lang === 'en';
+                    var prompt = isEn ?
+                        'Generate 10 unique multiple-choice public health questions in English. ' +
+                        'The questions MUST strictly progress from easiest (Level 1) to hardest (Level 10). ' +
+                        'Avoid deep numbers or exact percentages. Focus on high-yield, intuitive, educational concepts. ' +
+                        'Return ONLY a valid JSON array format without any markdown or extra text: ' +
+                        '[{"category":"Level 1 · Basic Prevention","question":"What is...?","options":["Opt 1","Opt 2","Opt 3","Opt 4"],"correct":0,"explanation":"Explanation text"}]' :
+                        'قم بتوليد 10 أسئلة صحة عامة وطب وقائي جديدة باللغة العربية متدرجة من الأسهل (سؤال 1) إلى الأصعب (سؤال 10). ' +
+                        'تجنب الأرقام المعقدة والنسب المئوية الدقيقة. اجعل الأسئلة مفاهيمية وذكية وممتعة. ' +
+                        'أرجع مصفوفة JSON فقط بالشكل التالي دون أي نصوص أو markdown: ' +
+                        '[{"category":"المستوى 1 · الوقاية","question":"نص السؤال؟","options":["خيار 1","خيار 2","خيار 3","خيار 4"],"correct":0,"explanation":"الشرح المختصر"}]';
+
+                    function handleAiSuccess(rawText) {
+                        if (!rawText) { startFallbackQuestions(); return; }
+                        try {
+                            var cleanText = String(rawText).replace(/```json/gi, '').replace(/```/g, '').trim();
+                            var startIdx = cleanText.indexOf('[');
+                            var endIdx = cleanText.lastIndexOf(']');
+                            if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+                                cleanText = cleanText.substring(startIdx, endIdx + 1);
+                            }
+                            var parsed = JSON.parse(cleanText);
+                            if (Array.isArray(parsed) && parsed.length >= 3) {
+                                var formatted = parsed.map(function (q, idx) {
+                                    return {
+                                        category: q.category || (isEn ? 'Level ' + (idx + 1) + ' · Public Health' : 'المستوى ' + (idx + 1) + ' · الصحة العامة'),
+                                        question: q.question || q.q || '',
+                                        options: Array.isArray(q.options) ? q.options : (Array.isArray(q.opts) ? q.opts : ['A', 'B', 'C', 'D']),
+                                        correct: (typeof q.correct === 'number' && q.correct >= 0 && q.correct <= 3) ? q.correct : 0,
+                                        explanation: q.explanation || q.exp || ''
+                                    };
+                                }).filter(function (q) { return q.question && q.question.length > 5; });
+
+                                if (formatted.length >= 3) {
+                                    state.isAI = true;
+                                    state.questions = formatted.slice(0, 10);
+                                    beginGame();
+                                    return;
+                                }
+                            }
+                            startFallbackQuestions();
+                        } catch (err) {
+                            console.warn('Puter AI JSON parse error:', err, rawText);
+                            startFallbackQuestions();
+                        }
+                    }
+
+                    function startFallbackQuestions() {
+                        state.isAI = false;
+                        state.questions = isEn ? FIXED_QUESTIONS_EN.slice() : FIXED_QUESTIONS.slice();
+                        beginGame();
+                    }
+
+                    try {
+                        if (typeof askPuter === 'function') {
+                            askPuter(prompt).then(handleAiSuccess).catch(function () { startFallbackQuestions(); });
+                        } else if (window.puter && window.puter.ai) {
+                            window.puter.ai.chat(prompt).then(function (resp) {
+                                var text = extractReplyText(resp);
+                                handleAiSuccess(text);
+                            }).catch(function () { startFallbackQuestions(); });
+                        } else {
+                            startFallbackQuestions();
+                        }
+                    } catch (e) {
+                        startFallbackQuestions();
+                    }
+                }
+
+                /* -------- Begin game -------- */
+                function beginGame() {
+                    state.currentQ = 0;
+                    state.score = 0;
+                    state.answers = [];
+                    state.answered = false;
+
+                    /* Build 10 streak dots */
+                    if (streakDots) {
+                        streakDots.innerHTML = '';
+                        for (var i = 0; i < state.questions.length; i++) {
+                            var dot = document.createElement('div');
+                            dot.className = 'quiz-streak-dot';
+                            dot.id = 'qdot-' + i;
+                            streakDots.appendChild(dot);
+                        }
+                    }
+
+                    showScreen('quizScreenGame');
+                    if (hudName) hudName.textContent = state.playerName;
+                    renderQuestion();
+                }
+
+                /* -------- Render a question -------- */
+                function renderQuestion() {
+                    var q = state.questions[state.currentQ];
+                    if (!q) { showResults(); return; }
+
+                    var total = state.questions.length;
+                    state.answered = false;
+
+                    /* HUD update */
+                    if (qLabel) qLabel.textContent = 'Question ' + (state.currentQ + 1) + ' of ' + total;
+                    if (progressFill) progressFill.style.width = ((state.currentQ / total) * 100) + '%';
+                    if (scoreVal) scoreVal.textContent = state.score;
+                    if (qCategory) qCategory.textContent = q.category || '🌍 Public Health';
+                    if (qText) qText.textContent = q.question;
+
+                    /* Hide feedback + next */
+                    if (feedbackEl) { feedbackEl.className = 'quiz-feedback'; }
+                    if (nextBtn) { nextBtn.className = 'quiz-next-btn'; }
+                    if (reactionBadge) reactionBadge.innerHTML = '';
+
+                    /* Render options */
+                    if (qOptions) {
+                        qOptions.innerHTML = '';
+                        var letters = ['A', 'B', 'C', 'D'];
+                        (q.options || []).forEach(function (opt, idx) {
+                            var btn = document.createElement('button');
+                            btn.className = 'quiz-opt-btn';
+                            btn.innerHTML = '<span class="opt-letter">' + letters[idx] + '</span>' + opt;
+                            btn.addEventListener('click', function () { handleAnswer(idx); });
+                            qOptions.appendChild(btn);
+                        });
+                    }
+
+                    /* Start timer */
+                    state.questionStartTime = Date.now();
+                    startTimer(20);
+                }
+
+                /* -------- Timer -------- */
+                var TIMER_MAX = 20;
+                var TIMER_CIRCUM = 138;
+
+                function startTimer(seconds) {
+                    stopTimer();
+                    state.timeLeft = seconds;
+                    updateTimerUI(seconds);
+                    state.timerInterval = setInterval(function () {
+                        state.timeLeft--;
+                        updateTimerUI(state.timeLeft);
+                        if (state.timeLeft <= 0) {
+                            stopTimer();
+                            if (!state.answered) handleAnswer(-1); /* time out */
+                        }
+                    }, 1000);
+                }
+
+                function stopTimer() {
+                    if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+                }
+
+                function updateTimerUI(t) {
+                    if (!timerFill || !timerText) return;
+                    var fraction = Math.max(0, t) / TIMER_MAX;
+                    timerFill.style.strokeDashoffset = TIMER_CIRCUM * (1 - fraction);
+                    timerText.textContent = Math.max(0, t);
+                    timerFill.setAttribute('class', 'quiz-timer-fill');
+                    if (t <= 5) timerFill.classList.add('is-danger');
+                    else if (t <= 10) timerFill.classList.add('is-warning');
+                }
+
+                /* -------- Handle answer -------- */
+                function handleAnswer(selectedIdx) {
+                    if (state.answered) return;
+                    state.answered = true;
+                    stopTimer();
+
+                    var q = state.questions[state.currentQ];
+                    var reactionMs = Date.now() - state.questionStartTime;
+                    var isCorrect = (selectedIdx === q.correct);
+
+                    /* If timed out (selectedIdx === -1), mark as incorrect */
+                    if (selectedIdx === -1) isCorrect = false;
+
+                    /* Record answer */
+                    state.answers.push({ correct: isCorrect, timeMs: reactionMs, timeOut: selectedIdx === -1 });
+
+                    if (isCorrect) {
+                        state.score++;
+                        if (scoreVal) scoreVal.textContent = state.score;
+                        spawnConfetti(6);
+                    }
+
+                    /* Style buttons */
+                    var optBtns = qOptions ? qOptions.querySelectorAll('.quiz-opt-btn') : [];
+                    optBtns.forEach(function (btn, idx) {
+                        btn.disabled = true;
+                        if (idx === q.correct) {
+                            btn.classList.add('is-correct');
+                        } else if (idx === selectedIdx) {
+                            btn.classList.add('is-wrong');
+                        }
+                    });
+
+                    /* Update streak dot */
+                    var dot = document.getElementById('qdot-' + state.currentQ);
+                    if (dot) dot.classList.add(isCorrect ? 'is-hit' : 'is-miss');
+
+                    /* Reaction time badge */
+                    if (reactionBadge && selectedIdx !== -1) {
+                        var secs = (reactionMs / 1000).toFixed(1);
+                        reactionBadge.innerHTML = 'Reaction: <strong>' + secs + 's</strong>';
+                    }
+
+                    /* Feedback */
+                    if (feedbackEl && feedbackLbl && feedbackBody) {
+                        if (selectedIdx === -1) {
+                            feedbackEl.className = 'quiz-feedback quiz-feedback--wrong show-fb';
+                            feedbackLbl.textContent = '⏰ Time\'s up!';
+                            feedbackBody.textContent = q.explanation || '';
+                        } else if (isCorrect) {
+                            feedbackEl.className = 'quiz-feedback quiz-feedback--correct show-fb';
+                            feedbackLbl.textContent = '✅ Correct!';
+                            feedbackBody.textContent = q.explanation || '';
+                        } else {
+                            feedbackEl.className = 'quiz-feedback quiz-feedback--wrong show-fb';
+                            feedbackLbl.textContent = '❌ Incorrect';
+                            feedbackBody.textContent = q.explanation || '';
+                        }
+                    }
+
+                    /* Show next button (or finish) */
+                    if (nextBtn) {
+                        nextBtn.className = 'quiz-next-btn show-next';
+                        var isLast = state.currentQ >= state.questions.length - 1;
+                        nextBtn.textContent = isLast ? '🏁 See My Results' : 'Next Question →';
+                    }
+                }
+
+                /* -------- Next question -------- */
+                nextBtn && nextBtn.addEventListener('click', function () {
+                    state.currentQ++;
+                    if (state.currentQ >= state.questions.length) {
+                        showResults();
+                    } else {
+                        renderQuestion();
+                    }
+                });
+
+                /* -------- Results Screen -------- */
+                function showResults() {
+                    stopTimer();
+                    showScreen('quizScreenResults');
+
+                    var score = state.score;
+                    var total = state.questions.length;
+                    var pct = score / total;
+                    var name = state.playerName;
+                    var isEn = (state.lang === 'en');
+
+                    /* Compute average & best reaction time (correct answers only) */
+                    var correctTimes = state.answers.filter(function (a) { return a.correct && !a.timeOut; }).map(function (a) { return a.timeMs; });
+                    var avgMs = correctTimes.length ? (correctTimes.reduce(function (s, v) { return s + v; }, 0) / correctTimes.length) : null;
+                    var bestMs = correctTimes.length ? Math.min.apply(null, correctTimes) : null;
+
+                    /* Live AI Analysis Call (Language Adaptive & 2nd Person Direct Format) */
+                    var aiBoxBody = document.getElementById('quizAiAnalysisBody');
+                    if (aiBoxBody) {
+                        var loadingMsg = isEn ? 'AI is analyzing your reaction speed and health IQ...' : 'جاري استدعاء العقل الاصطناعي لتحليل زمن رد الفعل والثقافة الطبية...';
+                        aiBoxBody.innerHTML = '<div class="quiz-ai-spinner-sm"></div><span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">' + loadingMsg + '</span>';
+
+                        var totalTimeSec = (state.answers.reduce(function (acc, a) { return acc + (a.timeMs || 0); }, 0) / 1000).toFixed(1);
+                        var avgSpeedSec = avgMs ? (avgMs / 1000).toFixed(1) : 0;
+
+                        var aiEvalPrompt = isEn ?
+                            'You are the brilliant, inspiring AI mentor for The PHive & SCOPH.\n' +
+                            'Address the user directly in second person ("You, ' + name + ', blew me away with your speed...").\n' +
+                            'User Stats:\n' +
+                            '- Name: ' + name + '\n' +
+                            '- Score: ' + score + ' out of 10\n' +
+                            '- Total Time Taken: ' + totalTimeSec + ' seconds\n' +
+                            '- Average Reaction Speed per Question: ' + avgSpeedSec + ' seconds\n\n' +
+                            'Task: Write an epic, highly encouraging 3-to-4-line performance breakdown in ENGLISH speaking directly to ' + name + ' in 2nd person. Evaluate their speed, health literacy, and reaction reflexes with energetic emojis (🔥, ⚡, 🏆, 🧠, 👑, 🛡️).' :
+                            'أنت الذكاء الاصطناعي الخبير الموجه والملهم لموقع The PHive وكتلة SCOPH.\n' +
+                            'تحدث مباشرة مع المستخدم بصيغة المخاطب المباشر (أنت يا بطل... لقد أظهرت... رددت بسرعة...).\n' +
+                            'بيانات المستخدم الأسطورية:\n' +
+                            '- اسم البطل: ' + name + '\n' +
+                            '- النتيجة: ' + score + ' من 10\n' +
+                            '- إجمالي الوقت المستغرق لكل الأسئلة المتدرجة: ' + totalTimeSec + ' ثانية\n' +
+                            '- متوسط سرعة استجابتك لكل سؤال: ' + avgSpeedSec + ' ثانية\n\n' +
+                            'اكتب رداً أسطورياً ملهماً جداً ومصمماً بشكل رائع بصيغة المخاطب المباشر للمستخدم نفسه في 3 إلى 4 أسطر مع استخدام إيموجيز احترافية وحماسية (🔥, ⚡, 🏆, 🧠, 👑, 🛡️). قم ببيان إعجابك بشرعة رد فعله وثقافته الطبية، ووجه له دعوة حماسية باسمه (' + name + '). بدون مقدمات رسمية.';
+
+                        try {
+                            if (window.puter && window.puter.ai) {
+                                window.puter.ai.chat(aiEvalPrompt).then(function (resp) {
+                                    var replyText = (resp && resp.message && resp.message.content) ? resp.message.content :
+                                        (typeof resp === 'string' ? resp : String(resp));
+                                    replyText = replyText.replace(/```json/gi, '').replace(/```/g, '').trim();
+                                    aiBoxBody.innerHTML = '<div style="line-height:1.8; font-size:0.92rem; color:rgba(251,248,243,0.95); font-weight:500;">' + replyText + '</div>';
+                                }).catch(function () {
+                                    generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                                });
+                            } else {
+                                generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                            }
+                        } catch (err) {
+                            generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                        }
+                    }
+
+                    /* Rank logic */
+                    var rank, rankClass, greeting, tagline;
+                    if (isEn) {
+                        if (pct >= 0.9) { rank = '⚡ LIGHTNING GENIUS'; rankClass = 'legendary'; greeting = 'Unstoppable, <em>' + name + '</em>!'; tagline = 'Your health knowledge is truly exceptional. The PHive needs minds like yours.'; }
+                        else if (pct >= 0.7) { rank = '🎓 PUBLIC HEALTH EXPERT'; rankClass = 'expert'; greeting = 'Excellent work, <em>' + name + '</em>!'; tagline = 'You clearly have a strong foundation in public health.'; }
+                        else { rank = '💡 CURIOUS MIND'; rankClass = 'beginner'; greeting = 'Welcome, <em>' + name + '</em>!'; tagline = 'Every expert started somewhere. Explore more to grow your knowledge!'; }
+                    } else {
+                        if (pct >= 0.9) { rank = '⚡ عبقري البرق'; rankClass = 'legendary'; greeting = 'لا يُقهر، <em>' + name + '</em>!'; tagline = 'معرفتك الصحية استثنائية حقاً. PHive بحاجة لعقول مثلك.'; }
+                        else if (pct >= 0.7) { rank = '🎓 خبير صحة عامة'; rankClass = 'expert'; greeting = 'عمل ممتاز، <em>' + name + '</em>!'; tagline = 'لديك أساس قوي في الصحة العامة.'; }
+                        else { rank = '💡 عقل فضولي'; rankClass = 'beginner'; greeting = 'أهلاً بك، <em>' + name + '</em>!'; tagline = 'كل خبير بدأ من مكان ما. استمر في الاستكشاف!'; }
+                    }
+
+                    var speedTierHTML = '';
+                    if (avgMs !== null) {
+                        var avgS = avgMs / 1000;
+                        if (isEn) {
+                            if (avgS < 4) speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--lightning">⚡ Lightning Reflexes (' + avgS.toFixed(1) + 's avg)</span>';
+                            else if (avgS < 8) speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--fast">🚀 Fast Thinker (' + avgS.toFixed(1) + 's avg)</span>';
+                            else speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--normal">🧩 Thoughtful (' + avgS.toFixed(1) + 's avg)</span>';
+                        } else {
+                            if (avgS < 4) speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--lightning">⚡ رد فعل فائق (' + avgS.toFixed(1) + 'ث)</span>';
+                            else if (avgS < 8) speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--fast">🚀 مفكر سريع (' + avgS.toFixed(1) + 'ث)</span>';
+                            else speedTierHTML = '<span class="quiz-speed-tier quiz-speed-tier--normal">🧩 تفكير متأنٍ (' + avgS.toFixed(1) + 'ث)</span>';
+                        }
+                    }
+
+                    /* Populate DOM */
+                    var rankBadge = document.getElementById('quizRankBadge');
+                    if (rankBadge) { rankBadge.textContent = rank; rankBadge.className = 'quiz-rank-badge quiz-rank-badge--' + rankClass; }
+
+                    /* Dynamic Animated Score Count-up Effect */
+                    var resultScore = document.getElementById('quizResultScore');
+                    if (resultScore) {
+                        resultScore.textContent = '0';
+                        var startVal = 0;
+                        var duration = 1200;
+                        var stepTime = Math.max(30, Math.floor(duration / (score || 1)));
+                        var timer = setInterval(function () {
+                            startVal++;
+                            resultScore.textContent = startVal;
+                            if (startVal >= score) {
+                                clearInterval(timer);
+                                resultScore.textContent = score;
+                            }
+                        }, stepTime);
+                    }
+
+                    var resultGreeting = document.getElementById('quizResultGreeting');
+                    if (resultGreeting) resultGreeting.innerHTML = greeting;
+
+                    var resultTagline = document.getElementById('quizResultTagline');
+                    if (resultTagline) resultTagline.textContent = tagline.replace(/<em>/g, '').replace(/<\/em>/g, '');
+                    if (resultTagline) resultTagline.innerHTML = tagline;
+
+                    var speedWrap = document.getElementById('quizSpeedTierWrap');
+                    if (speedWrap) speedWrap.innerHTML = speedTierHTML;
+
+                    /* Score ring animation */
+                    var ringFill = document.getElementById('quizResultRingFill');
+                    if (ringFill) {
+                        ringFill.setAttribute('class', 'qsr-fill qsr-fill--' + rankClass);
+                        var circum = 345;
+                        ringFill.style.strokeDashoffset = circum;
+                        setTimeout(function () {
+                            ringFill.style.strokeDashoffset = circum * (1 - pct);
+                        }, 100);
+                    }
+
+                    /* Stats */
+                    var qrCorrect = document.getElementById('qrCorrect');
+                    if (qrCorrect) qrCorrect.textContent = score + '/' + total;
+
+                    var qrAvgTime = document.getElementById('qrAvgTime');
+                    if (qrAvgTime) qrAvgTime.innerHTML = avgMs ? (avgMs / 1000).toFixed(1) + '<span class="unit">s</span>' : '—';
+
+                    var qrBestTime = document.getElementById('qrBestTime');
+                    if (qrBestTime) qrBestTime.innerHTML = bestMs ? (bestMs / 1000).toFixed(1) + '<span class="unit">s</span>' : '—';
+
+                    /* Breakdown rows */
+                    var breakdown = document.getElementById('quizBreakdown');
+                    if (breakdown) {
+                        var html = '<div class="qrb-title">Answer Breakdown</div>';
+                        state.answers.forEach(function (ans, i) {
+                            var q = state.questions[i];
+                            if (!q) return;
+                            var icon = ans.timeOut ? '⏰' : (ans.correct ? '✅' : '❌');
+                            var timeStr = ans.timeOut ? 'Timed out' : (ans.timeMs / 1000).toFixed(1) + 's';
+                            var shortQ = q.question.length > 55 ? q.question.slice(0, 55) + '…' : q.question;
+                            html += '<div class="qrb-row"><span class="qrb-icon">' + icon + '</span><span class="qrb-q">' + shortQ + '</span><span class="qrb-time">' + timeStr + '</span></div>';
+                        });
+                        breakdown.innerHTML = html;
+                    }
+
+                    /* AI badge */
+                    var aiBadge = document.getElementById('quizAiBadge');
+                    if (aiBadge) aiBadge.hidden = !state.isAI;
+
+                    /* Live AI Analysis Call (Time & Speed & Performance Evaluation) */
+                    var aiBoxBody = document.getElementById('quizAiAnalysisBody');
+                    if (aiBoxBody) {
+                        aiBoxBody.innerHTML = '<div class="quiz-ai-spinner-sm"></div><span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">جاري استدعاء العقل الاصطناعي لتحليل زمن رد الفعل والثقافة الطبية...</span>';
+
+                        var totalTimeSec = (state.answers.reduce(function (acc, a) { return acc + (a.timeMs || 0); }, 0) / 1000).toFixed(1);
+                        var avgSpeedSec = avgMs ? (avgMs / 1000).toFixed(1) : 0;
+
+                        var aiEvalPrompt = 'أنت الذكاء الاصطناعي الخاص بـ The PHive وكتلة SCOPH. قم بتحليل أداء المستخدم في كويز الصحة العامة بناءً على البيانات التالية:\n' +
+                            '- اسم البطل: ' + name + '\n' +
+                            '- النتيجة: ' + score + ' من 10\n' +
+                            '- إجمالي الوقت المستغرق لكل الأسئلة: ' + totalTimeSec + ' ثانية\n' +
+                            '- متوسط سرعة رد الفعل لكل سؤال: ' + avgSpeedSec + ' ثانية\n' +
+                            '- تدرج الأسئلة كان من الأسهل (سؤال 1) إلى الأصعب (سؤال 10).\n\n' +
+                            'المطلوب: اكتب تحليلاً مشجعاً، ذكياً، ومباشراً باللغة العربية في 3 أسطر فقط. قم ببيان مستوى ثقافته الطبية، وتقييم سرعة رد فعله واستجابته، وتوجيه كلمة تقدير خاصة له باسمه (' + name + '). بدون مقدمات طويلة.';
+
+                        try {
+                            if (window.puter && window.puter.ai) {
+                                window.puter.ai.chat(aiEvalPrompt).then(function (resp) {
+                                    var replyText = (resp && resp.message && resp.message.content) ? resp.message.content :
+                                        (typeof resp === 'string' ? resp : String(resp));
+                                    replyText = replyText.replace(/```json/gi, '').replace(/```/g, '').trim();
+                                    aiBoxBody.innerHTML = '<div style="line-height:1.75; font-size:0.9rem; color:rgba(251,248,243,0.9);">' + replyText + '</div>';
+                                }).catch(function () {
+                                    generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                                });
+                            } else {
+                                generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                            }
+                        } catch (err) {
+                            generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
+                        }
+                    }
+
+                    /* CTA email link personalization */
+                    var ctaEmail = document.getElementById('quizCtaEmailBtn');
+                    if (ctaEmail) {
+                        var subject = encodeURIComponent('Join SCOPH — ' + name + ' scored ' + score + '/10 on The PHive Quiz!');
+                        ctaEmail.href = 'mailto:nusmsa.scoph@gmail.com?subject=' + subject + '&body=' + encodeURIComponent('Hi SCOPH team,\n\nMy name is ' + name + '. I just scored ' + score + '/10 on The PHive Health Quiz and I would love to learn more about joining the SCOPH community!\n\nBest regards,\n' + name);
+                    }
+
+                    /* CTA text personalization */
+                    var ctaText = document.getElementById('quizCtaText');
+                    if (ctaText) {
+                        if (pct >= 0.7) {
+                            ctaText.innerHTML = '<strong style="color:var(--hive-amber);">' + name + '</strong>, your score is impressive! The <strong>SCOPH community</strong> is exactly where minds like yours belong. Reach out — we would love to have you!';
+                        } else {
+                            ctaText.innerHTML = 'Want to grow your public health knowledge, <strong style="color:var(--hive-amber);">' + name + '</strong>? Join the <strong>SCOPH community</strong> — we learn together!';
+                        }
+                    }
+
+                    /* Confetti for good scores */
+                    if (pct >= 0.6) { spawnConfetti(pct >= 0.9 ? 40 : 20); }
+                }
+
+                /* -------- Fallback AI Analysis Builder (Direct 2nd Person Format) -------- */
+                function generateFallbackAiAnalysis(container, name, score, total, totalSec, avgSec) {
+                    if (!container) return;
+                    var isEn = state.lang === 'en';
+
+                    if (isEn) {
+                        var speedRatingEn = parseFloat(avgSec) < 5 ? 'Lightning fast reflexes! ⚡' : (parseFloat(avgSec) < 10 ? 'Impressive speed & decisive focus! 🚀' : 'Steady & thoughtful timing! 🧠');
+                        var levelEvalEn = score >= 8 ? 'You demonstrated an exceptional mastery of public health concepts! 👑' : (score >= 5 ? 'Solid health literacy and great potential to become a leader! 🛡️' : 'A brave start! Keep exploring to expand your health knowledge! 💡');
+
+                        container.innerHTML = '<div style="line-height:1.85; font-size:0.92rem; color:rgba(251,248,243,0.95); font-weight:500;">' +
+                            'You, <strong>' + name + '</strong>, blew me away with your performance! 🔥<br>' +
+                            'You finished the arena in <strong>' + totalSec + 's</strong> total (avg <strong>' + avgSec + 's</strong>/Q) with <strong>' + speedRatingEn + '</strong><br>' +
+                            levelEvalEn +
+                            '</div>';
+                    } else {
+                        var speedRatingAr = parseFloat(avgSec) < 5 ? 'رد فعل أسطوري وسريع كالفلاش! ⚡' : (parseFloat(avgSec) < 10 ? 'سرعة استجابة فائقة وتفكير حاسم! 🚀' : 'تركيز دقيق وثبات عالي! 🧠');
+                        var levelEvalAr = score >= 8 ? 'لقد أثبتّ امتلاكك لوعي طبي وقائي نادراً ومبهراً، واجتزت التحدي المتدرج باقتدار كامل! 👑' : (score >= 5 ? 'أظهرت حساً وصحة وقائية رائعة، وأنت في طريقك المحتوم لتصبح من قادة الوعي الصحي! 🛡️' : 'بداية شجاعة ومحاولة قوية منك يا بطل! واصل الاستكشاف لتكتسب خبرات أوسع! 💡');
+
+                        container.innerHTML = '<div style="line-height:1.85; font-size:0.92rem; color:rgba(251,248,243,0.95); font-weight:500;">' +
+                            'أنت يا بطل الصحة <strong>' + name + '</strong> أذهلتني بأدائك! 🔥<br>' +
+                            'أنهيت الكويز في <strong>' + totalSec + ' ثانية</strong> (بمعدل <strong>' + avgSec + 'ث</strong> لكل سؤال) مع <strong>' + speedRatingAr + '</strong><br>' +
+                            levelEvalAr +
+                            '</div>';
+                    }
+                }
+
+                /* -------- Retry -------- */
+                retryBtn && retryBtn.addEventListener('click', function () {
+                    stopTimer();
+                    showScreen('quizScreenName');
+                    nameInput && nameInput.focus();
+                });
+
+                /* -------- Confetti -------- */
+                var CONFETTI_COLORS = [
+                    '#F47D3B', '#D9601F', '#F98D4E', '#ffd700', '#7be0a8', '#a0b8ff', '#fbf8f3', '#ff6b6b'
+                ];
+                function spawnConfetti(count) {
+                    if (!confettiWrap) return;
+                    for (var i = 0; i < count; i++) {
+                        (function (delay) {
+                            setTimeout(function () {
+                                var el = document.createElement('div');
+                                el.className = 'quiz-confetti-dot';
+                                var x = Math.random() * 100;
+                                var dur = 1.2 + Math.random() * 1.5;
+                                var color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+                                el.style.cssText = 'left:' + x + '%;top:-10px;background:' + color + ';animation-duration:' + dur + 's;width:' + (5 + Math.random() * 8) + 'px;height:' + (5 + Math.random() * 8) + 'px;border-radius:' + (Math.random() > 0.5 ? '50%' : '2px') + ';';
+                                confettiWrap.appendChild(el);
+                                setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, dur * 1000 + 100);
+                            }, delay);
+                        })(i * 80);
+                    }
+                }
+
+                /* -------- Keyboard: Enter to start -------- */
+                nameInput && nameInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        state.playerName = getPlayerName();
+                        state.isAI = false;
+                        state.questions = state.lang === 'en' ? FIXED_QUESTIONS_EN.slice() : FIXED_QUESTIONS.slice();
+                        beginGame();
+                    }
+                });
 
             })();
 
