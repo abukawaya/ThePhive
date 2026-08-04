@@ -320,11 +320,11 @@
             max-width: var(--container-w);
             height: 100%;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 24px;
         }
 
         .brand {
@@ -369,20 +369,20 @@
         .primary-nav {
             display: flex;
             align-items: center;
-            gap: 2px;
-            font-size: 0.86rem;
+            gap: 4px;
+            font-size: 0.94rem;
             font-weight: 600;
         }
 
         .primary-nav a {
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 7px 9px;
+            gap: 6px;
+            padding: 7px 12px;
             border-radius: 9px;
             color: var(--comb-ink-soft);
             white-space: nowrap;
-            font-size: 0.84rem;
+            font-size: 0.88rem;
             transition: color 0.2s var(--ease-hive), background 0.2s var(--ease-hive);
             position: relative;
         }
@@ -6394,239 +6394,118 @@
             opacity: 0.6;
         }
 
-        /* ══════════════════════════════════════════════════
-           QUIZ PREVIEW CARD — Realistic Quiz Style
-           ══════════════════════════════════════════════════ */
-
-        @keyframes qp-live-pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50%       { opacity: 0.4; transform: scale(0.85); }
-        }
-        @keyframes qp-timer-drain {
-            from { stroke-dashoffset: 0; }
-            to   { stroke-dashoffset: 119; }
-        }
-        @keyframes qp-correct-in {
-            0%   { transform: scale(1); }
-            40%  { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-        @keyframes qp-progress-in {
-            from { width: 0%; }
-            to   { width: 65%; }
-        }
-
-        /* Wrapper — subtle amber border glow, no spinning */
-        .quiz-preview-card-wrap {
-            position: relative;
-            border-radius: 28px;
-            border: 1px solid rgba(244, 125, 59, 0.22);
-            box-shadow:
-                0 0 0 4px rgba(244, 125, 59, 0.06),
-                0 24px 60px rgba(0, 0, 0, 0.55);
-        }
-
-        /* Card itself — matches .quiz-game-box */
+        /* Quiz preview card */
         .quiz-preview-card {
-            background: rgba(15, 12, 8, 0.95);
-            border-radius: 28px;
+            background: rgba(251, 248, 243, 0.04);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
             overflow: hidden;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
         }
 
-        /* ── HUD top bar — mirrors .quiz-hud ── */
-        .qp-hud-bar {
-            background: rgba(251, 248, 243, 0.03);
-            border-bottom: 1px solid rgba(251, 248, 243, 0.08);
-            padding: 12px 20px;
+        .quiz-preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(244, 125, 59, 0.8), rgba(217, 96, 31, 0.5), transparent);
+        }
+
+        .qp-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            margin-bottom: 24px;
         }
 
-        /* Player label */
-        .qp-player-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-        }
-        .qp-player-tag {
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            color: rgba(251, 248, 243, 0.38);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-        .qp-player-name {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--hive-amber);
-        }
-
-        /* Progress segment */
-        .qp-progress-wrap {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .qp-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 5px;
-        }
-        .qp-q-label {
+            gap: 7px;
+            background: rgba(244, 125, 59, 0.15);
+            border: 1px solid rgba(244, 125, 59, 0.3);
+            border-radius: 100px;
+            padding: 5px 14px;
             font-family: var(--font-mono);
-            font-size: 0.62rem;
-            color: rgba(251, 248, 243, 0.45);
-        }
-        .qp-progress-bar {
-            width: 100%;
-            height: 5px;
-            background: rgba(251, 248, 243, 0.08);
-            border-radius: 100px;
-            overflow: hidden;
-        }
-        .qp-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--hive-amber-deep), var(--hive-amber));
-            border-radius: 100px;
-            box-shadow: 0 0 8px rgba(244, 125, 59, 0.45);
-            animation: qp-progress-in 1.2s var(--ease-hive) 0.3s both;
+            font-size: 0.72rem;
+            color: var(--hive-amber);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* Timer ring */
-        .qp-timer-ring {
-            width: 46px;
-            height: 46px;
+        .qp-score-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: conic-gradient(var(--hive-amber-deep) 0deg, rgba(251, 248, 243, 0.08) 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            flex-shrink: 0;
         }
-        .qp-timer-ring svg {
-            transform: rotate(-90deg);
-        }
-        .qp-timer-track {
-            fill: none;
-            stroke: rgba(251, 248, 243, 0.08);
-            stroke-width: 4;
-        }
-        .qp-timer-arc {
-            fill: none;
-            stroke: var(--hive-amber);
-            stroke-width: 4;
-            stroke-linecap: round;
-            stroke-dasharray: 119;
-            stroke-dashoffset: 40;
-            animation: qp-timer-drain 12s linear infinite;
-        }
-        .qp-timer-num {
-            position: absolute;
-            inset: 0;
+
+        .qp-score-ring-inner {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(15, 13, 10, 0.95);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #fbf8f3;
+            color: var(--hive-amber);
         }
 
-        /* ── Body ── */
-        .qp-body {
-            padding: 18px 20px 20px;
-        }
-
-        /* Category pill — mirrors .quiz-q-category */
-        .qp-category {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(244, 125, 59, 0.12);
-            border: 1px solid rgba(244, 125, 59, 0.25);
-            border-radius: 100px;
-            padding: 3px 11px;
-            font-family: var(--font-mono);
-            font-size: 0.62rem;
-            color: var(--hive-amber-2);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 14px;
-        }
-        .qp-category .qp-live-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--hive-amber);
-            animation: qp-live-pulse 1.4s ease-in-out infinite;
-        }
-
-        /* Question text — mirrors .quiz-question-text */
-        .qp-question {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #fbf8f3;
-            line-height: 1.5;
+        .qp-sample-q {
+            font-size: 0.95rem;
+            color: rgba(251, 248, 243, 0.85);
+            font-weight: 600;
             margin-bottom: 16px;
-            font-family: var(--font-display);
+            line-height: 1.5;
         }
 
-        /* ── Options grid — mirrors .quiz-options ── */
-        .qp-opts {
+        .qp-sample-opts {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
         }
 
-        /* Option button — mirrors .quiz-opt-btn */
         .qp-opt {
-            padding: 10px 12px;
-            background: rgba(251, 248, 243, 0.05);
-            border: 1.5px solid rgba(251, 248, 243, 0.11);
-            border-radius: 12px;
-            color: rgba(251, 248, 243, 0.8);
-            font-size: 0.8rem;
-            font-family: var(--font-body);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: default;
-            transition: all 0.2s var(--ease-hive);
-        }
-        .qp-opt-letter {
-            width: 22px;
-            height: 22px;
-            border-radius: 7px;
-            background: rgba(251, 248, 243, 0.08);
-            border: 1px solid rgba(251, 248, 243, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            color: rgba(251, 248, 243, 0.55);
+            padding: 9px 12px;
+            border-radius: 10px;
+            background: rgba(251, 248, 243, 0.06);
+            border: 1px solid rgba(251, 248, 243, 0.1);
+            font-size: 0.82rem;
+            color: rgba(251, 248, 243, 0.7);
+            transition: all 0.2s;
         }
 
-        /* Correct state — mirrors .quiz-opt-btn.is-correct */
         .qp-opt.qp-opt--correct {
-            background: rgba(62, 124, 90, 0.2);
-            border-color: #4aaa78;
+            background: rgba(62, 124, 90, 0.25);
+            border-color: rgba(62, 124, 90, 0.5);
             color: #7be0a8;
-            font-weight: 700;
-            animation: qp-correct-in 0.4s var(--ease-hive);
-        }
-        .qp-opt.qp-opt--correct .qp-opt-letter {
-            background: #3e7c5a;
-            border-color: #4aaa78;
-            color: #fff;
         }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            .qp-opts {
-                grid-template-columns: 1fr;
-            }
-            .quiz-preview-card-wrap {
-                margin-top: 28px;
-            }
+        .qp-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .qp-topic {
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(251, 248, 243, 0.05);
+            border: 1px solid rgba(251, 248, 243, 0.08);
+            font-size: 0.74rem;
+            color: rgba(251, 248, 243, 0.5);
         }
 
         /* ==========================================================================
@@ -6638,14 +6517,12 @@
             z-index: 99999;
             background: rgba(10, 8, 5, 0.97);
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s var(--ease-hive);
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            padding: 40px 12px;
         }
 
         .quiz-modal-overlay.is-open {
@@ -6656,8 +6533,8 @@
         .quiz-modal-shell {
             width: 100%;
             max-width: 680px;
-            margin: 0 auto;
-            padding: 0 8px;
+            margin: 20px auto;
+            padding: 0 16px;
             position: relative;
         }
 
@@ -7928,562 +7805,11 @@
             animation: spin 0.8s linear infinite;
             flex-shrink: 0;
         }
-
-        /* ══════════════════════════════════════════════════
-           EPIC GAMING RESULTS UI & AI SKILL RADAR / NANO-BANANA-2
-           ══════════════════════════════════════════════════ */
-        .quiz-gaming-chart-box {
-            margin: 24px 28px 0;
-            padding: 22px 24px;
-            background: linear-gradient(145deg, rgba(14, 20, 32, 0.95), rgba(8, 10, 16, 0.98));
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            border-radius: 22px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.12);
-            direction: rtl;
-        }
-
-        .quiz-gaming-chart-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, #00e5ff, #7c3aed, #f47d3b, #00e5ff);
-            background-size: 200% 100%;
-            animation: cyberPulse 4s linear infinite;
-        }
-
-        @keyframes cyberPulse {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 0%; }
-        }
-
-        .qg-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .qg-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .qg-icon {
-            width: 38px; height: 38px;
-            border-radius: 10px;
-            background: rgba(0, 229, 255, 0.12);
-            border: 1px solid rgba(0, 229, 255, 0.4);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: #00e5ff;
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
-        }
-
-        .qg-title {
-            font-size: 0.98rem; font-weight: 800; color: #00e5ff;
-            margin: 0; font-family: var(--font-body);
-        }
-        .qg-sub {
-            font-size: 0.72rem; color: rgba(251, 248, 243, 0.5);
-            margin: 2px 0 0 0; font-family: var(--font-mono);
-        }
-
-        .qg-badge {
-            padding: 4px 12px; border-radius: 100px;
-            background: rgba(124, 58, 237, 0.18); border: 1px solid rgba(124, 58, 237, 0.4);
-            color: #c4b5fd; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
-        }
-
-        .qg-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 14px;
-        }
-
-        .qg-skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 12px 14px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .qg-skill-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(0, 229, 255, 0.35);
-        }
-
-        .qg-skill-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        .qg-skill-name { color: #fbf8f3; }
-        .qg-skill-pct { font-family: var(--font-mono); font-weight: 800; }
-
-        .qg-bar-bg {
-            height: 7px;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 100px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .qg-bar-fill {
-            height: 100%;
-            border-radius: 100px;
-            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-        }
-        .qg-bar-fill::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shineSweep 2.5s infinite;
-        }
-
-        /* Nano Banana 2 Image Explanation Card */
-        .quiz-visual-ai-box {
-            margin: 24px 28px 0;
-            padding: 24px 26px;
-            background: linear-gradient(145deg, rgba(244, 125, 59, 0.10), rgba(18, 14, 24, 0.95));
-            border: 1px solid rgba(244, 125, 59, 0.35);
-            border-radius: 22px;
-            direction: rtl;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
-        }
-
-        .qv-btn-gen {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 14px 22px;
-            background: linear-gradient(135deg, #f47d3b, #d9601f, #7c3aed);
-            background-size: 200% 200%;
-            color: #fff;
-            border-radius: 14px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(244, 125, 59, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 14px;
-            font-family: var(--font-body);
-        }
-
-        .qv-btn-gen:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 38px rgba(244, 125, 59, 0.6);
-        }
-
-        .qv-img-wrap {
-            margin-top: 18px;
-            text-align: center;
-            display: none;
-        }
-        .qv-img-wrap img {
-            max-width: 100%;
-            border-radius: 16px;
-            border: 2px solid rgba(244, 125, 59, 0.4);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-            margin-bottom: 12px;
-        }
-
-        /* ══════════════════════════════════════════════════
-           COMPREHENSIVE RESPONSIVE STYLES (MOBILE & LARGE SCREENS)
-           ══════════════════════════════════════════════════ */
-        /* Large Desktop (> 1200px) */
-        @media (min-width: 1200px) {
-            .quiz-modal-shell {
-                max-width: 820px;
-            }
-            .quiz-results-hero {
-                padding: 48px 40px 40px;
-            }
-            .quiz-gaming-chart-box,
-            .quiz-ai-analysis-box,
-            .quiz-visual-ai-box {
-                margin: 28px 36px 0;
-                padding: 26px 30px;
-            }
-        }
-
-        /* Tablet & Mobile (< 768px) */
-        @media (max-width: 768px) {
-            .quiz-modal-overlay {
-                padding: 12px 8px;
-            }
-            .quiz-modal-shell {
-                max-width: 100%;
-                margin: 10px auto;
-                padding: 0 6px;
-            }
-            .quiz-name-box {
-                padding: 32px 20px;
-                border-radius: 20px;
-            }
-            .quiz-game-box {
-                border-radius: 20px;
-            }
-            .quiz-hud {
-                padding: 12px 14px;
-                flex-wrap: wrap;
-            }
-            .quiz-body {
-                padding: 20px 14px 18px;
-            }
-            .quiz-results-box {
-                border-radius: 20px;
-            }
-            .quiz-results-hero {
-                padding: 32px 16px 24px;
-            }
-            .quiz-gaming-chart-box,
-            .quiz-ai-analysis-box,
-            .quiz-visual-ai-box {
-                margin: 16px 12px 0;
-                padding: 16px 14px;
-                border-radius: 16px;
-            }
-            .quiz-result-stats {
-                grid-template-columns: 1fr;
-            }
-            .qrs-cell {
-                border-right: none;
-                border-bottom: 1px solid rgba(251, 248, 243, 0.07);
-                padding: 14px 10px;
-            }
-            .qrs-cell:last-child {
-                border-bottom: none;
-            }
-            .qg-skills-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .quiz-result-breakdown {
-                padding: 18px 14px;
-            }
-            .quiz-result-cta {
-                padding: 18px 14px;
-            }
-            .quiz-cta-btns {
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-            }
-            .quiz-cta-email, .quiz-cta-retry {
-                width: 100%;
-                justify-content: center;
-            }
-            .qai-head, .qg-head {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .qg-badge {
-                align-self: flex-start;
-            }
-            .qrb-row {
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-        }
-
-        /* Extra Small Mobile (< 480px) */
-        @media (max-width: 480px) {
-            .quiz-result-greeting {
-                font-size: 1.3rem;
-            }
-            .quiz-result-score-ring {
-                width: 105px;
-                height: 105px;
-            }
-            .quiz-result-score-ring svg {
-                width: 105px;
-                height: 105px;
-            }
-            .quiz-result-score-num {
-                font-size: 1.8rem;
-            }
-            .qv-btn-gen {
-                font-size: 0.82rem;
-                padding: 12px 12px;
-            }
-        }
-
-        /* MOBILE QUESTION SCREEN UI REFINEMENTS */
-        @media (max-width: 640px) {
-            .quiz-hud-left { gap: 6px; }
-            .quiz-hud-player { font-size: 0.8rem; }
-            .quiz-score-pill { padding: 4px 10px; font-size: 0.75rem; }
-            .quiz-q-category { font-size: 0.72rem; margin-bottom: 8px; }
-            .quiz-question-text { font-size: 1.05rem; line-height: 1.5; margin-bottom: 16px; }
-            .quiz-opt-btn {
-                padding: 12px 14px;
-                font-size: 0.88rem;
-                gap: 10px;
-                border-radius: 12px;
-            }
-            .opt-letter {
-                width: 26px; height: 26px;
-                font-size: 0.75rem;
-                flex-shrink: 0;
-            }
-            .quiz-feedback { padding: 12px 14px; font-size: 0.82rem; }
-            .quiz-next-btn { padding: 12px 16px; font-size: 0.9rem; margin-top: 14px; }
-            .quiz-streak { margin-top: 14px; padding-top: 12px; }
-            .quiz-streak-dots { gap: 4px; }
-            .quiz-streak-dot { width: 8px; height: 8px; }
-        }
-
-        /* ══════════════════════════════════════════════════
-           EPIC SITE INTRO OVERLAY (HONEYCOMB CELL ASSEMBLY)
-           ══════════════════════════════════════════════════ */
-        .phive-intro-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: 99999999 !important;
-            background: #050403 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex-direction: column !important;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            overflow: hidden !important;
-        }
-
-        .phive-intro-overlay.is-hidden {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-        }
-
-        .phive-intro-content {
-            text-align: center;
-            padding: 30px 20px;
-            max-width: 600px;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        .phive-intro-cell-ring {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phive-cell-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-
-        .hex-path {
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-            animation: drawHexCell 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        .hex-outer {
-            stroke: var(--hive-amber);
-            stroke-width: 3.5;
-            filter: drop-shadow(0 0 16px rgba(244, 125, 59, 0.75));
-        }
-
-        .hex-inner {
-            stroke: #ffd700;
-            stroke-width: 2.8;
-            animation-delay: 0.3s;
-            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.65));
-        }
-
-        @keyframes drawHexCell {
-            0% {
-                stroke-dashoffset: 600;
-                opacity: 0;
-            }
-            30% {
-                opacity: 1;
-            }
-            100% {
-                stroke-dashoffset: 0;
-                opacity: 1;
-            }
-        }
-
-        .phive-intro-logo-wrap {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-            animation: logoCellPulse 2.2s ease-in-out infinite alternate 0.5s;
-        }
-
-        .phive-intro-logo {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 18px rgba(244, 125, 59, 0.9));
-        }
-
-        @keyframes logoCellPulse {
-            0% { transform: scale(0.92); filter: drop-shadow(0 0 12px rgba(244, 125, 59, 0.5)); }
-            100% { transform: scale(1.08); filter: drop-shadow(0 0 32px rgba(244, 125, 59, 0.95)); }
-        }
-
-        .phive-intro-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.2rem, 6vw, 3.2rem);
-            color: #fbf8f3;
-            margin-bottom: 6px;
-            letter-spacing: 0.02em;
-        }
-
-        .phive-intro-title em {
-            color: var(--hive-amber);
-            font-style: normal;
-        }
-
-        .phive-intro-tag {
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            color: rgba(251, 248, 243, 0.55);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .phive-intro-loader {
-            width: 240px;
-            height: 4px;
-            background: rgba(251, 248, 243, 0.08);
-            border-radius: 100px;
-            margin: 0 auto 14px;
-            overflow: hidden;
-        }
-
-        .phive-intro-loader-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--hive-amber-deep), var(--hive-amber), #ffd700);
-            border-radius: 100px;
-            transition: width 2.8s linear;
-        }
-
-        .phive-intro-status {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: rgba(251, 248, 243, 0.5);
-            min-height: 20px;
-        }
-
-        .phive-intro-skip-btn {
-            margin-top: 22px;
-            padding: 9px 24px;
-            background: rgba(251, 248, 243, 0.06);
-            border: 1px solid rgba(251, 248, 243, 0.18);
-            color: rgba(251, 248, 243, 0.8);
-            border-radius: 100px;
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .phive-intro-skip-btn:hover {
-            background: rgba(244, 125, 59, 0.25);
-            border-color: var(--hive-amber);
-            color: #fff;
-        }
-
-        /* Large Screen Desktop Intro Refinement */
-        @media (min-width: 992px) {
-            .phive-intro-cell-ring {
-                width: 250px;
-                height: 250px;
-                margin-bottom: 32px;
-            }
-            .phive-intro-logo-wrap {
-                width: 110px;
-                height: 110px;
-            }
-            .phive-intro-logo {
-                width: 100px;
-                height: 100px;
-            }
-            .phive-intro-title {
-                font-size: 3.6rem;
-            }
-            .phive-intro-tag {
-                font-size: 0.9rem;
-                letter-spacing: 0.22em;
-            }
-            .phive-intro-loader {
-                width: 320px;
-                height: 5px;
-            }
-            .phive-intro-status {
-                font-size: 0.88rem;
-            }
-        }
     </style>
 
 </head>
 
 <body>
-
-    <!-- ============ EPIC SITE INTRO OVERLAY (HONEYCOMB CELL ASSEMBLY) ============ -->
-    <div class="phive-intro-overlay" id="phiveIntroOverlay">
-        <div class="phive-intro-content">
-            <div class="phive-intro-cell-ring">
-                <svg class="phive-cell-svg" viewBox="0 0 200 200">
-                    <polygon points="100,20 170,60 170,140 100,180 30,140 30,60" class="hex-path hex-outer" />
-                    <polygon points="100,40 150,70 150,130 100,160 50,130 50,70" class="hex-path hex-inner" />
-                </svg>
-                <div class="phive-intro-logo-wrap">
-                    <img src="main_logo.png" alt="The PHive Logo" class="phive-intro-logo">
-                </div>
-            </div>
-            <h1 class="phive-intro-title">The <em>PHive</em></h1>
-            <p class="phive-intro-tag">SCOPH · MEDSIN-NUSMSA</p>
-            <div class="phive-intro-loader">
-                <div class="phive-intro-loader-bar" id="phiveIntroLoaderBar"></div>
-            </div>
-            <p class="phive-intro-status" id="phiveIntroStatus">Assembling Biological Network & Public Health Intelligence...</p>
-            <button class="phive-intro-skip-btn" id="phiveIntroSkipBtn">Enter The Hive →</button>
-        </div>
-    </div>
 
     <!-- decorative fixed honeycomb backdrop layer -->
     <div class="comb-backdrop" aria-hidden="true" id="combBackdrop"></div>
@@ -8508,7 +7834,7 @@
                 <a href="#opportunities"><span class="nav-hex" aria-hidden="true"></span>Opportunities</a>
                 <a href="#ai-tools"><span class="nav-hex" aria-hidden="true"></span>AI Tools</a>
                 <a href="#about"><span class="nav-hex" aria-hidden="true"></span>About</a>
-                <a href="#quizModal" id="navQuizBtn" class="nav-quiz-link"><span class="nav-hex" aria-hidden="true"></span>🎮 Quiz</a>
+                <a href="#quiz" class="nav-quiz-link"><span class="nav-hex" aria-hidden="true"></span>🎮 Quiz</a>
             </nav>
 
             <div class="nav-actions">
@@ -8528,7 +7854,7 @@
                     <span class="nav-badge-count" id="bookmarkCount" hidden>0</span>
                 </button>
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScB5ziZKOS-0GT8-WI_oKsxS8uGGg1YGQphgIlJWFHGSNmh3w/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <a href="#opportunities" class="btn btn-primary btn-sm">
                     <span>Get Involved</span>
                 </a>
 
@@ -9627,63 +8953,39 @@
                             Launch Quiz Arena
                         </button>
                     </div>
-                    <!-- Right: Preview card (Realistic Quiz Style) -->
-                    <div class="quiz-preview-card-wrap">
-                        <div class="quiz-preview-card">
-
-                            <!-- HUD top bar -->
-                            <div class="qp-hud-bar">
-                                <div class="qp-player-info">
-                                    <span class="qp-player-tag">Player</span>
-                                    <span class="qp-player-name">Med Student</span>
-                                </div>
-                                <div class="qp-progress-wrap">
-                                    <span class="qp-q-label">Question 7 / 10</span>
-                                    <div class="qp-progress-bar">
-                                        <div class="qp-progress-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="qp-timer-ring">
-                                    <svg width="46" height="46" viewBox="0 0 46 46">
-                                        <circle class="qp-timer-track" cx="23" cy="23" r="19"/>
-                                        <circle class="qp-timer-arc" cx="23" cy="23" r="19"/>
-                                    </svg>
-                                    <div class="qp-timer-num">14</div>
-                                </div>
+                    <!-- Right: Preview card -->
+                    <div class="quiz-preview-card">
+                        <div class="qp-header">
+                            <div class="qp-badge"><span
+                                    style="width:7px;height:7px;border-radius:50%;background:var(--hive-amber);display:inline-block;"></span>Live
+                                Preview</div>
+                            <div class="qp-score-ring" id="qpRing">
+                                <svg width="70" height="70" viewBox="0 0 70 70">
+                                    <circle cx="35" cy="35" r="30" fill="none" stroke="rgba(251,248,243,0.06)"
+                                        stroke-width="5" />
+                                    <circle cx="35" cy="35" r="30" fill="none" stroke="var(--hive-amber-deep)"
+                                        stroke-width="5" stroke-linecap="round" stroke-dasharray="188"
+                                        stroke-dashoffset="70"
+                                        style="transform:rotate(-90deg);transform-origin:center;" />
+                                </svg>
+                                <div class="qp-score-ring-inner">7/10</div>
                             </div>
-
-                            <!-- Body -->
-                            <div class="qp-body">
-                                <!-- Category pill -->
-                                <div class="qp-category">
-                                    <span class="qp-live-dot"></span>
-                                    Infectious Disease
-                                </div>
-
-                                <!-- Question text -->
-                                <div class="qp-question">Which body system does HIV primarily target and deplete?</div>
-
-                                <!-- Answer options -->
-                                <div class="qp-opts">
-                                    <div class="qp-opt">
-                                        <span class="qp-opt-letter">A</span>
-                                        Nervous System
-                                    </div>
-                                    <div class="qp-opt qp-opt--correct">
-                                        <span class="qp-opt-letter">B</span>
-                                        Immune System
-                                    </div>
-                                    <div class="qp-opt">
-                                        <span class="qp-opt-letter">C</span>
-                                        Digestive System
-                                    </div>
-                                    <div class="qp-opt">
-                                        <span class="qp-opt-letter">D</span>
-                                        Endocrine System
-                                    </div>
-                                </div>
-                            </div>
-
+                        </div>
+                        <div class="qp-sample-q">💊 Which body system does the Human Immunodeficiency Virus (HIV)
+                            primarily target?</div>
+                        <div class="qp-sample-opts">
+                            <div class="qp-opt">A. Nervous system</div>
+                            <div class="qp-opt qp-opt--correct">✓ B. Immune system</div>
+                            <div class="qp-opt">C. Digestive system</div>
+                            <div class="qp-opt">D. Endocrine system</div>
+                        </div>
+                        <div class="qp-topics">
+                            <span class="qp-topic">🦠 Epidemiology</span>
+                            <span class="qp-topic">💉 Vaccination</span>
+                            <span class="qp-topic">🌍 Global Health</span>
+                            <span class="qp-topic">🧬 Disease</span>
+                            <span class="qp-topic">🥗 Nutrition</span>
+                            <span class="qp-topic">🧠 Mental Health</span>
                         </div>
                     </div>
                 </div>
@@ -10198,7 +9500,6 @@
                             🤖 AI-generated questions · Puter AI
                         </div>
                     </div>
-
                     <div class="quiz-result-stats">
                         <div class="qrs-cell">
                             <div class="qrs-val" id="qrCorrect">—</div>
@@ -10214,66 +9515,26 @@
                         </div>
                     </div>
 
-                    <!-- GAMING RADAR & SKILL ANALYTICS CHART BOX -->
-                    <div class="quiz-gaming-chart-box" id="quizGamingChartBox">
-                        <div class="qg-head">
-                            <div class="qg-title-wrap">
-                                <span class="qg-icon">⚔️</span>
-                                <div>
-                                    <h4 class="qg-title" id="qgTitle">رسم بياني لتحليلات المهارات وزمن الاستجابة | Medical Skill Radar</h4>
-                                    <p class="qg-sub" id="qgSub">تقسيم ذكي حسب أداء الأسئلة في النظافة والوقاية، الصحة العامة، والأجهزة الحيوية</p>
-                                </div>
-                            </div>
-                            <span class="qg-badge" id="qgBadge">⚡ Gaming Neural Analytics</span>
-                        </div>
-                        <div class="qg-skills-grid" id="quizSkillsGrid">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-
                     <!-- AI Performance & Reaction Time Analysis Box -->
                     <div class="quiz-ai-analysis-box" id="quizAiAnalysisBox">
                         <div class="qai-head">
                             <span class="qai-icon">🤖</span>
                             <div>
-                                <h4 class="qai-title" id="qaiTitle">التحليل الذكي بالأداء والزمن | AI Performance Analysis</h4>
-                                <p class="qai-sub" id="qaiSub">تحليل العقل الاصطناعي لمستوى الثقافة الطبية وسرعة رد الفعل</p>
+                                <h4 class="qai-title">التحليل الذكي بالأداء والزمن | AI Performance Analysis</h4>
+                                <p class="qai-sub">تحليل العقل الاصطناعي لمستوى الثقافة الطبية وسرعة رد الفعل</p>
                             </div>
                         </div>
                         <div class="qai-body" id="quizAiAnalysisBody">
                             <div class="quiz-ai-spinner-sm"></div>
-                            <span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">جاري تحليل الأداء وحساب زمن الاستجابة...</span>
-                        </div>
-                    </div>
-
-                    <!-- NANO-BANANA-2 VISUAL AI EXPLANATION BOX -->
-                    <div class="quiz-visual-ai-box" id="quizVisualAiBox">
-                        <div class="qai-head">
-                            <span class="qai-icon" style="background:rgba(244,125,59,0.2); border-color:rgba(244,125,59,0.5); color:var(--hive-amber);">🎨</span>
-                            <div>
-                                <h4 class="qai-title" id="qvTitle" style="color:var(--hive-amber-2);">الشرح التوضيحي الممتع بالصور | Visual AI Explanation</h4>
-                                <p class="qai-sub" id="qvSub">إنشاء رسم إنفوجرافيك تعليمي ممتع يشرح الأسئلة والأخطاء (Nano Banana 2)</p>
-                            </div>
-                        </div>
-                        <p style="font-size:0.85rem; color:rgba(251,248,243,0.75); margin:0 0 10px 0; line-height:1.6;" id="qvDesc">
-                            احصل على رسم توضيحي بالذكاء الاصطناعي يشرح لك المفاهيم التي أخطأت فيها بأسلوب عملي، مرئي وممتع جداً!
-                        </p>
-                        <button class="qv-btn-gen" id="quizGenVisualBtn">
-                            <span>✨ توليد صورة الشرح التوضيحي بالذكاء الاصطناعي (nano-banana-2)</span>
-                        </button>
-                        <div class="qv-img-wrap" id="quizVisualImgWrap">
-                            <img id="quizVisualImg" alt="Visual AI Explanation">
-                            <div>
-                                <a id="quizVisualDownload" target="_blank" download="phive_explanation.png" class="quiz-cta-retry" style="display:inline-flex; font-size:0.82rem; padding:8px 16px;">
-                                    📥 تحميل الصورة HD
-                                </a>
-                            </div>
+                            <span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">جاري تحليل الأداء وحساب زمن
+                                الاستجابة...</span>
                         </div>
                     </div>
 
                     <div class="quiz-result-breakdown" id="quizBreakdown"></div>
                     <div class="quiz-result-cta">
-                        <p id="quizCtaText">Impressed by your performance? Join our <strong>SCOPH public health community</strong> and take your knowledge further!</p>
+                        <p id="quizCtaText">Impressed by your performance? Join our <strong>SCOPH public health
+                                community</strong> and take your knowledge further!</p>
                         <div class="quiz-cta-btns">
                             <a href="mailto:nusmsa.scoph@gmail.com?subject=Join Request — I Scored on The PHive Quiz"
                                 class="quiz-cta-email" id="quizCtaEmailBtn">
@@ -10299,42 +9560,6 @@
             /* ---- Footer year ---- */
             var footerYear = document.getElementById('footerYear');
             if (footerYear) footerYear.textContent = new Date().getFullYear();
-
-            /* ---- Epic Site Intro Overlay Logic ---- */
-            var introOverlay = document.getElementById('phiveIntroOverlay');
-            var introBar = document.getElementById('phiveIntroLoaderBar');
-            var introSkipBtn = document.getElementById('phiveIntroSkipBtn');
-            var introStatusEl = document.getElementById('phiveIntroStatus');
-
-            if (introOverlay) {
-                setTimeout(function () {
-                    if (introBar) introBar.style.width = '100%';
-                }, 50);
-
-                var statusMsgs = [
-                    'Assembling Biological Network...',
-                    'Connecting Public Health Intelligence...',
-                    'Welcome to The PHive'
-                ];
-                var statusIdx = 0;
-                var statusInterval = setInterval(function () {
-                    statusIdx++;
-                    if (statusMsgs[statusIdx] && introStatusEl) {
-                        introStatusEl.textContent = statusMsgs[statusIdx];
-                    }
-                }, 900);
-
-                function dismissIntro() {
-                    if (statusInterval) clearInterval(statusInterval);
-                    introOverlay.classList.add('is-hidden');
-                    setTimeout(function () {
-                        if (introOverlay.parentNode) introOverlay.parentNode.removeChild(introOverlay);
-                    }, 850);
-                }
-
-                introSkipBtn && introSkipBtn.addEventListener('click', dismissIntro);
-                setTimeout(dismissIntro, 3200);
-            }
 
             /* ==========================================================================
                Navbar: scroll state + mobile toggle
@@ -11962,9 +11187,6 @@
                 });
             })();
 
-            /* ==========================================================================
-               GENIUS FEATURES: COMMAND PALETTE (Ctrl+K), BOOKMARKS, QUIZ ENGINE
-               ========================================================================== */
 
             /* ---- Bookmarks System ---- */
             function getSavedBookmarks() {
@@ -13101,11 +12323,6 @@
                     stopTimer();
                 }
 
-                var navQuizBtn = document.getElementById('navQuizBtn');
-                navQuizBtn && navQuizBtn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    openQuiz();
-                });
                 launchBtn && launchBtn.addEventListener('click', openQuiz);
                 closeBtn && closeBtn.addEventListener('click', closeQuiz);
                 modal && modal.addEventListener('click', function (e) {
@@ -13559,55 +12776,15 @@
                     var qrBestTime = document.getElementById('qrBestTime');
                     if (qrBestTime) qrBestTime.innerHTML = bestMs ? (bestMs / 1000).toFixed(1) + '<span class="unit">s</span>' : '—';
 
-                    /* Localize static titles and headers in Results screen */
-                    var qgTitle = document.getElementById('qgTitle');
-                    var qgSub = document.getElementById('qgSub');
-                    var qgBadge = document.getElementById('qgBadge');
-                    var qaiTitle = document.getElementById('qaiTitle');
-                    var qaiSub = document.getElementById('qaiSub');
-                    var qvTitle = document.getElementById('qvTitle');
-                    var qvSub = document.getElementById('qvSub');
-                    var qvDesc = document.getElementById('qvDesc');
-                    var genVisualBtn = document.getElementById('quizGenVisualBtn');
-                    var dlBtn = document.getElementById('quizVisualDownload');
-
-                    if (isEn) {
-                        if (qgTitle) qgTitle.textContent = 'Medical Skill Radar & Reflexes';
-                        if (qgSub) qgSub.textContent = 'AI breakdown by Hygiene, Public Health, Biological Systems & Reaction Speed';
-                        if (qgBadge) qgBadge.textContent = '⚡ Gaming Neural Analytics';
-
-                        if (qaiTitle) qaiTitle.textContent = 'AI Performance & Speed Analysis';
-                        if (qaiSub) qaiSub.textContent = 'AI evaluation of your health literacy and reaction speed';
-
-                        if (qvTitle) qvTitle.textContent = 'Visual AI Explanation (Nano Banana 2)';
-                        if (qvSub) qvSub.textContent = 'Generate fun, visual educational infographics for missed questions';
-                        if (qvDesc) qvDesc.textContent = 'Get a fun visual infographic generated by Puter AI explaining the concepts you missed in a practical, memorable format!';
-                        if (genVisualBtn) genVisualBtn.innerHTML = '<span>✨ Generate Visual Explanation (nano-banana-2)</span>';
-                        if (dlBtn) dlBtn.textContent = '📥 Download HD Image';
-                    } else {
-                        if (qgTitle) qgTitle.textContent = 'رسم بياني لتحليلات المهارات وزمن الاستجابة | Medical Skill Radar';
-                        if (qgSub) qgSub.textContent = 'تقسيم ذكي حسب أداء الأسئلة في النظافة والوقاية، الصحة العامة، والأجهزة الحيوية';
-                        if (qgBadge) qgBadge.textContent = '⚡ Gaming Neural Analytics';
-
-                        if (qaiTitle) qaiTitle.textContent = 'التحليل الذكي بالأداء والزمن | AI Performance Analysis';
-                        if (qaiSub) qaiSub.textContent = 'تحليل العقل الاصطناعي لمستوى الثقافة الطبية وسرعة رد الفعل';
-
-                        if (qvTitle) qvTitle.textContent = 'الشرح التوضيحي الممتع بالصور | Visual AI Explanation';
-                        if (qvSub) qvSub.textContent = 'إنشاء رسم إنفوجرافيك تعليمي ممتع يشرح الأسئلة والأخطاء (Nano Banana 2)';
-                        if (qvDesc) qvDesc.textContent = 'احصل على رسم توضيحي بالذكاء الاصطناعي يشرح لك المفاهيم التي أخطأت فيها بأسلوب عملي، مرئي وممتع جداً!';
-                        if (genVisualBtn) genVisualBtn.innerHTML = '<span>✨ توليد صورة الشرح التوضيحي بالذكاء الاصطناعي (nano-banana-2)</span>';
-                        if (dlBtn) dlBtn.textContent = '📥 تحميل الصورة HD';
-                    }
-
                     /* Breakdown rows */
                     var breakdown = document.getElementById('quizBreakdown');
                     if (breakdown) {
-                        var html = '<div class="qrb-title">' + (isEn ? 'Answer Breakdown' : 'تفاصيل الإجابات والسرعة') + '</div>';
+                        var html = '<div class="qrb-title">Answer Breakdown</div>';
                         state.answers.forEach(function (ans, i) {
                             var q = state.questions[i];
                             if (!q) return;
                             var icon = ans.timeOut ? '⏰' : (ans.correct ? '✅' : '❌');
-                            var timeStr = ans.timeOut ? (isEn ? 'Timed out' : 'انتهى الوقت') : (ans.timeMs / 1000).toFixed(1) + 's';
+                            var timeStr = ans.timeOut ? 'Timed out' : (ans.timeMs / 1000).toFixed(1) + 's';
                             var shortQ = q.question.length > 55 ? q.question.slice(0, 55) + '…' : q.question;
                             html += '<div class="qrb-row"><span class="qrb-icon">' + icon + '</span><span class="qrb-q">' + shortQ + '</span><span class="qrb-time">' + timeStr + '</span></div>';
                         });
@@ -13621,26 +12798,18 @@
                     /* Live AI Analysis Call (Time & Speed & Performance Evaluation) */
                     var aiBoxBody = document.getElementById('quizAiAnalysisBody');
                     if (aiBoxBody) {
-                        aiBoxBody.innerHTML = '<div class="quiz-ai-spinner-sm"></div><span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">' + (isEn ? 'AI is evaluating your reaction speed and health literacy...' : 'جاري استدعاء العقل الاصطناعي لتحليل زمن رد الفعل والثقافة الطبية...') + '</span>';
+                        aiBoxBody.innerHTML = '<div class="quiz-ai-spinner-sm"></div><span style="font-size:0.85rem; color:rgba(251,248,243,0.6);">جاري استدعاء العقل الاصطناعي لتحليل زمن رد الفعل والثقافة الطبية...</span>';
 
                         var totalTimeSec = (state.answers.reduce(function (acc, a) { return acc + (a.timeMs || 0); }, 0) / 1000).toFixed(1);
                         var avgSpeedSec = avgMs ? (avgMs / 1000).toFixed(1) : 0;
 
-                        var aiEvalPrompt = isEn ?
-                            'You are the brilliant AI mentor for The PHive & SCOPH.\n' +
-                            'User Stats:\n' +
-                            '- Name: ' + name + '\n' +
-                            '- Score: ' + score + ' out of 10\n' +
-                            '- Total Time Taken: ' + totalTimeSec + ' seconds\n' +
-                            '- Average Reaction Speed per Question: ' + avgSpeedSec + ' seconds\n\n' +
-                            'Task: Write an epic, highly encouraging 3-to-4-line performance breakdown in ENGLISH speaking directly to ' + name + ' in 2nd person ("You, ' + name + ', performed brilliantly..."). Evaluate their speed, health literacy, and reaction reflexes with energetic emojis (🔥, ⚡, 🏆, 🧠, 👑, 🛡️). No formal intros.' :
-                            'أنت الذكاء الاصطناعي الخاص بـ The PHive وكتلة SCOPH. قم بتحليل أداء المستخدم في كويز الصحة العامة بناءً على البيانات التالية:\n' +
+                        var aiEvalPrompt = 'أنت الذكاء الاصطناعي الخاص بـ The PHive وكتلة SCOPH. قم بتحليل أداء المستخدم في كويز الصحة العامة بناءً على البيانات التالية:\n' +
                             '- اسم البطل: ' + name + '\n' +
                             '- النتيجة: ' + score + ' من 10\n' +
                             '- إجمالي الوقت المستغرق لكل الأسئلة: ' + totalTimeSec + ' ثانية\n' +
                             '- متوسط سرعة رد الفعل لكل سؤال: ' + avgSpeedSec + ' ثانية\n' +
                             '- تدرج الأسئلة كان من الأسهل (سؤال 1) إلى الأصعب (سؤال 10).\n\n' +
-                            'المطلوب: اكتب تحليلاً مشجعاً، ذكياً، ومباشراً باللغة العربية في 3 إلى 4 أسطر فقط. قم ببيان مستوى ثقافته الطبية، وتقييم سرعة رد فعله واستجابته، وتوجيه كلمة تقدير خاصة له باسمه (' + name + '). بدون مقدمات طويلة.';
+                            'المطلوب: اكتب تحليلاً مشجعاً، ذكياً، ومباشراً باللغة العربية في 3 أسطر فقط. قم ببيان مستوى ثقافته الطبية، وتقييم سرعة رد فعله واستجابته، وتوجيه كلمة تقدير خاصة له باسمه (' + name + '). بدون مقدمات طويلة.';
 
                         try {
                             if (window.puter && window.puter.ai) {
@@ -13658,16 +12827,6 @@
                         } catch (err) {
                             generateFallbackAiAnalysis(aiBoxBody, name, score, total, totalTimeSec, avgSpeedSec);
                         }
-                    }
-
-                    /* Dynamic Gaming Skill Radar & Categorization Breakdown */
-                    renderGamingSkillChart();
-
-                    /* Attach Nano-Banana-2 Visual Explanation handler */
-                    if (genVisualBtn) {
-                        genVisualBtn.onclick = function () {
-                            generateVisualAiExplanation();
-                        };
                     }
 
                     /* CTA email link personalization */
@@ -13689,140 +12848,6 @@
 
                     /* Confetti for good scores */
                     if (pct >= 0.6) { spawnConfetti(pct >= 0.9 ? 40 : 20); }
-                }
-
-                /* -------- Gaming Skill Radar & Categorization Renderer -------- */
-                function renderGamingSkillChart() {
-                    var skillsGrid = document.getElementById('quizSkillsGrid');
-                    if (!skillsGrid) return;
-
-                    var isEn = (state.lang === 'en');
-                    var answers = state.answers || [];
-                    var questions = state.questions || [];
-
-                    /* Categorize score into 4 domains */
-                    var hygieneScore = 0, hygieneTotal = 0;
-                    var publicHealthScore = 0, publicHealthTotal = 0;
-                    var bioScore = 0, bioTotal = 0;
-                    var totalSpeedMs = 0, validSpeedCount = 0;
-
-                    answers.forEach(function (ans, i) {
-                        var q = questions[i];
-                        var text = (q ? (q.question + ' ' + (q.category || '')) : '').toLowerCase();
-
-                        if (!ans.timeOut && ans.timeMs) {
-                            totalSpeedMs += ans.timeMs;
-                            validSpeedCount++;
-                        }
-
-                        if (text.indexOf('نظاف') !== -1 || text.indexOf('غسل') !== -1 || text.indexOf('عدوى') !== -1 || text.indexOf('وقاي') !== -1 || text.indexOf('hygiene') !== -1 || text.indexOf('prevent') !== -1 || text.indexOf('wash') !== -1) {
-                            hygieneTotal++;
-                            if (ans.correct) hygieneScore++;
-                        } else if (text.indexOf('جهاز') !== -1 || text.indexOf('دوري') !== -1 || text.indexOf('قلب') !== -1 || text.indexOf('عصب') !== -1 || text.indexOf('مناع') !== -1 || text.indexOf('organ') !== -1 || text.indexOf('system') !== -1 || text.indexOf('hiv') !== -1) {
-                            bioTotal++;
-                            if (ans.correct) bioScore++;
-                        } else {
-                            publicHealthTotal++;
-                            if (ans.correct) publicHealthScore++;
-                        }
-                    });
-
-                    var hPct = hygieneTotal > 0 ? Math.round((hygieneScore / hygieneTotal) * 100) : Math.min(100, Math.round((state.score / (state.questions.length || 1)) * 100 + 10));
-                    var pPct = publicHealthTotal > 0 ? Math.round((publicHealthScore / publicHealthTotal) * 100) : Math.round((state.score / (state.questions.length || 1)) * 100);
-                    var bPct = bioTotal > 0 ? Math.round((bioScore / bioTotal) * 100) : Math.min(100, Math.round((state.score / (state.questions.length || 1)) * 100 + 5));
-
-                    var avgSpeedSec = validSpeedCount > 0 ? (totalSpeedMs / validSpeedCount / 1000) : 10;
-                    var rPct = Math.max(15, Math.min(100, Math.round((1 - (avgSpeedSec / 20)) * 100)));
-
-                    var skills = [
-                        { name: isEn ? '🧼 Hygiene & Infection Control' : '🧼 النظافة والوقاية الشخصية', pct: hPct, color: '#00e5ff' },
-                        { name: isEn ? '🏥 Public Health & Epidemiology' : '🏥 الصحة العامة والوبائيات', pct: pPct, color: '#f47d3b' },
-                        { name: isEn ? '🧬 Biological & Organ Systems' : '🧬 العلوم البيولوجية والأجهزة', pct: bPct, color: '#7c3aed' },
-                        { name: isEn ? '⚡ Reflexes & Agility' : '⚡ سرعة الاستجابة وزمن رد الفعل', pct: rPct, color: '#7be0a8' }
-                    ];
-
-                    skillsGrid.innerHTML = skills.map(function (s) {
-                        return '<div class="qg-skill-card">' +
-                            '<div class="qg-skill-header">' +
-                            '<span class="qg-skill-name">' + s.name + '</span>' +
-                            '<span class="qg-skill-pct" style="color:' + s.color + ';">' + s.pct + '%</span>' +
-                            '</div>' +
-                            '<div class="qg-bar-bg">' +
-                            '<div class="qg-bar-fill" style="width:' + s.pct + '%; background:' + s.color + '; box-shadow:0 0 10px ' + s.color + ';"></div>' +
-                            '</div>' +
-                            '</div>';
-                    }).join('');
-                }
-
-                /* -------- Visual AI Explanation (Nano-Banana-2 Model) -------- */
-                function generateVisualAiExplanation() {
-                    var btn = document.getElementById('quizGenVisualBtn');
-                    var imgWrap = document.getElementById('quizVisualImgWrap');
-                    var imgEl = document.getElementById('quizVisualImg');
-                    var dlBtn = document.getElementById('quizVisualDownload');
-                    var isEn = (state.lang === 'en');
-
-                    if (btn) {
-                        btn.disabled = true;
-                        btn.innerHTML = '<span>' + (isEn ? '⏳ Generating Visual Infographic (nano-banana-2)...' : '⏳ جاري توليد الرسم التوضيحي بالذكاء الاصطناعي (nano-banana-2)...') + '</span>';
-                    }
-
-                    var missedTopics = [];
-                    (state.answers || []).forEach(function (ans, i) {
-                        if (!ans.correct && state.questions && state.questions[i]) {
-                            missedTopics.push(state.questions[i].question);
-                        }
-                    });
-
-                    var topicSummary = missedTopics.length > 0 ?
-                        missedTopics.slice(0, 3).join('; ') :
-                        'Public health prevention, hand hygiene, organ immunity and global health';
-
-                    var prompt = 'A colorful, highly engaging educational infographic illustration explaining: ' + topicSummary + '. Clean vector graphic, fun medical cartoon style, clear educational layout, bright vibrant colors, high-resolution infographic poster, no blurry text.';
-
-                    function applyImageResult(src) {
-                        if (imgEl) imgEl.src = src;
-                        if (dlBtn) dlBtn.href = src;
-                        if (imgWrap) imgWrap.style.display = 'block';
-                    }
-
-                    try {
-                        if (window.puter && window.puter.ai && window.puter.ai.txt2img) {
-                            window.puter.ai.txt2img(prompt, { model: 'nano-banana-2' }).then(function (res) {
-                                var src = (typeof res === 'string') ? res : (res && res.src ? res.src : '');
-                                if (src) {
-                                    applyImageResult(src);
-                                } else {
-                                    alert(isEn ? 'Failed to generate image. Please check internet connection.' : 'تعذر استخراج الصورة، تأكد من الاتصال بالإنترنت.');
-                                }
-                            }).catch(function () {
-                                window.puter.ai.txt2img(prompt).then(function (res) {
-                                    var src = (typeof res === 'string') ? res : (res && res.src ? res.src : '');
-                                    if (src) applyImageResult(src);
-                                }).catch(function (err) {
-                                    console.error('Image Gen error:', err);
-                                    alert(isEn ? 'An error occurred during image generation.' : 'حدث خطأ أثناء توليد الصورة الشارحة.');
-                                });
-                            }).finally(function () {
-                                if (btn) {
-                                    btn.disabled = false;
-                                    btn.innerHTML = '<span>' + (isEn ? '✨ Regenerate Visual Explanation (nano-banana-2)' : '✨ إعادة توليد صورة الشرح التوضيحي (nano-banana-2)') + '</span>';
-                                }
-                            });
-                        } else {
-                            alert(isEn ? 'AI Image generation service is currently unavailable.' : 'خدمة توليد الصور بالذكاء الاصطناعي غير متاحة حالياً.');
-                            if (btn) {
-                                btn.disabled = false;
-                                btn.innerHTML = '<span>' + (isEn ? '✨ Generate Visual Explanation (nano-banana-2)' : '✨ توليد صورة الشرح التوضيحي بالذكاء الاصطناعي (nano-banana-2)') + '</span>';
-                            }
-                        }
-                    } catch (e) {
-                        console.error(e);
-                        if (btn) {
-                            btn.disabled = false;
-                            btn.innerHTML = '<span>' + (isEn ? '✨ Generate Visual Explanation (nano-banana-2)' : '✨ توليد صورة الشرح التوضيحي بالذكاء الاصطناعي (nano-banana-2)') + '</span>';
-                        }
-                    }
                 }
 
                 /* -------- Fallback AI Analysis Builder (Direct 2nd Person Format) -------- */
